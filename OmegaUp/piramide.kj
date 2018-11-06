@@ -1,0 +1,20 @@
+class program {
+
+    program () {
+        while(!facingEast()){
+        turnleft();
+        }
+        while(frontIsClear()){
+        move();
+        }
+		while(frontIsBlocked()){
+        turnleft();
+        move();
+        iterate(3){
+        turnleft();
+        }
+        move();
+        }
+        turnoff();
+    }
+}

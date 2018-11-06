@@ -1,0 +1,10 @@
+class program {
+    program () {
+        // TODO poner codigo aqui
+        iterate(30){
+        iterate(20)putbeeper();
+        move();
+        }
+        turnoff();
+    }
+}

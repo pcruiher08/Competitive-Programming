@@ -1,0 +1,8 @@
+class program {
+    program () {
+    iterate(2){
+    putbeeper();
+    }
+        turnoff();
+    }
+}
