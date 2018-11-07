@@ -1,0 +1,24 @@
+class program {
+
+define dejabeepers(){
+if(anyBeepersInBeeperBag()){
+putbeeper();
+dejabeepers();
+turnleft();
+}
+}
+
+    program () {
+        while(notFacingNorth()){
+        turnleft();
+        }
+        dejabeepers();
+        
+        if(facingWest()){
+        turnleft();
+        turnleft();
+        turnleft();
+        }
+        turnoff();
+    }
+}
