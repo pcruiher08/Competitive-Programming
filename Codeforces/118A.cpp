@@ -30,7 +30,7 @@ sync;
 string n; 
 cin>>n; 
 
-FOR(i,0,n.length(),1) if(!(n[i]=='A'||n[i]=='a'||n[i]=='E'||n[i]=='e'||n[i]=='i'||n[i]=='I'||n[i]=='o'||n[i]=='O'||n[i]=='u'||n[i]=='U')){
+FOR(i,0,n.length(),1) if(!(n[i]=='A'||n[i]=='a'||n[i]=='E'||n[i]=='e'||n[i]=='i'||n[i]=='I'||n[i]=='o'||n[i]=='O'||n[i]=='u'||n[i]=='U'||n[i]=='y'||n[i]=='Y')){
     cout<<"."<<(char)tolower(n[i]);
 }
 }
