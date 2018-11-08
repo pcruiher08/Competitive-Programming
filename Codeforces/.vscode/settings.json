@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "ios": "cpp"
+        "ios": "cpp",
+        "string": "cpp"
     }
 }
