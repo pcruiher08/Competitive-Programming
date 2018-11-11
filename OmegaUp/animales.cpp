@@ -35,7 +35,7 @@ cin>>a>>b>>c;
 if(a=="vertebrado"){
     if(b=="ave"){
         if(c=="carnivoro"){
-            cout<<"aguila";
+            cout<<"aguia";
         }else{
             cout<<"pomba";
         }
