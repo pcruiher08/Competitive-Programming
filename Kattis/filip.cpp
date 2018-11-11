@@ -25,7 +25,18 @@
 #define vi vector<int>
 using namespace std;
 
+int maximo(string a, string b){
+    reverse(a.begin(), a.end());
+    reverse(b.begin(), b.end());
+    int uno = stoi(a);
+    int dos = stoi(b);
+    return max(uno,dos);
+}
+
 int main(){
 sync;
+string a, b; 
+cin>>a>>b; 
+cout<<maximo(a,b);
 return 0;
 }
