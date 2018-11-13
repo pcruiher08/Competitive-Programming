@@ -11,5 +11,4 @@ while(n--){
 }
 cout<<"$";
 cout<<sum/12;
-
 }
