@@ -30,6 +30,4 @@ int main(){
     int amps, ohms;
     cin>>amps>>a>>ohms>>b;
     cout<<amps*ohms<<" V";
-
-
 }
