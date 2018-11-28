@@ -43,6 +43,5 @@ FOR(i,0,n,1){arr2[i] = arr[i]; if(arr[i]>arr[maxI]) maxI = i; if(arr[i]<arr[minI
 
 
 
-
 return 0;
 }
