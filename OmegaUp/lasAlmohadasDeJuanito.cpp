@@ -61,8 +61,6 @@ ll binarySearch(){
 	return result;
 }
 
-
-
 int main(){
 sync;
     cin>>n>>m>>i;
