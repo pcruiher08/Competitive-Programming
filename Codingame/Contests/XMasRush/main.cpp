@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <math.h>
 
 using namespace std;
 
@@ -30,7 +31,6 @@ Item::Item(string name){
 }
 
 
-
 class Player{
     public:
         Player();
@@ -42,8 +42,17 @@ class Player{
         int cards;
         int howManyItems = items.size();
         int itemToBeFound(string);
+        int itemToBeFound(vector<string>);
         vector<string> quests;
         vector<Item> items;
+        private:
+        struct point{
+            int a, b, index;
+        };
+
+        int level(point);
+
+
 };
     Player::Player(){
         isPlayer = false; 
@@ -51,12 +60,56 @@ class Player{
     }
 
     int Player::itemToBeFound(string s){
+        
         for(int i=0; i<howManyItems; i++){
             if(items[i].name==s){
                 return i;
             }
         }
         return -1;
+    }
+
+    int Player::level(point p){
+        if(p.a>=0&&p.a<=6&&p.b==0||p.a>=0&&p.a<=6&&p.b==6||p.b>=0&&p.b<=6&&p.a==0||p.b>=0&&p.b<=6&&p.a==6) return 1;
+        if(p.a>=1&&p.a<=5&&p.b==1||p.a>=1&&p.a<=5&&p.b==5||p.b>=1&&p.b<=5&&p.a==1||p.b>=1&&p.b<=5&&p.a==5) return 2;
+        if(p.a>=2&&p.a<=4&&p.b==2||p.a>=2&&p.a<=4&&p.b==4||p.b>=2&&p.b<=4&&p.a==2||p.b>=2&&p.b<=4&&p.a==4) return 3;
+        if(p.a==3&&p.b==3) return 4;
+        return p.a;
+    }
+
+
+    int Player::itemToBeFound(vector <string> quests){
+        vector <point> points;
+        for(int i=0; i<quests.size(); i++){
+            for(int j=0; j<howManyItems; j++){
+                if((items[j].name==quests[i])){
+                    point aux;
+                    aux.a = items[j].x;
+                    aux.b = items[j].y;
+                    aux.index = j;
+                    points.push_back(aux);
+                }
+            }
+        }
+        if(points.size()<quests.size()){
+            return -1;
+        }else{
+            int lowerIndex = 0;
+            for(int i=0; i<points.size(); i++){
+                cerr<<"lvl: "<<level(points[i])<<endl;
+                if(level(points[i])<0) return points[i].a;
+                for(int j=i; j<points.size(); j++){
+                    if(level(points[i])<level(points[j])){
+                        lowerIndex = i;
+                    }
+                }
+                point aux = points[i];
+                points[i] = points[lowerIndex];
+                points[lowerIndex] = aux;
+            }
+            cerr<<"index to find: "<<points[0].index<<endl;
+            return points[0].index;
+        }
     }
 
     Player::Player(int a){
@@ -143,24 +196,43 @@ Player player, opponent;
 void play(int turnType){
 if(!turnType){
     //cout << "PUSH 3 RIGHT" << endl; // PUSH <id> <direction> | MOVE <direction> | PASS
-    while(player.itemToBeFound(player.quests[0]) == -1){
+    //while(player.itemToBeFound(player.quests[0]) == -1){
         //player.quests.erase(player.quests.begin());
-    }
+    //}
+    cerr<<player.howManyItems<<endl;
     for(int i=0; i<player.howManyItems; i++){
         cerr<<player.items[i].name<<" ";
+        cerr<<i<<endl;
     }cerr<<endl;
-    int itemToLookFor = player.itemToBeFound(player.quests[0]);
-        if(player.items[itemToLookFor].y!=-1){
-            if(player.items[itemToLookFor].y==0&&player.x!=player.items[itemToLookFor].x){
-                cout<<"PUSH "<<player.items[itemToLookFor].x<<" UP"<<endl;
-            }else if(player.items[itemToLookFor].y==6&&player.x!=player.items[itemToLookFor].x){
-                cout<<"PUSH "<<player.items[itemToLookFor].x<<" DOWN"<<endl;
-            }else if(player.items[itemToLookFor].x==0&&player.y!=player.items[itemToLookFor].y){
-                cout<<"PUSH "<<player.items[itemToLookFor].y<<" LEFT"<<endl;
-            }else if(player.items[itemToLookFor].x==6&&player.y!=player.items[itemToLookFor].y){
-                cout<<"PUSH "<<player.items[itemToLookFor].y<<" RIGHT"<<endl;
+    //int itemToLookFor = player.itemToBeFound(player.quests[0]);//LOOKS FOR THE FIRST
+    cerr<<"AQUI1"<<endl;
+
+    int itemToLookFor = player.itemToBeFound(player.quests);//LOOKS FOR CLOEST
+    //ARREGLAR AQUI if(itemToLookFor == -1) 
+    cerr<<"AQUI2"<<endl;
+    int yCoord = player.items[itemToLookFor].y;
+    int xCoord = player.items[itemToLookFor].x;
+    cerr<<"(x,y) = ("<<xCoord<<","<<yCoord<<")"<<endl;
+        if(yCoord!=-1){
+            if(yCoord==0&&player.x!=xCoord){
+                cout<<"PUSH "<<xCoord<<" UP"<<endl;
+            }else if(yCoord==6&&player.x!=xCoord){
+                cout<<"PUSH "<<xCoord<<" DOWN"<<endl;
+            }else if(xCoord==0&&player.y!=yCoord){
+                cout<<"PUSH "<<yCoord<<" LEFT"<<endl;
+            }else if(xCoord==6&&player.y!=yCoord){
+                cout<<"PUSH "<<yCoord<<" RIGHT"<<endl;
+            }else if(xCoord<3&&player.y!=yCoord){
+                cout<<"PUSH "<<yCoord<<" LEFT"<<endl;
+            }else if(xCoord>3&&player.y!=yCoord){
+                cout<<"PUSH "<<yCoord<<" RIGHT"<<endl;
+            }else if(yCoord<3&&player.x!=xCoord){
+                cout<<"PUSH "<<xCoord<<" UP"<<endl;
+            }else if(yCoord>3&&player.x!=xCoord){
+                cout<<"PUSH "<<xCoord<<" DOWN"<<endl;
             }else{
-                cout<<"PUSH "<<player.items[itemToLookFor].y<<" LEFT"<<endl;
+                //optimizar 
+                cout<<"PUSH "<<yCoord<<" LEFT"<<endl;
             }
         }else{
             if(player.y==0){
@@ -179,6 +251,11 @@ if(!turnType){
 }else{
     //    cout<<"MOVE RIGHT UP"<<endl;
     cout<<"PASS"<<endl;
+
+    //move to pick as many quests as I can
+    //or
+    //move the closest to an edge
+
 }
     
 }
@@ -223,7 +300,9 @@ int main(){
         }
         int numItems; // the total number of items available on board and on player tiles
         cin >> numItems; cin.ignore();
-        player.howManyItems = numItems;
+        //player.howManyItems = floor(numItems/2);
+        player.howManyItems = 0;
+        opponent.howManyItems = 0;
         for (int i = 0; i < numItems; i++) {
             string itemName;
             int itemX;
@@ -242,8 +321,10 @@ int main(){
             }
             if(!itemPlayerId){
                 player.items.push_back(aux);
+                player.howManyItems++;
             }else{
                 opponent.items.push_back(aux);
+                opponent.howManyItems++;
             }
         }
         int numQuests; // the total number of revealed quests for both players
