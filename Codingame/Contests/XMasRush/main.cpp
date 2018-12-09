@@ -212,6 +212,7 @@ if(!turnType){
     cerr<<"AQUI2"<<endl;
     int yCoord = player.items[itemToLookFor].y;
     int xCoord = player.items[itemToLookFor].x;
+    if(itemToLookFor == -1||itemToLookFor == -2) yCoord = -1;
     cerr<<"(x,y) = ("<<xCoord<<","<<yCoord<<")"<<endl;
         if(yCoord!=-1){
             if(yCoord==0&&player.x!=xCoord){
