@@ -94,20 +94,22 @@ class Player{
         if(points.size()<quests.size()){
             return -1;
         }else{
-            int lowerIndex = 0;
             for(int i=0; i<points.size(); i++){
+                int lowerIndex = 0;
                 cerr<<"lvl: "<<level(points[i])<<endl;
                 if(level(points[i])<0) return points[i].a;
-                for(int j=i; j<points.size(); j++){
+                for(int j=i+1; j<points.size(); j++){
                     if(level(points[i])<level(points[j])){
-                        lowerIndex = i;
+                        lowerIndex = j;
                     }
                 }
                 point aux = points[i];
                 points[i] = points[lowerIndex];
                 points[lowerIndex] = aux;
             }
-            cerr<<"index to find: "<<points[0].index<<endl;
+            cerr<<"index to find (0): "<<points[0].index<<endl;
+            cerr<<"index to find (1): "<<points[1].index<<endl;
+            cerr<<"index to find (2): "<<points[2].index<<endl;
             return points[0].index;
         }
     }
