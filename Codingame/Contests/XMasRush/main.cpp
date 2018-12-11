@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include <math.h>
+#include <stack>
 
 using namespace std;
 
@@ -218,12 +219,61 @@ void bfs(int y, int x, int count){
     return;
 }
 
+vector<string> go(vector <string> vec){
+    vector<string> directions;
+    stack<string> aux;
+
+    for(int i=0; i<vec.size(); i++){
+        aux.push(vec[i]);
+    }
+
+    while(!aux.empty()){
+        directions.push_back(aux.top());
+        aux.pop();
+    }
+
+    for(int i=0; i<directions.size(); i++){
+        if(directions[i]=="RIGHT"){
+            directions[i]="LEFT";
+            //goto here;
+        }else if(directions[i]=="LEFT"){
+            directions[i]="RIGHT";
+            //goto here;
+        }else if(directions[i]=="UP"){
+            directions[i]="DOWN";
+            //goto here;
+        }else if(directions[i]=="DOWN"){
+            directions[i]="UP";
+            //goto here;
+        }
+        //here:
+    }
+   return directions;
+}
+
+vector<string> come(int x, int y){//i,j
+    vector<string> directions;
+    while(board[x][y].bfsData!=1){
+        if(board[x-1][y].bfsData==board[x][y].bfsData-1){
+            directions.push_back("UP");
+            x--;
+        }else if(board[x+1][y].bfsData==board[x][y].bfsData-1){
+            directions.push_back("DOWN");
+            x++;
+        }else if(board[x][y-1].bfsData==board[x][y].bfsData-1){
+            directions.push_back("LEFT");
+            y--;
+        }else if(board[x][y+1].bfsData==board[x][y].bfsData-1){
+            directions.push_back("RIGHT");
+            y++;
+        }
+    }
+    return directions;
+}
+
 void play(int turnType){
 if(!turnType){
     //cout << "PUSH 3 RIGHT" << endl; // PUSH <id> <direction> | MOVE <direction> | PASS
-    //while(player.itemToBeFound(player.quests[0]) == -1){
-        //player.quests.erase(player.quests.begin());
-    //}
     cerr<<player.howManyItems<<endl;
     for(int i=0; i<player.howManyItems; i++){
         cerr<<player.items[i].name<<" ";
@@ -232,7 +282,7 @@ if(!turnType){
     //int itemToLookFor = player.itemToBeFound(player.quests[0]);//LOOKS FOR THE FIRST
     cerr<<"AQUI1"<<endl;
 
-    int itemToLookFor = player.itemToBeFound(player.quests);//LOOKS FOR CLOEST
+    int itemToLookFor = player.itemToBeFound(player.quests);//LOOKS FOR CLOSEST
     //ARREGLAR AQUI if(itemToLookFor == -1) 
     cerr<<"AQUI2"<<endl;
     int yCoord = player.items[itemToLookFor].y;
@@ -257,7 +307,7 @@ if(!turnType){
             }else if(yCoord>3&&player.x!=xCoord){
                 cout<<"PUSH "<<xCoord<<" DOWN"<<endl;
             }else{
-                //optimizar 
+                //optimizar
                 cout<<"PUSH "<<yCoord<<" LEFT"<<endl;
             }
         }else{
@@ -272,12 +322,10 @@ if(!turnType){
             }else{
                 cout<<"PUSH "<<player.x<<" UP"<<endl; 
             }
-            //cout<<"PUSH "<<player.x<<" UP"<<endl;
         }
 }else{
-    //    cout<<"MOVE RIGHT UP"<<endl;
-    cout<<"PASS"<<endl;
-    //lets move randomly first
+    //cout<<"PASS"<<endl;
+    //lets move randomly first with bfs
     string command = "MOVE ";
     vector <Tile> visited;
     int x = player.x; 
@@ -285,13 +333,35 @@ if(!turnType){
     int count = 0;
     bfs(x, y, count);
 
+    int maxYIndex = 0, maxXIndex = 0;
+
     for(int i=0; i<7; i++){
         for(int j=0; j<7; j++){
+            if(board[i][j].bfsData>board[maxYIndex][maxXIndex].bfsData&&board[i][j].bfsData<=10){
+                maxYIndex = i;
+                maxXIndex = j;
+            }
             cerr<<board[i][j].bfsData<<" ";
-            board[i][j].bfsData=0;
-            board[i][j].bfsVisited=false;
         }cerr<<endl;
     }
+    vector <string> forth = go(come(maxYIndex, maxXIndex));
+    vector <string> back = come(maxYIndex, maxXIndex);
+    vector <string> directions;
+    directions.insert(directions.end(), forth.begin(), forth.end());
+    directions.insert(directions.end(), back.begin(), back.end());
+    cerr<<"size of dir: "<<directions.size()<<endl;
+    for(int i=0; i<directions.size(); i++){
+        command+=directions[i];
+        if(i<directions.size()-1)
+        command+=" ";
+    }
+    if(directions.size()>0){
+        cout<<command<<endl;
+    }else{
+        cout<<"PASS"<<endl;    
+    }
+
+    //cout<<"MOVE"<<go(come(maxYIndex, maxXIndex))<<" "<<come(maxYIndex, maxXIndex)<<endl;
 
     //move to pick as many quests as I can
     //or
@@ -343,7 +413,6 @@ int main(){
         }
         int numItems; // the total number of items available on board and on player tiles
         cin >> numItems; cin.ignore();
-        //player.howManyItems = floor(numItems/2);
         player.howManyItems = 0;
         opponent.howManyItems = 0;
         for (int i = 0; i < numItems; i++){
