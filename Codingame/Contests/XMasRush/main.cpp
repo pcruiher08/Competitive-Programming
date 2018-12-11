@@ -133,7 +133,8 @@ public:
     void setOpponent(bool);
     bool isPlayerOn, isItemOn, isOpponentOn;
     string symbol;
-private:
+    int bfsData;
+    bool bfsVisited;
     bool hasUp, hasRight, hasLeft, hasDown;
 
 };
@@ -195,6 +196,28 @@ void Tile::setItem(bool b){
 Tile board[7][7];
 Player player, opponent;
 
+void bfs(int y, int x, int count){
+    if(x>=0&&x<=6&&y<=6&&y>=0){
+        if(board[x][y].bfsVisited){
+            return;
+        }
+        board[x][y].bfsVisited = true;
+        board[x][y].bfsData = ++count;
+        if(board[x][y].hasRight && board[x][y+1].hasLeft && !board[x][y+1].bfsVisited) 
+        bfs(y+1, x, count);
+
+        if(board[x][y].hasLeft && board[x][y-1].hasRight && !board[x][y-1].bfsVisited)
+        bfs(y-1, x, count);
+
+        if(board[x][y].hasDown && board[x+1][y].hasUp && !board[x+1][y].bfsVisited)
+        bfs(y, x+1, count);
+
+        if(board[x][y].hasUp && board[x-1][y].hasDown && !board[x-1][y].bfsVisited)
+        bfs(y, x-1, count);
+    }
+    return;
+}
+
 void play(int turnType){
 if(!turnType){
     //cout << "PUSH 3 RIGHT" << endl; // PUSH <id> <direction> | MOVE <direction> | PASS
@@ -254,6 +277,21 @@ if(!turnType){
 }else{
     //    cout<<"MOVE RIGHT UP"<<endl;
     cout<<"PASS"<<endl;
+    //lets move randomly first
+    string command = "MOVE ";
+    vector <Tile> visited;
+    int x = player.x; 
+    int y = player.y;
+    int count = 0;
+    bfs(x, y, count);
+
+    for(int i=0; i<7; i++){
+        for(int j=0; j<7; j++){
+            cerr<<board[i][j].bfsData<<" ";
+            board[i][j].bfsData=0;
+            board[i][j].bfsVisited=false;
+        }cerr<<endl;
+    }
 
     //move to pick as many quests as I can
     //or
@@ -277,6 +315,8 @@ int main(){
                 cin >> tile; cin.ignore();
                 Tile aux(tile);
                 board[i][j]=aux;
+                board[i][j].bfsData = 0;
+                board[i][j].bfsVisited = false;
             }
         }
         for (int i = 0; i < 2; i++) {//player first, opponent second
