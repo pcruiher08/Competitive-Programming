@@ -306,7 +306,7 @@ int main(){
         //player.howManyItems = floor(numItems/2);
         player.howManyItems = 0;
         opponent.howManyItems = 0;
-        for (int i = 0; i < numItems; i++) {
+        for (int i = 0; i < numItems; i++){
             string itemName;
             int itemX;
             int itemY;
