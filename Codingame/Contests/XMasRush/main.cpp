@@ -4,7 +4,8 @@
 #include <algorithm>
 #include <math.h>
 #include <stack>
-
+#include <chrono>
+#define sync ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 using namespace std;
 
 class Item{
@@ -203,18 +204,22 @@ void bfs(int y, int x, int count){
             return;
         }
         board[x][y].bfsVisited = true;
-        board[x][y].bfsData = ++count;
-        if(board[x][y].hasRight && board[x][y+1].hasLeft && !board[x][y+1].bfsVisited) 
-        bfs(y+1, x, count);
+        board[x][y].bfsData = count+1;
+        if(board[x][y].hasRight && board[x][y+1].hasLeft && !board[x][y+1].bfsVisited){ 
+            bfs(y+1, x, count+1);
+        }
 
-        if(board[x][y].hasLeft && board[x][y-1].hasRight && !board[x][y-1].bfsVisited)
-        bfs(y-1, x, count);
-
-        if(board[x][y].hasDown && board[x+1][y].hasUp && !board[x+1][y].bfsVisited)
-        bfs(y, x+1, count);
-
-        if(board[x][y].hasUp && board[x-1][y].hasDown && !board[x-1][y].bfsVisited)
-        bfs(y, x-1, count);
+        if(board[x][y].hasLeft && board[x][y-1].hasRight && !board[x][y-1].bfsVisited){
+            bfs(y-1, x, count+1);
+        }
+        
+        if(board[x][y].hasDown && board[x+1][y].hasUp && !board[x+1][y].bfsVisited){
+            bfs(y, x+1, count+1);
+        }
+        
+        if(board[x][y].hasUp && board[x-1][y].hasDown && !board[x-1][y].bfsVisited){
+            bfs(y, x-1, count+1);
+        }   
     }
     return;
 }
@@ -225,6 +230,7 @@ vector<string> go(vector <string> vec){
 
     for(int i=0; i<vec.size(); i++){
         aux.push(vec[i]);
+        //cerr<<"stack to vector"<<endl;
     }
 
     while(!aux.empty()){
@@ -235,16 +241,20 @@ vector<string> go(vector <string> vec){
     for(int i=0; i<directions.size(); i++){
         if(directions[i]=="RIGHT"){
             directions[i]="LEFT";
+            //cerr<<"RIGHT->LEFT"<<endl;
             //goto here;
         }else if(directions[i]=="LEFT"){
             directions[i]="RIGHT";
+            //cerr<<"LEFT->RIGHT"<<endl;
             //goto here;
         }else if(directions[i]=="UP"){
             directions[i]="DOWN";
+            //cerr<<"UP->DOWN"<<endl;
             //goto here;
         }else if(directions[i]=="DOWN"){
             directions[i]="UP";
             //goto here;
+            //cerr<<"DOWN->UP"<<endl;
         }
         //here:
     }
@@ -280,11 +290,11 @@ if(!turnType){
         cerr<<i<<endl;
     }cerr<<endl;
     //int itemToLookFor = player.itemToBeFound(player.quests[0]);//LOOKS FOR THE FIRST
-    cerr<<"AQUI1"<<endl;
+    //cerr<<"AQUI1"<<endl;
 
     int itemToLookFor = player.itemToBeFound(player.quests);//LOOKS FOR CLOSEST
     //ARREGLAR AQUI if(itemToLookFor == -1) 
-    cerr<<"AQUI2"<<endl;
+    //cerr<<"AQUI2"<<endl;
     int yCoord = player.items[itemToLookFor].y;
     int xCoord = player.items[itemToLookFor].x;
     if(itemToLookFor == -1||itemToLookFor == -2) yCoord = -1;
@@ -330,22 +340,23 @@ if(!turnType){
     vector <Tile> visited;
     int x = player.x; 
     int y = player.y;
-    int count = 0;
-    bfs(x, y, count);
+    bfs(x, y, 0);
 
     int maxYIndex = 0, maxXIndex = 0;
 
     for(int i=0; i<7; i++){
         for(int j=0; j<7; j++){
-            if(board[i][j].bfsData>board[maxYIndex][maxXIndex].bfsData&&board[i][j].bfsData<=10){
+            if(board[i][j].bfsData>board[maxYIndex][maxXIndex].bfsData&&board[i][j].bfsData<=11){
                 maxYIndex = i;
                 maxXIndex = j;
             }
             cerr<<board[i][j].bfsData<<" ";
         }cerr<<endl;
     }
-    vector <string> forth = go(come(maxYIndex, maxXIndex));
-    vector <string> back = come(maxYIndex, maxXIndex);
+
+    vector <string> turningBack = come(maxYIndex, maxXIndex);
+    vector <string> forth = go(turningBack);
+    vector <string> back = turningBack;
     vector <string> directions;
     directions.insert(directions.end(), forth.begin(), forth.end());
     directions.insert(directions.end(), back.begin(), back.end());
@@ -356,6 +367,7 @@ if(!turnType){
         command+=" ";
     }
     if(directions.size()>0){
+        cerr<<command<<endl;
         cout<<command<<endl;
     }else{
         cout<<"PASS"<<endl;    
@@ -372,17 +384,19 @@ if(!turnType){
 }
 
 int main(){
+    sync;
     // game loop
 
     vector<Item> items;
 
     while (1) {
+        auto begin = chrono::high_resolution_clock::now();
         int turnType;
-        cin >> turnType; cin.ignore();
+        cin >> turnType;// cin.ignore();
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 7; j++) {
                 string tile;
-                cin >> tile; cin.ignore();
+                cin >> tile;// cin.ignore();
                 Tile aux(tile);
                 board[i][j]=aux;
                 board[i][j].bfsData = 0;
@@ -394,7 +408,7 @@ int main(){
             int playerX;
             int playerY;
             string playerTile;
-            cin >> numPlayerCards >> playerX >> playerY >> playerTile; cin.ignore();
+            cin >> numPlayerCards >> playerX >> playerY >> playerTile;// cin.ignore();
             Player aux(i);
             aux.x=playerX;
             aux.y=playerY;
@@ -412,7 +426,7 @@ int main(){
         
         }
         int numItems; // the total number of items available on board and on player tiles
-        cin >> numItems; cin.ignore();
+        cin >> numItems;// cin.ignore();
         player.howManyItems = 0;
         opponent.howManyItems = 0;
         for (int i = 0; i < numItems; i++){
@@ -420,7 +434,7 @@ int main(){
             int itemX;
             int itemY;
             int itemPlayerId;
-            cin >> itemName >> itemX >> itemY >> itemPlayerId; cin.ignore();
+            cin >> itemName >> itemX >> itemY >> itemPlayerId;// cin.ignore();
             Item aux(itemName);
             aux.x = itemX;
             aux.y = itemY;
@@ -440,24 +454,30 @@ int main(){
             }
         }
         int numQuests; // the total number of revealed quests for both players
-        cin >> numQuests; cin.ignore();
+        cin >> numQuests;// cin.ignore();
         for (int i = 0; i < numQuests; i++) {
             string questItemName;
             int questPlayerId;
-            cin >> questItemName >> questPlayerId; cin.ignore();
+            cin >> questItemName >> questPlayerId;// cin.ignore();
             if(!questPlayerId){
                 player.quests.push_back(questItemName);
             }else{
                 opponent.quests.push_back(questItemName);
             }
         }
+        /*
         for (int i = 0; i < 7; i++) {
             for (int j = 0; j < 7; j++) {
                 cerr<<board[i][j].symbol;
             }cerr<<endl;
         }
+        */
+
 
         play(turnType);
-
+    auto end = chrono::high_resolution_clock::now();    
+    auto dur = end - begin;
+    auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(dur).count();
+    cerr << "TIME: " <<ms/2 << " ms"<<endl;
     }
 }
