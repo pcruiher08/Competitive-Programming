@@ -374,7 +374,6 @@ if(!turnType){
     }
 
     //cout<<"MOVE"<<go(come(maxYIndex, maxXIndex))<<" "<<come(maxYIndex, maxXIndex)<<endl;
-
     //move to pick as many quests as I can
     //or
     //move the closest to an edge
