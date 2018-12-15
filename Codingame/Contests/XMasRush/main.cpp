@@ -341,7 +341,6 @@ if(!turnType){
     int x = player.x; 
     int y = player.y;
     bfs(x, y, 0);
-
     int maxYIndex = 0, maxXIndex = 0;
 
     for(int i=0; i<7; i++){
@@ -377,7 +376,7 @@ if(!turnType){
     //move to pick as many quests as I can
     //or
     //move the closest to an edge
-    
+
 
 }
     
