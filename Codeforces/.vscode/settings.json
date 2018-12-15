@@ -1,6 +1,11 @@
 {
     "files.associations": {
         "ios": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "istream": "cpp",
+        "locale": "cpp",
+        "streambuf": "cpp",
+        "algorithm": "cpp",
+        "iostream": "cpp"
     }
 }
