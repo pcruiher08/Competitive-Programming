@@ -25,19 +25,12 @@
 #define vi vector<int>
 using namespace std;
 
-int main() {
-    sync;
-    int angulo; 
-    cin>>angulo;
-    int m1, m2;
-    if(angulo<90){
-        m1 = 100;
-        m2 = 100*angulo/90;
-    }else{
-        m2 = 100;
-        m1 = 100*(180-angulo)/90;
-    }
-    cout<<(angulo<90?"100 "+100*angulo/90:100*(180-angulo)/90+"100")<<endl;
-    //cout<<m1<<" "<<m2;
+int main(){
+sync;
 
+int k;
+cin>>k;
+cout<<k*(k+1)*(2*k+1)/6<<endl;
+
+return 0;
 }
