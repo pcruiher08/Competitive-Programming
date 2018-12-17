@@ -4,6 +4,7 @@
         "ios": "cpp",
         "vector": "cpp",
         "string": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "ostream": "cpp"
     }
 }
