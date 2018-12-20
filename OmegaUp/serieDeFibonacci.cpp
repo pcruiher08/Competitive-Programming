@@ -46,12 +46,14 @@ int main(){
     cin>>a>>b;
     int wheresA, wheresB;
     FOR(i,0,1000001,1){
-        cout<<f[i]<<" ";
-        if(fib(i-1)==a){
+        //cout<<f[i]<<" ";
+        if(fib(i)==a){
             wheresA  = i;
+            //cout<<(fib(i))<<endl;
         }
-        if(fib(i-1)==b){
-            wheresB = i;
+        if(fib(i)==b){
+            wheresB = i-1;
+            //cout<<fib(i)<<endl;
             break;
         }
     }
