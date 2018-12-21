@@ -25,15 +25,19 @@
 #define vi vector<int>
 using namespace std;
 
-bool isTriangular(ull n){
-return ((float)sqrt(8*n+1) == floor(floor((float)sqrt(8*n+1))));
-}
-
+bool isSquare(int x){ 
+    int s = sqrt(x); 
+    return (s*s == x); 
+} 
+  
+bool isFib(int n){ 
+    return isSquare(5*n*n+4)||isSquare(5*n*n-4); 
+} 
 
 int main(){
 sync;
 int n; cin>>n; 
 int x;
-FOR(i,0,n,1){cin>>x;cout<<x<<endl;if(isTriangular(x)){cout<<x<<"<-"<<endl;}}
+FOR(i,0,n,1){cin>>x;if(isFib(x))cout<<x<<" ";}
 return 0;
 }
