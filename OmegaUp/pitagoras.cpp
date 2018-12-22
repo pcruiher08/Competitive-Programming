@@ -28,9 +28,8 @@ using namespace std;
 
 int main(){
 sync;
-
 int a,b;
 cin>>a>>b;
-printf("%.3f",1/sin(atan2(a,b)));
+printf("%.3f",a/sin(atan2(a,b)));
 return 0;
 }

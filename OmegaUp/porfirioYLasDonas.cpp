@@ -49,7 +49,6 @@ bool sePuede(int x, int a, int b){
        if(x==0) return true;
        if(x%b==0) return true;
    }
-   
    return false;
 }
 
