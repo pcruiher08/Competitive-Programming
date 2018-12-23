@@ -24,17 +24,17 @@
 #define sync ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 #define vi vector<int>
 using namespace std;
-int arr[INT_MAX];
+
 int main(){
 sync;
-int n; 
-cin>>n;
-FOR(i,1,n,1){
-    FOR(j,i,i+2,1){
-        arr[j]=i;
-    }
+int per, n; cin>>per>>n;
+int sum = 0, x;
+while(n--){
+    cin>>x;
+    sum+=x;
 }
-FOR(i,0,n,1)cout<<arr[i]<<endl;
+
+cout<<(per-sum<1?0:per-sum)<<endl;
 
 return 0;
 }
