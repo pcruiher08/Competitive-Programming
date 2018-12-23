@@ -27,18 +27,16 @@ using namespace std;
 
 int main(){
 sync;
-int energia; 
-cin>>energia;
-//cout<<energia<<endl;
+int n,m,k;
+cin>>n>>m>>k;
+int suma = 0;
 int x; 
-int cuantos = 0;
-while(energia>0){
+do{
 cin>>x;
-energia+=x;
-//cout<<"en: "<<energia<<endl;
-
-cuantos++;
+if(x>=n&&x<=m){
+    suma++;
 }
-cout<<cuantos<<endl<<energia<<endl;
+}while(x!=k);
+cout<<suma;
 return 0;
 }
