@@ -63,7 +63,6 @@ void MyStrategy::act(const Robot& me, const Rules& rules, const Game& game, Acti
     }
     Point2D target_velocity(target_pos.x - me.x, target_pos.z - me.z);
     target_velocity *= ROBOT_MAX_GROUND_SPEED;
-
     action.target_velocity_x = target_velocity.x;
     action.target_velocity_z = target_velocity.z;
     action.target_velocity_y = 0.0;
