@@ -29,6 +29,7 @@ int main(){
 sync;
 int n; 
 cin>>n;
+
 FOR(i,1,n,1){
     FOR(j,i,i+2,1){
         arr[j]=i;
