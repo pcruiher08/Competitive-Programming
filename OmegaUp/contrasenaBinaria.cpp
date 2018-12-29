@@ -15,7 +15,7 @@
 #include <climits>
 #define ll long long
 #define ull unsigned long long
-#define FOR(m,s,n,u) for(int m=s; m<n; m+=u)
+#define FOR(m,s,n,u) for(ull m=s; m<n; m+=u)
 #define ROF(m,s,n,u) for(int m=n; m>=s; m-=u)
 #define FORb(m,s,n,u,k) for(int m=s; m<n&&k; m+=u)
 #define pb push_back
@@ -25,25 +25,26 @@
 #define vi vector<int>
 using namespace std;
 
-
+ll res;
 int main(){
 sync;
-ull n; 
-cin>>n; 
-ull sum = 0; 
+ll n; cin>>n;
 
-if(n%2!=0) n--;
+n-=(n%2!=0);
 
-int k = 0, j = 1; 
+ll potDos = 1;
+ll sum = 0;
 
-while(j*2 <= n){
-    k++;
-    j+=j;
+while(potDos*2<=n)sum++, potDos*=2;
+ll y=1, x=2, base = 0, aumento = 1;
+
+FOR(i,1,sum+1,1){
+    res += (((n/2)-base)/x)*y + min((((n/2)-base)%x),y);
+    base += aumento;
+    aumento*=2;
+    x*=2;
+    y*=2;
 }
 
-ull sumauno = 2, sumados = 1;
-
-for(
-
-return 0;
+cout<<res<<endl;
 }
