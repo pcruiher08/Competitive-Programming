@@ -25,8 +25,42 @@
 #define vi vector<int>
 using namespace std;
 
+bool processed[1000002], different[1000002];
+ll m,n, howMany, colors[1000002];
+
+
+ll gcd(ll a,ll b){
+    return b==0 ? a : gcd(b,a%b);
+}
+
+bool isOk(ll k){
+    int engranito = k%n;
+    int color = colors[engranito];
+    int hop = m%n;
+    bool res = true;
+
+    if(processed[engranito]) return different[engranito];
+
+    FOR(i,1,howMany, 1){
+        engranito = (engranito + hop) %n;
+        if(colors[engranito]!=color){ res = false; break;}
+    }
+    engranito = k%n;
+    different[engranito] = res; 
+    processed[engranito] = true;
+    FOR(i,1,howMany,1)engranito = (engranito+hop)%n, different[engranito]=res, processed[engranito]=true;
+    return res;
+}
+
 int main(){
 sync;
+ll x, l, k;
+cin>>n>>m>>k;
+FOR(i,0,n,1)cin>>colors[i];
+cin>>l;
+howMany = n/gcd(n,m);
+
+FOR(i,0,l,1){cin>>x; cout<<(isOk(x)?'1':'0');}
 
 return 0;
 }
