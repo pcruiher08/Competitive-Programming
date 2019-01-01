@@ -15,7 +15,7 @@
 #include <climits>
 #define ll long long
 #define ull unsigned long long
-#define FOR(m,s,n,u) for(int m=s; m<n; m+=u)
+#define FOR(p,m,n,u) for(int p=n; m; m/=u)
 #define ROF(m,s,n,u) for(int m=n; m>=s; m-=u)
 #define FORb(m,s,n,u,k) for(int m=s; m<n&&k; m+=u)
 #define pb push_back
@@ -24,18 +24,13 @@
 #define sync ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 #define vi vector<int>
 using namespace std;
-int arr[INT_MAX];
+
 int main(){
 sync;
-int n; 
+ull n;
 cin>>n;
-
-FOR(i,1,n,1){
-    FOR(j,i,i+2,1){
-        arr[j]=i;
-    }
-}
-FOR(i,0,n,1)cout<<arr[i]<<endl;
-
+ull dp1, dp2;
+FOR(i,n,1,2)if(n%2){dp1+=dp2;}else{dp2+=dp1;}
+cout<<dp1<<endl;
 return 0;
 }
