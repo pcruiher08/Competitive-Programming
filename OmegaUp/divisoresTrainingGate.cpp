@@ -32,6 +32,7 @@ void factPrim(ull n){
         if(n%i==0&&i*i!=n){primfact.pb(i); primfact.pb(n/i);}
         if(n%i==0&&i*i==n)primfact.pb(i);
     }
+    
     sort(primfact.begin(),primfact.end());
     cout<<primfact.size()<<endl;
     FOR(i,0,primfact.size(),1)if(i<primfact.size()-1)cout<<primfact[i]<<" ";else cout<<primfact[i]<<endl;
