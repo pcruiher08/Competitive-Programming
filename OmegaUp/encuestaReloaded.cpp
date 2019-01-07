@@ -34,12 +34,11 @@ struct persona{
 };
 
 bool func(persona a, persona b){
-    return (a.peso/(a.estatura*a.estatura)>b.peso/(b.estatura*b.estatura));
+    return (a.peso/(a.estatura*a.estatura)>=b.peso/(b.estatura*b.estatura));
 }
 
 int main(){
 sync;
-
 int n; 
 cin>>n;
 vector<persona> personas;
