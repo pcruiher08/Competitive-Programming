@@ -37,7 +37,6 @@ bool func(persona a, persona b){
     return (a.peso/(a.estatura*a.estatura)>=b.peso/(b.estatura*b.estatura));
 }
 
-
 int main(){
 sync;
 int n; 
