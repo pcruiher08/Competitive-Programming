@@ -28,20 +28,10 @@ using namespace std;
 int main(){
 sync;
 int n; cin>>n;
-int arr[n]; FOR(i,0,n,1)cin>>arr[i];
+int door;
+map<int, int> doors;
+FOR(i,0,n,1){cin>>door;doors.insert(pair<int,int>(door,i));}
 int k; cin>>k;
-int arr1[k]; FOR(i,0,k,1)cin>>arr1[i];
-
-FOR(i,0,k,1)
-    FOR(j,0,n,1){
-        if(arr[j]==arr1[i]){
-            cout<<j+1<<" ";
-            break;
-        }
-        if(arr[j]>arr1[i]){
-            cout<<0<<" ";
-            break;
-        }
-    }
-return 0;
+int query;
+FOR(i,0,k,1){ cin>>query; if(doors.find(query)==doors.end())cout<<"0 ";else cout<<doors.find(query)->second+1<<" ";}
 }
