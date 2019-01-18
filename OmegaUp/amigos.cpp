@@ -34,9 +34,9 @@ struct amigo{
 int main(){
 sync;
 int n; cin>>n; 
-string amigos[n];
-//vector<vector<int> >
+
 amigo amigos[n];
+map <amigo, int> personas;
 FOR(i,0,n,1){cin>>amigos[i].nombre; amigos[i].id=i;}
 int arr[n][n];
 FOR(i,0,n,1)FOR(j,0,n,1){cin>>arr[i][j]; if(arr[i][j])}
