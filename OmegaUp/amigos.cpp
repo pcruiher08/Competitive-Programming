@@ -42,3 +42,4 @@ int arr[n][n];
 FOR(i,0,n,1)FOR(j,0,n,1){cin>>arr[i][j]; if(arr[i][j])}
 return 0;
 }
+
