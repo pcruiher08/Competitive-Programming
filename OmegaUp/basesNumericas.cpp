@@ -5,7 +5,6 @@ using namespace std;
 
 int main(){
 
-
 int n, base; cin>>n>>base;
 
 while(n!=0){
