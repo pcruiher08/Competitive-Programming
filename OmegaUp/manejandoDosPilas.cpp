@@ -62,5 +62,6 @@ while(dos.size()){
     cout<<dos.top()<<" ";
     dos.pop();
 }
+
 return 0;
 }
