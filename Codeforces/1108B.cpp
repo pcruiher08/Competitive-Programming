@@ -64,6 +64,5 @@ if(nums.size()==0){
 }else{
     cout<<max<<" "<<nums[nums.size()-1]<<endl;
 }
-
 return 0;
 }
