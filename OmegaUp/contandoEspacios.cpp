@@ -25,46 +25,22 @@
 #define vi vector<int>
 using namespace std;
 
-ll n , m , i;
-
-ll calcula(ll find){
-	ll left , right;
-	if(i-find >= 0){
-		left = find*(find+1)/2 + (i-find);
-	}
-	else{
-		left = find*(find+1)/2 - (find-i)*(find-i+1)/2;
-	}
-	if(find <= n-i+1){
-		right = find*(find+1)/2 + (n-i-find+1);
-	}
-	else{
-		right = find*(find+1)/2 - (find+i-n-1)*(find+i-n)/2;
-	}
-	return (left + right - find);
-}
-
-
-ll binarySearch(){
-	ll low = 1 , high = m;
-	ll mid;
-	ll result = -1;
-	while(low<=high){
-		mid = (low+high)/2;
-		if(calcula(mid)>m){
-			high=mid-1;
-		}else{
-			result = mid;
-			low = mid+1;
-		}
-	}
-	return result;
-}
-
-
-
 int main(){
 sync;
-    cin>>n>>m>>i;
-	cout<<binarySearch();
+int n;
+cin>>n;
+cin.ignore(256,'\n');
+string a; 
+while(n--){
+    int cuenta = 0;
+    getline(cin,a);
+    FOR(i,0,a.length(),1)if(a[i]==' ')cuenta++;
+
+    cout<<cuenta<<endl;
+
+}
+
+
+
+return 0;
 }
