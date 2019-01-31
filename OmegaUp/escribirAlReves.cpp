@@ -27,7 +27,7 @@ using namespace std;
 
 int main(){
 sync;
-string a; cin>>a; 
+string a; getline(cin,a);
 
 ROF(i,0,a.length()-1,1)cout<<a[i];
 return 0;
