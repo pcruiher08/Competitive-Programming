@@ -40,4 +40,5 @@ int n; cin>>n;
 int x;
 FOR(i,0,n,1){cin>>x;if(isFib(x))cout<<x<<" ";}
 return 0;
+
 }
