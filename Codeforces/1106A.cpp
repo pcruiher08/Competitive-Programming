@@ -30,6 +30,15 @@ sync;
 int n; cin>>n;
 char mat[n][n];
 FOR(i,0,n,1)FOR(j,0,n,1)cin>>mat[i][j];
-FOR(i,0,n,1)if(mat[i][i]!=mat[j][i])cout<<"EYES"; else cout<<"NOSE";
+vector<pair<int,int> > cord;
+FOR(i,1,n-1,1)FOR(j,1,n-1,1)
+if(mat[i][j]=='X'
+ &&mat[i][j]=='X'
+ &&mat[i][j]=='X'
+ &&mat[i][j]=='X'
+ &&mat[i][j]=='X'){
+
+     cord.pb(make_pair(i,j));
+ }
 return 0;
 }
