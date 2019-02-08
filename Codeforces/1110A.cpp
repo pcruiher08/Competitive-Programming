@@ -25,13 +25,6 @@
 #define vi vector<int>
 using namespace std;
 
-int val(char c){ 
-    if (c >= '0' && c <= '9') 
-        return (int)c - '0'; 
-    else
-        return (int)c - 'A' + 10; 
-} 
-
 ll fastPow(ll a,ll b){
     ll ret = 1;
     while(b>0){
@@ -47,7 +40,6 @@ sync;
 int base, len; 
 cin>>base>>len;
 
-//string read = "";
 vi read;
 int x;
 
@@ -56,8 +48,7 @@ FOR(i,0,len,1)cin>>x,read.pb(x);
 long odd = 0;
 
 if(base&1){
-  FOR(i,0,len,1){/*cout<<"power: "<<len-i-1<<" "; cout<<"num: "<<read[i]<<" ";cout<<fastPow(base,len-i-1)*read[i]<<endl; */if(fastPow(base,len-i-1)*read[i] & 1)odd++;}
-  //cout<<"oddcount: "<<odd<<endl;
+  FOR(i,0,len,1){if(fastPow(base,len-i-1)*read[i] & 1)odd++;}
   cout<<((odd & 1)?"odd":"even")<<endl;
 }else{
   cout<<((read[len-1]&1)?"odd":"even")<<endl;
