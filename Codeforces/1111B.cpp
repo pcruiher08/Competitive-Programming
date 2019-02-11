@@ -45,7 +45,7 @@ FOR(i,m,heroes.size()-1,1)cout<<"heroes[i]: "<<heroes[i+1]<<endl, sum+=heroes[i+
 
 
 if(m<heroes.size())
-printf("%.20f",(float)sum/(heroes.size()-(m+1)));
+printf("%.20f",(float)sum/(heroes.size()-m));
 else
 printf("%.20f",(float)heroes[heroes.size()-1]);
 

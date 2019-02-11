@@ -25,16 +25,26 @@
 #define vi vector<int>
 using namespace std;
 
+struct num{
+    int n; 
+    int pos;
+};
+
+bool func(num a, num b){
+    return a.n < b.n;
+}
+
 int main(){
 sync;
+int n; cin>>n;
+num arr[n];
+int x;
+FOR(i,0,n,1)cin>>x, arr[i].n = x, arr[i].pos = i;
 
-char myChar1, myChar2;
+sort(arr,arr+n);
 
-map<char,char> cards;
-char x,y;
-FOR(i,0,5,1){cin>>x,y;cards.insert(make_pair(x,y));}
+FOR(i,0,n,1)if(arr[i].pos==0){cout<<i<<endl;return 0;}
 
-if(cards.find())
 
 return 0;
 }
