@@ -25,15 +25,15 @@
 #define vi vector<int>
 using namespace std;
 
+bool func(num a, num b){
+    return a.n < b.n;
+}
+
 struct num{
     int n; 
     int pos;
 };
-/*
-bool func(num a, num b){
-    return a.n < b.n;
-}
-*/
+
 int main(){
 sync;
 int n; cin>>n;
