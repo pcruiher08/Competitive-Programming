@@ -45,6 +45,5 @@ sort(arr,arr+n,func);
 
 FOR(i,0,n,1)if(arr[i].pos==0){cout<<i<<endl;return 0;}
 
-
 return 0;
 }
