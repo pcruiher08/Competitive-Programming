@@ -23,7 +23,8 @@ int main(){
     if(contador == 0){
         cout<<"No existen numeros primos en la cantidad ingresada.";
         }else{
-    cout<<contador;}
+    cout<<contador;
+    }
  
    return 0;
 }
