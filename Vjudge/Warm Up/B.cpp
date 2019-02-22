@@ -39,7 +39,7 @@ int arr[l]; FOR(i,0,l,1)cin>>arr[i];
 while(pos<l){
     inicio = -1; //cada vez que vuelve a checar
     FOR(i,0,l,1)if(arr[i] && (i-r+1) <= pos && (i+r-1)>= pos) inicio = i;
-    if(inicio == -1){cout<<"-1"<<endl; return 0;}
+    if(inicio == -1){cout<<"-1"<<endl; return 0;}//matalo
     cuenta++; 
     pos = inicio + r; 
 }

@@ -36,7 +36,7 @@ struct point{
 
 int main(){
 sync;
-int n; cin>>n; 
+int n; cin>>n;
 point points[n];
 FOR(i,0,n,1){
     cin>>points[i].x>>points[i].y;

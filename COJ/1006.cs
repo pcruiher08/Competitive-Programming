@@ -5,6 +5,7 @@ namespace ciphering
 {
     class Program
     {
+        
         static void Main(string[] args)
         {
             //Console.WriteLine(cipher(""));

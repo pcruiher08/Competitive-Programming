@@ -27,10 +27,10 @@ using namespace std;
 
 int main(){
 sync;
-int n; cin>>n; 
+ll n; cin>>n; 
 
-int mat[5][10*10000+100];
-int dP[5][10*10000+100];
+ll mat[5][10*10000+10];
+ll dP[5][10*10000+10];
 
 /*
 3
@@ -42,12 +42,26 @@ int dP[5][10*10000+100];
 */
 
 FOR(i,1,3,1)FOR(j,1,n,1)cin>>mat[i][j];
-//FOR(i,0,3,1){FOR(j,0,n,1){cout<<mat[i][j];}cout<<endl;}
+//FOR(i,1,3,1){FOR(j,1,n,1){cout<<mat[i][j];}cout<<endl;}//print
 dP[3][n]=mat[3][n]; dP[2][n]=mat[3][n]+mat[2][n]; dP[1][n]=mat[1][n]+dP[2][n];
 ROF(j,1,n-1,1){
-    dP[1][j]=mat[1][j]+max(dP[1][j+1],max(mat[2][j]+dP[2][j+1],max(mat[2][j]+mat[3][j]+dP[3][j+1],mat[1][j+1]+mat[2][j]+mat[2][j+1]+mat[3][j]+mat[3][j+1]+dP[3][j+2])));
-    dP[3][j]=mat[3][j]+max(dP[3][j+1],max(mat[2][j]+dP[2][j+1],max(mat[2][j]+mat[1][j]+dP[1][j+1],mat[3][j+1]+mat[2][j]+mat[2][j+1]+mat[1][j]+mat[1][j+1]+dP[1][j+2])));
-    dP[2][j]=mat[2][j]+max(dP[2][j+1],max(mat[1][j]+dP[1][j+1],mat[3][j]+dP[3][j+1]));
+    dP[1][j]=mat[1][j]+
+        max(dP[1][j+1],
+        max(mat[2][j]+dP[2][j+1],
+        max(mat[1][j+1]+mat[2][j]+mat[2][j+1]+mat[3][j]+mat[3][j+1]+dP[3][j+2],
+        mat[2][j]+mat[3][j]+dP[3][j+1]
+        )));
+
+    dP[3][j]=mat[3][j]+
+        max(dP[3][j+1],
+        max(mat[2][j]+dP[2][j+1],
+        max(mat[3][j+1]+mat[2][j]+mat[2][j+1]+mat[1][j]+mat[1][j+1]+dP[1][j+2],
+        mat[2][j]+mat[1][j]+dP[1][j+1])));
+
+    dP[2][j]=mat[2][j]+
+        max(dP[2][j+1],
+        max(mat[3][j]+dP[3][j+1],
+        mat[1][j]+dP[1][j+1]));
 }
 cout<<dP[1][1]<<endl;
 

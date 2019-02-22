@@ -29,6 +29,7 @@ using namespace std;
 int main(){
 sync;
 int n; cin>>n; 
+//vector<int> books;
 int books[2*100000+100];
 int izq=0, der=0;
 int c = 1; 
