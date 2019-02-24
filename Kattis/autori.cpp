@@ -32,4 +32,5 @@ cin>>a;
 
 FOR(i,0,a.length(),1)if(isupper(a[i]))cout<<a[i];
 return 0;
+
 }

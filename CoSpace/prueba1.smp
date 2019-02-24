@@ -1,0 +1,1052 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SM_AI xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <MotherBoardType>0</MotherBoardType>
+  <MotorConfigType>0</MotorConfigType>
+  <Varibles>
+    <GVar>
+      <Name>Duration</Name>
+      <VarType>Int16</VarType>
+      <ArraryLength>0</ArraryLength>
+      <InitialValue>0</InitialValue>
+      <ReadOnly>false</ReadOnly>
+    </GVar>
+    <GVar>
+      <Name>SuperDuration</Name>
+      <VarType>Int16</VarType>
+      <ArraryLength>0</ArraryLength>
+      <InitialValue>0</InitialValue>
+      <ReadOnly>false</ReadOnly>
+    </GVar>
+    <GVar>
+      <Name>bGameEnd</Name>
+      <VarType>Bool</VarType>
+      <ArraryLength>0</ArraryLength>
+      <InitialValue>false</InitialValue>
+      <ReadOnly>false</ReadOnly>
+    </GVar>
+    <GVar>
+      <Name>CurAction</Name>
+      <VarType>Int16</VarType>
+      <ArraryLength>0</ArraryLength>
+      <InitialValue>-1</InitialValue>
+      <ReadOnly>false</ReadOnly>
+    </GVar>
+    <GVar>
+      <Name>CurGame</Name>
+      <VarType>Int16</VarType>
+      <ArraryLength>0</ArraryLength>
+      <InitialValue>0</InitialValue>
+      <ReadOnly>false</ReadOnly>
+    </GVar>
+    <GVar>
+      <Name>SuperObj_Num</Name>
+      <VarType>Int16</VarType>
+      <ArraryLength>0</ArraryLength>
+      <InitialValue>0</InitialValue>
+      <ReadOnly>false</ReadOnly>
+    </GVar>
+    <GVar>
+      <Name>SuperObj_X</Name>
+      <VarType>Int16</VarType>
+      <ArraryLength>0</ArraryLength>
+      <InitialValue>0</InitialValue>
+      <ReadOnly>false</ReadOnly>
+    </GVar>
+    <GVar>
+      <Name>SuperObj_Y</Name>
+      <VarType>Int16</VarType>
+      <ArraryLength>0</ArraryLength>
+      <InitialValue>0</InitialValue>
+      <ReadOnly>false</ReadOnly>
+    </GVar>
+    <GVar>
+      <Name>Teleport</Name>
+      <VarType>Int16</VarType>
+      <ArraryLength>0</ArraryLength>
+      <InitialValue>0</InitialValue>
+      <ReadOnly>false</ReadOnly>
+    </GVar>
+    <GVar>
+      <Name>LoadedObjects</Name>
+      <VarType>Int16</VarType>
+      <ArraryLength>0</ArraryLength>
+      <InitialValue>0</InitialValue>
+      <ReadOnly>false</ReadOnly>
+    </GVar>
+  </Varibles>
+  <MB_Interface>
+    <InputPins>
+      <PIN>
+        <Max>255</Max>
+        <Min>0</Min>
+        <Text>Front Ultrasonic Sensor ( Pin: CCP 1). Unit:cm</Text>
+        <PictureFile />
+        <Name>US_Front</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>25</CompID>
+        <Pin>25</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>255</Max>
+        <Min>0</Min>
+        <Text>Left Ultrasonic Sensor ( Pin: CCP 3). Unit:cm</Text>
+        <PictureFile />
+        <Name>US_Left</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>27</CompID>
+        <Pin>27</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>255</Max>
+        <Min>0</Min>
+        <Text>Right Ultrasonic Sensor ( Pin: CCP 4). Unit:cm</Text>
+        <PictureFile />
+        <Name>US_Right</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>28</CompID>
+        <Pin>28</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>255</Max>
+        <Min>0</Min>
+        <Text>Left Color Sensor(Pin: ADC1) .  Red or Brightness Value.</Text>
+        <PictureFile />
+        <Name>CSLeft_R</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>33</CompID>
+        <Pin>31</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>255</Max>
+        <Min>0</Min>
+        <Text>Left Color Sensor(Pin: ADC2) .  Green Value</Text>
+        <PictureFile />
+        <Name>CSLeft_G</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>34</CompID>
+        <Pin>32</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>255</Max>
+        <Min>0</Min>
+        <Text>Left Color Sensor(Pin: ADC3) .  Blue Value</Text>
+        <PictureFile />
+        <Name>CSLeft_B</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>35</CompID>
+        <Pin>33</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>255</Max>
+        <Min>0</Min>
+        <Text>Left Color Sensor(Pin: ADC4) .  Red or Brightness Value</Text>
+        <PictureFile />
+        <Name>CSRight_R</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>36</CompID>
+        <Pin>34</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>255</Max>
+        <Min>0</Min>
+        <Text>Left Color Sensor(Pin: ADC5) .  Green Value</Text>
+        <PictureFile />
+        <Name>CSRight_G</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>37</CompID>
+        <Pin>35</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>255</Max>
+        <Min>0</Min>
+        <Text>Left Color Sensor(Pin: ADC5) .  Blue Value</Text>
+        <PictureFile />
+        <Name>CSRight_B</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>38</CompID>
+        <Pin>36</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>1000</Max>
+        <Min>0</Min>
+        <Text>X Coordinate (Pin: INFO_3); Unit:cm </Text>
+        <PictureFile />
+        <Name>PositionX</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>47</CompID>
+        <Pin>41</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>1000</Max>
+        <Min>0</Min>
+        <Text>Y Coordinate (Pin: INFO_3); Unit:cm</Text>
+        <PictureFile />
+        <Name>PositionY</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>48</CompID>
+        <Pin>42</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>255</Max>
+        <Min>0</Min>
+        <Text>Teammate State (Pin:INFO_2).</Text>
+        <PictureFile />
+        <Name>TM_State</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>49</CompID>
+        <Pin>40</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>360</Max>
+        <Min>0</Min>
+        <Text>Compass( Pin : IO1 [DI/O1] ). Unit:Degree</Text>
+        <PictureFile />
+        <Name>Compass</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>51</CompID>
+        <Pin>51</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>1000</Max>
+        <Min>0</Min>
+        <Text>Unit: second. Starting from Game Start.</Text>
+        <PictureFile />
+        <Name>Time</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>52</CompID>
+        <Pin>53</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+    </InputPins>
+    <OutputPins>
+      <PIN>
+        <Max>5</Max>
+        <Min>-5</Min>
+        <Text>Left Wheel ( Pin : Motor 1 [DUO]  ) </Text>
+        <PictureFile />
+        <Name>WheelLeft</Name>
+        <VarType>Int16</VarType>
+        <bInOut>Out</bInOut>
+        <CompID>6</CompID>
+        <Pin>1</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>5</Max>
+        <Min>-5</Min>
+        <Text>Right Wheel (Pin:  Motor 2 [DUO]  ) </Text>
+        <PictureFile />
+        <Name>WheelRight</Name>
+        <VarType>Int16</VarType>
+        <bInOut>Out</bInOut>
+        <CompID>7</CompID>
+        <Pin>3</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>2</Max>
+        <Min>0</Min>
+        <Text>LED 1( Pin: LED_1). 0:Off;1:Flash;2:On </Text>
+        <PictureFile />
+        <Name>LED_1</Name>
+        <VarType>Int16</VarType>
+        <bInOut>Out</bInOut>
+        <CompID>18</CompID>
+        <Pin>47</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>255</Max>
+        <Min>0</Min>
+        <Text>My State.Sent to teanmate once it is changed.</Text>
+        <PictureFile />
+        <Name>MyState</Name>
+        <VarType>Int16</VarType>
+        <bInOut>Out</bInOut>
+        <CompID>22</CompID>
+        <Pin>39</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+    </OutputPins>
+    <InputPin_LUT>
+      <PIN>
+        <Max>255</Max>
+        <Min>0</Min>
+        <Text>Front Ultrasonic Sensor ( Pin: CCP 1). Unit:cm</Text>
+        <PictureFile />
+        <Name>US_Front</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>25</CompID>
+        <Pin>25</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>255</Max>
+        <Min>0</Min>
+        <Text>Left Ultrasonic Sensor ( Pin: CCP 3). Unit:cm</Text>
+        <PictureFile />
+        <Name>US_Left</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>27</CompID>
+        <Pin>27</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>255</Max>
+        <Min>0</Min>
+        <Text>Right Ultrasonic Sensor ( Pin: CCP 4). Unit:cm</Text>
+        <PictureFile />
+        <Name>US_Right</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>28</CompID>
+        <Pin>28</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>255</Max>
+        <Min>0</Min>
+        <Text>Left Color Sensor(Pin: ADC1) .  Red or Brightness Value.</Text>
+        <PictureFile />
+        <Name>CSLeft_R</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>33</CompID>
+        <Pin>31</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>255</Max>
+        <Min>0</Min>
+        <Text>Left Color Sensor(Pin: ADC2) .  Green Value</Text>
+        <PictureFile />
+        <Name>CSLeft_G</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>34</CompID>
+        <Pin>32</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>255</Max>
+        <Min>0</Min>
+        <Text>Left Color Sensor(Pin: ADC3) .  Blue Value</Text>
+        <PictureFile />
+        <Name>CSLeft_B</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>35</CompID>
+        <Pin>33</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>255</Max>
+        <Min>0</Min>
+        <Text>Left Color Sensor(Pin: ADC4) .  Red or Brightness Value</Text>
+        <PictureFile />
+        <Name>CSRight_R</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>36</CompID>
+        <Pin>34</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>255</Max>
+        <Min>0</Min>
+        <Text>Left Color Sensor(Pin: ADC5) .  Green Value</Text>
+        <PictureFile />
+        <Name>CSRight_G</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>37</CompID>
+        <Pin>35</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>255</Max>
+        <Min>0</Min>
+        <Text>Left Color Sensor(Pin: ADC5) .  Blue Value</Text>
+        <PictureFile />
+        <Name>CSRight_B</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>38</CompID>
+        <Pin>36</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>1000</Max>
+        <Min>0</Min>
+        <Text>X Coordinate (Pin: INFO_3); Unit:cm </Text>
+        <PictureFile />
+        <Name>PositionX</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>47</CompID>
+        <Pin>41</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>1000</Max>
+        <Min>0</Min>
+        <Text>Y Coordinate (Pin: INFO_3); Unit:cm</Text>
+        <PictureFile />
+        <Name>PositionY</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>48</CompID>
+        <Pin>42</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>255</Max>
+        <Min>0</Min>
+        <Text>Teammate State (Pin:INFO_2).</Text>
+        <PictureFile />
+        <Name>TM_State</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>49</CompID>
+        <Pin>40</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>360</Max>
+        <Min>0</Min>
+        <Text>Compass( Pin : IO1 [DI/O1] ). Unit:Degree</Text>
+        <PictureFile />
+        <Name>Compass</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>51</CompID>
+        <Pin>51</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>1000</Max>
+        <Min>0</Min>
+        <Text>Unit: second. Starting from Game Start.</Text>
+        <PictureFile />
+        <Name>Time</Name>
+        <VarType>Int16</VarType>
+        <bInOut>In</bInOut>
+        <CompID>52</CompID>
+        <Pin>53</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+    </InputPin_LUT>
+    <OutputPin_LUT>
+      <PIN>
+        <Max>5</Max>
+        <Min>-5</Min>
+        <Text>Left Wheel ( Pin : Motor 1 [DUO]  ) </Text>
+        <PictureFile />
+        <Name>WheelLeft</Name>
+        <VarType>Int16</VarType>
+        <bInOut>Out</bInOut>
+        <CompID>6</CompID>
+        <Pin>1</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>5</Max>
+        <Min>-5</Min>
+        <Text>Right Wheel (Pin:  Motor 2 [DUO]  ) </Text>
+        <PictureFile />
+        <Name>WheelRight</Name>
+        <VarType>Int16</VarType>
+        <bInOut>Out</bInOut>
+        <CompID>7</CompID>
+        <Pin>3</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>2</Max>
+        <Min>0</Min>
+        <Text>LED 1( Pin: LED_1). 0:Off;1:Flash;2:On </Text>
+        <PictureFile />
+        <Name>LED_1</Name>
+        <VarType>Int16</VarType>
+        <bInOut>Out</bInOut>
+        <CompID>18</CompID>
+        <Pin>47</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+      <PIN>
+        <Max>255</Max>
+        <Min>0</Min>
+        <Text>My State.Sent to teanmate once it is changed.</Text>
+        <PictureFile />
+        <Name>MyState</Name>
+        <VarType>Int16</VarType>
+        <bInOut>Out</bInOut>
+        <CompID>22</CompID>
+        <Pin>39</Pin>
+        <bHideFromGUI>false</bHideFromGUI>
+      </PIN>
+    </OutputPin_LUT>
+  </MB_Interface>
+  <MainFunc>
+    <Variables />
+    <Statements />
+    <ParameterDesps />
+    <Name>Main</Name>
+    <ReturnType>Void</ReturnType>
+    <FuncType>Fixed</FuncType>
+    <AutoScrollPostion>
+      <X>0</X>
+      <Y>0</Y>
+    </AutoScrollPostion>
+  </MainFunc>
+  <OnTimerFunc>
+    <Variables />
+    <Statements />
+    <ParameterDesps />
+    <Name>OnTimer</Name>
+    <ReturnType>Void</ReturnType>
+    <FuncType>Fixed</FuncType>
+    <AutoScrollPostion>
+      <X>0</X>
+      <Y>0</Y>
+    </AutoScrollPostion>
+  </OnTimerFunc>
+  <TeamName>CoSpace Team</TeamName>
+  <SM_x0020_States />
+  <SM_x0020_Nodes>
+    <Node>
+      <Name>Statement-1</Name>
+      <Level>1</Level>
+      <Index>1</Index>
+      <IsLeaf>true</IsLeaf>
+      <State>
+        <Sensores_x0020_Ranage>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>255</ValMax>
+            <index>0</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>255</ValMax>
+            <index>1</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>255</ValMax>
+            <index>2</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>255</ValMax>
+            <index>3</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>255</ValMax>
+            <index>4</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>253</ValMax>
+            <index>5</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>255</ValMax>
+            <index>6</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>255</ValMax>
+            <index>7</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>255</ValMax>
+            <index>8</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>1000</ValMax>
+            <index>9</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>1000</ValMax>
+            <index>10</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>255</ValMax>
+            <index>11</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>360</ValMax>
+            <index>12</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>1000</ValMax>
+            <index>13</index>
+          </Sennsor>
+        </Sensores_x0020_Ranage>
+        <Adv_State />
+        <AndOr>&amp;&amp;</AndOr>
+      </State>
+      <Action>
+        <Actions>
+          <Action>
+            <val>-5</val>
+            <index>0</index>
+          </Action>
+          <Action>
+            <val>-5</val>
+            <index>1</index>
+          </Action>
+          <Action>
+            <val>0</val>
+            <index>2</index>
+          </Action>
+          <Action>
+            <val>0</val>
+            <index>3</index>
+          </Action>
+        </Actions>
+        <type>Default</type>
+        <Adv_Action />
+        <State_Action />
+        <Duration>1</Duration>
+        <KeyAction>None</KeyAction>
+      </Action>
+    </Node>
+  </SM_x0020_Nodes>
+  <Game>
+    <Variables />
+    <Statements />
+    <ParameterDesps />
+    <Name>Game0</Name>
+    <ReturnType>Void</ReturnType>
+    <FuncType>Fixed</FuncType>
+    <AutoScrollPostion>
+      <X>0</X>
+      <Y>0</Y>
+    </AutoScrollPostion>
+  </Game>
+  <SM_x0020_Nodes0>
+    <Node0>
+      <Name>Statement-1</Name>
+      <Level>1</Level>
+      <Index>1</Index>
+      <IsLeaf>true</IsLeaf>
+      <State>
+        <Sensores_x0020_Ranage>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>255</ValMax>
+            <index>0</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>255</ValMax>
+            <index>1</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>255</ValMax>
+            <index>2</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>255</ValMax>
+            <index>3</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>255</ValMax>
+            <index>4</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>253</ValMax>
+            <index>5</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>255</ValMax>
+            <index>6</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>255</ValMax>
+            <index>7</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>255</ValMax>
+            <index>8</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>1000</ValMax>
+            <index>9</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>1000</ValMax>
+            <index>10</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>255</ValMax>
+            <index>11</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>360</ValMax>
+            <index>12</index>
+          </Sennsor>
+          <Sennsor>
+            <ValMin>0</ValMin>
+            <ValMax>1000</ValMax>
+            <index>13</index>
+          </Sennsor>
+        </Sensores_x0020_Ranage>
+        <Adv_State />
+        <AndOr>&amp;&amp;</AndOr>
+      </State>
+      <Action>
+        <Actions>
+          <Action>
+            <val>-5</val>
+            <index>0</index>
+          </Action>
+          <Action>
+            <val>-5</val>
+            <index>1</index>
+          </Action>
+          <Action>
+            <val>0</val>
+            <index>2</index>
+          </Action>
+          <Action>
+            <val>0</val>
+            <index>3</index>
+          </Action>
+        </Actions>
+        <type>Default</type>
+        <Adv_Action />
+        <State_Action />
+        <Duration>1</Duration>
+        <KeyAction>None</KeyAction>
+      </Action>
+    </Node0>
+  </SM_x0020_Nodes0>
+  <Game0>
+    <Variables />
+    <Statements />
+    <ParameterDesps />
+    <Name>Game0</Name>
+    <ReturnType>Void</ReturnType>
+    <FuncType>Fixed</FuncType>
+    <AutoScrollPostion>
+      <X>0</X>
+      <Y>0</Y>
+    </AutoScrollPostion>
+  </Game0>
+  <SM_x0020_Nodes1 />
+  <Game1>
+    <Variables />
+    <Statements />
+    <ParameterDesps />
+    <Name>Game1</Name>
+    <ReturnType>Void</ReturnType>
+    <FuncType>Fixed</FuncType>
+    <AutoScrollPostion>
+      <X>0</X>
+      <Y>0</Y>
+    </AutoScrollPostion>
+  </Game1>
+  <SM_x0020_Nodes2 />
+  <Game2>
+    <Variables />
+    <Statements />
+    <ParameterDesps />
+    <Name>Game2</Name>
+    <ReturnType>Void</ReturnType>
+    <FuncType>Fixed</FuncType>
+    <AutoScrollPostion>
+      <X>0</X>
+      <Y>0</Y>
+    </AutoScrollPostion>
+  </Game2>
+  <SM_x0020_Nodes3 />
+  <Game3>
+    <Variables />
+    <Statements />
+    <ParameterDesps />
+    <Name>Game3</Name>
+    <ReturnType>Void</ReturnType>
+    <FuncType>Fixed</FuncType>
+    <AutoScrollPostion>
+      <X>0</X>
+      <Y>0</Y>
+    </AutoScrollPostion>
+  </Game3>
+  <SM_x0020_Nodes4 />
+  <Game4>
+    <Variables />
+    <Statements />
+    <ParameterDesps />
+    <Name>Game4</Name>
+    <ReturnType>Void</ReturnType>
+    <FuncType>Fixed</FuncType>
+    <AutoScrollPostion>
+      <X>0</X>
+      <Y>0</Y>
+    </AutoScrollPostion>
+  </Game4>
+  <SM_x0020_Nodes5 />
+  <Game5>
+    <Variables />
+    <Statements />
+    <ParameterDesps />
+    <Name>Game5</Name>
+    <ReturnType>Void</ReturnType>
+    <FuncType>Fixed</FuncType>
+    <AutoScrollPostion>
+      <X>0</X>
+      <Y>0</Y>
+    </AutoScrollPostion>
+  </Game5>
+  <SM_x0020_Nodes6 />
+  <Game6>
+    <Variables />
+    <Statements />
+    <ParameterDesps />
+    <Name>Game6</Name>
+    <ReturnType>Void</ReturnType>
+    <FuncType>Fixed</FuncType>
+    <AutoScrollPostion>
+      <X>0</X>
+      <Y>0</Y>
+    </AutoScrollPostion>
+  </Game6>
+  <SM_x0020_Nodes7 />
+  <Game7>
+    <Variables />
+    <Statements />
+    <ParameterDesps />
+    <Name>Game7</Name>
+    <ReturnType>Void</ReturnType>
+    <FuncType>Fixed</FuncType>
+    <AutoScrollPostion>
+      <X>0</X>
+      <Y>0</Y>
+    </AutoScrollPostion>
+  </Game7>
+  <SM_x0020_Nodes8 />
+  <Game8>
+    <Variables />
+    <Statements />
+    <ParameterDesps />
+    <Name>Game8</Name>
+    <ReturnType>Void</ReturnType>
+    <FuncType>Fixed</FuncType>
+    <AutoScrollPostion>
+      <X>0</X>
+      <Y>0</Y>
+    </AutoScrollPostion>
+  </Game8>
+  <ProjectName>prueba1</ProjectName>
+  <ProjectFolder>D:\Microsoft Robotics Dev Studio 4\CS\User\Rescue\CsBot\prueba1\</ProjectFolder>
+  <RobotID>02</RobotID>
+  <IRD_Threshold1>0</IRD_Threshold1>
+  <IRD_Threshold2>0</IRD_Threshold2>
+  <DefinedWords>
+    <Word>abstract</Word>
+    <Word>event</Word>
+    <Word>new</Word>
+    <Word>struct</Word>
+    <Word>as</Word>
+    <Word>explicit</Word>
+    <Word>null</Word>
+    <Word>switch</Word>
+    <Word>base</Word>
+    <Word>extern</Word>
+    <Word>object</Word>
+    <Word>this</Word>
+    <Word>bool</Word>
+    <Word>false</Word>
+    <Word>operator</Word>
+    <Word>throw</Word>
+    <Word>break</Word>
+    <Word>finally</Word>
+    <Word>out</Word>
+    <Word>true</Word>
+    <Word>byte</Word>
+    <Word>fixed</Word>
+    <Word>override</Word>
+    <Word>try</Word>
+    <Word>case</Word>
+    <Word>float</Word>
+    <Word>params</Word>
+    <Word>typeof</Word>
+    <Word>catch</Word>
+    <Word>for</Word>
+    <Word>private</Word>
+    <Word>uint</Word>
+    <Word>char</Word>
+    <Word>foreach</Word>
+    <Word>protected</Word>
+    <Word>ulong</Word>
+    <Word>checked</Word>
+    <Word>goto</Word>
+    <Word>public</Word>
+    <Word>unchecked</Word>
+    <Word>class</Word>
+    <Word>if</Word>
+    <Word>readonly</Word>
+    <Word>unsafe</Word>
+    <Word>const</Word>
+    <Word>implicit</Word>
+    <Word>ref</Word>
+    <Word>ushort</Word>
+    <Word>continue</Word>
+    <Word>in</Word>
+    <Word>return</Word>
+    <Word>using</Word>
+    <Word>decimal</Word>
+    <Word>int</Word>
+    <Word>sbyte</Word>
+    <Word>virtual</Word>
+    <Word>default</Word>
+    <Word>interface</Word>
+    <Word>sealed</Word>
+    <Word>volatile</Word>
+    <Word>delegate</Word>
+    <Word>internal</Word>
+    <Word>short</Word>
+    <Word>void</Word>
+    <Word>do</Word>
+    <Word>is</Word>
+    <Word>sizeof</Word>
+    <Word>while</Word>
+    <Word>double</Word>
+    <Word>lock</Word>
+    <Word>stackalloc</Word>
+    <Word>else</Word>
+    <Word>long</Word>
+    <Word>static</Word>
+    <Word>enum</Word>
+    <Word>namespace</Word>
+    <Word>string</Word>
+    <Word>abstract</Word>
+    <Word>event</Word>
+    <Word>new</Word>
+    <Word>struct</Word>
+    <Word>as</Word>
+    <Word>explicit</Word>
+    <Word>null</Word>
+    <Word>switch</Word>
+    <Word>base</Word>
+    <Word>extern</Word>
+    <Word>object</Word>
+    <Word>this</Word>
+    <Word>bool</Word>
+    <Word>false</Word>
+    <Word>operator</Word>
+    <Word>throw</Word>
+    <Word>break</Word>
+    <Word>finally</Word>
+    <Word>out</Word>
+    <Word>true</Word>
+    <Word>byte</Word>
+    <Word>fixed</Word>
+    <Word>override</Word>
+    <Word>try</Word>
+    <Word>case</Word>
+    <Word>float</Word>
+    <Word>params</Word>
+    <Word>typeof</Word>
+    <Word>catch</Word>
+    <Word>for</Word>
+    <Word>private</Word>
+    <Word>uint</Word>
+    <Word>char</Word>
+    <Word>foreach</Word>
+    <Word>protected</Word>
+    <Word>ulong</Word>
+    <Word>checked</Word>
+    <Word>goto</Word>
+    <Word>public</Word>
+    <Word>unchecked</Word>
+    <Word>class</Word>
+    <Word>if</Word>
+    <Word>readonly</Word>
+    <Word>unsafe</Word>
+    <Word>const</Word>
+    <Word>implicit</Word>
+    <Word>ref</Word>
+    <Word>ushort</Word>
+    <Word>continue</Word>
+    <Word>in</Word>
+    <Word>return</Word>
+    <Word>using</Word>
+    <Word>decimal</Word>
+    <Word>int</Word>
+    <Word>sbyte</Word>
+    <Word>virtual</Word>
+    <Word>default</Word>
+    <Word>interface</Word>
+    <Word>sealed</Word>
+    <Word>volatile</Word>
+    <Word>delegate</Word>
+    <Word>internal</Word>
+    <Word>short</Word>
+    <Word>void</Word>
+    <Word>do</Word>
+    <Word>is</Word>
+    <Word>sizeof</Word>
+    <Word>while</Word>
+    <Word>double</Word>
+    <Word>lock</Word>
+    <Word>stackalloc</Word>
+    <Word>else</Word>
+    <Word>long</Word>
+    <Word>static</Word>
+    <Word>enum</Word>
+    <Word>namespace</Word>
+    <Word>string</Word>
+  </DefinedWords>
+</SM_AI>
