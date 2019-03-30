@@ -9,6 +9,7 @@
         "__split_buffer": "cpp",
         "deque": "cpp",
         "cmath": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "iomanip": "cpp"
     }
 }
