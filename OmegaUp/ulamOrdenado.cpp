@@ -40,7 +40,6 @@ int main(){
         }
         nums.pb(n);
     }
-
     sort(nums.begin(), nums.end());
     FOR(i,0,nums.size(),1)cout<<nums[i]<<" ";
 }
