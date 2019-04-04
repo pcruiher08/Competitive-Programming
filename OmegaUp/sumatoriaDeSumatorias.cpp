@@ -29,7 +29,6 @@ int gauss(int n){
     return (n*(n+1))*0.5;
 }
 
-
 int main(){
     sync;
     int x,y;
