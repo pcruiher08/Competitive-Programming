@@ -25,6 +25,7 @@
 #define vi vector<int>
 using namespace std;
 
+
 int gauss(int n){
     return (n*(n+1))*0.5;
 }
