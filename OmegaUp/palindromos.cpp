@@ -29,7 +29,7 @@ int main(){
 sync;
 string s; cin>>s; 
 FOR(i,0,s.length()/2,1){
-    cout<<s[i]<<" - "<<s[s.length()-i-1]<<endl;
+    //cout<<s[i]<<" - "<<s[s.length()-i-1]<<endl;
     if(s[i]!=s[s.length()-i-1]){
         cout<<"No"<<endl;
         return 0;
