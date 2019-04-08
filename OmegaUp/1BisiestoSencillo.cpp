@@ -36,7 +36,6 @@ bool isLeapYear(int year){
       return false;
 }
 
-
 int main(){
     int a; 
 
