@@ -31,6 +31,7 @@ bool func(char uno, char dos){
     return false;
 }
 
+
 int main(){
     int x;
     cin>>x;
