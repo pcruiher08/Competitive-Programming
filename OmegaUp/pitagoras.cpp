@@ -25,11 +25,10 @@
 #define vi vector<int>
 using namespace std;
 
-
 int main(){
 sync;
-int a,b;
-cin>>a>>b;
-printf("%.3f",a/sin(atan2(a,b)));
+int a, b; cin>>a>>b;
+cout<<setprecision(3)<<fixed<<hypot(a,b);
+
 return 0;
 }

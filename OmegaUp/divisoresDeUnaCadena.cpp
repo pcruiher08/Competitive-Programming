@@ -44,7 +44,7 @@ sync;
 string a; cin>>a;
 int sum = 0;
 FOR(i,0,a.length(),1){sum+=toupper(a[i]);}
-cout<<sum<<endl;
+//cout<<sum<<endl;
 cout<<countDivisors(sum)<<endl;
 
 return 0;
