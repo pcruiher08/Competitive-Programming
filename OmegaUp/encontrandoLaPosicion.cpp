@@ -26,6 +26,7 @@
 using namespace std;
 
 int main(){
+    
 sync;
 int n; cin>>n;
 int arr[n];
@@ -37,85 +38,7 @@ int lower = 0, upper = n;
 int mid = (lower+upper)/2;
 int actual = arr[mid];
 
-while(actual!=k){+++++++++++++++
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+while(actual!=k){
     if(actual<k){
         lower = mid;
         mid = (upper+mid)/2;
