@@ -29,6 +29,5 @@ int main(){
 sync;
 int a,b,c; cin>>a>>b>>c; 
 cout<<a*b<<" "<<c-a*b;
-
 return 0;
 }
