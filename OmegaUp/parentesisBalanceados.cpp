@@ -50,8 +50,9 @@ bool BalancedParentheses(string b){
 
 int main(){
 	sync;	
-    int a; 
-    cin>>a;
+
+    int a = 1; 
+    //cin>>a;
     while(a--){
 	    string c;
         cin >> c;

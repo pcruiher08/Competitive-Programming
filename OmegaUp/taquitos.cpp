@@ -40,7 +40,6 @@ while(n--){
             filaDeTaquitos.push(lec);
             clientesFormados++;
             break;
-    
         case 2:
             tacosHastaAhora += filaDeTaquitos.front();
             filaDeTaquitos.pop();
