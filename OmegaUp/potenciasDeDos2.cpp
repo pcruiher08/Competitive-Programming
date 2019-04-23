@@ -1,7 +1,7 @@
-#include "conio.h"
-#include "iostream"
-#include "algorithm"
-#include "vector"
+#include <conio.h>
+#include <iostream>
+#include <algorithm>
+#include <vector>
 using namespace std;
 
 class BigInt{
@@ -80,7 +80,7 @@ BigInt BigInt::operator +(const BigInt& a)
 std::ostream& operator <<(std::ostream& out,BigInt a)
 {
    for(unsigned int i=0; i < a.digits.size(); i++){
-      out << a.digits[i] << endl;
+      out << a.digits[i];
    }
    return out;
 }
@@ -90,11 +90,17 @@ int main(){
     int num;
     cin>>num;
     BigInt B1(base);
-    for(int i=0; i<=num; i++){
+    if(num == 0){
+       cout<<1<<endl;
+       return 0;
+    }
+    for(int i=0; i<num-1; i++){
         base+=base;
+        cout<<"\""<<base<<"\","<<endl;
+
     }
 
-
-   cout <<base<< endl;
+   cout<<base;
+   //cout<<base;
    return 0;
 }
