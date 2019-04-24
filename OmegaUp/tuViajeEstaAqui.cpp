@@ -37,11 +37,11 @@ int main(){
 	ull prod1 = 1;
 	for (int i=0;i<s1.size();i++){
 		prod1 *= (int) (s1[i]-'A'+1);//+1;
-		cout<<(s1[i]-'A'+1)<<" ";
+		//cout<<(s1[i]-'A'+1)<<" ";
 		//cout<<s1[i]<<" ";
 	}
 	//cout<<endl;
-	cout<<prod1<<endl;
+	//cout<<prod1<<endl;
 	ull prod2 = 1;
 	for (int i=0;i<s2.size();i++){
 		prod2 *= (int) (s2[i]-'A'+1);//+1;
