@@ -27,20 +27,24 @@ using namespace std;
 
 int main(){
 
-  int n; cin>>n;
+  int n = 1; //cin>>n;
 
   while(n--){
 
 	string s1;
 	string s2;
 	cin >> s1 >> s2;
-	int prod1 = 1;
-	for (int i=0;i<s1.size();++i){
-		prod1 *= s1[i]-'A'+1;
+	ull prod1 = 1;
+	for (int i=0;i<s1.size();i++){
+		prod1 *= (int) (s1[i]-'A'+1);//+1;
+		cout<<(s1[i]-'A'+1)<<" ";
+		//cout<<s1[i]<<" ";
 	}
-	int prod2 = 1;
-	for (int i=0;i<s2.size();++i){
-		prod2 *= s2[i]-'A'+1;
+	//cout<<endl;
+	cout<<prod1<<endl;
+	ull prod2 = 1;
+	for (int i=0;i<s2.size();i++){
+		prod2 *= (int) (s2[i]-'A'+1);//+1;
 	}
   cout << (prod1%47==prod2%47?"GO":"STAY") << endl;
   }
