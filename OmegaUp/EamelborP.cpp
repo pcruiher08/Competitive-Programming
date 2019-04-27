@@ -27,8 +27,7 @@ using namespace std;
 
 int main(){
 sync;
-string a; 
-
+string a;
 while(getline(cin,a)){
     reverse(a.begin(), a.end());
     cout<<a<<endl;
