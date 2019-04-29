@@ -25,7 +25,7 @@
 #define vi vector<int>
 using namespace std;
 
-
+//done
 int i = 0;
 void aPostOrden(int pre[],int l,int r, int post[]){
 FOR(j,l+1,r+1,1){ 
@@ -48,5 +48,3 @@ aPostOrden(pre,n-1,n,post);
 FOR(i,0,n,1)cout<<post[i]<<" ";
 return 0;
 }
-
-
