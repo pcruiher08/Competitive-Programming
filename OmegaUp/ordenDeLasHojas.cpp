@@ -25,7 +25,7 @@
 #define vi vector<int>
 using namespace std;
 
-//done
+//or not
 int i = 0;
 void aPostOrden(int pre[],int l,int r, int post[]){
 FOR(j,l+1,r+1,1){ 
