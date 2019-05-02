@@ -24,7 +24,7 @@
 #define sync ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 #define vi vector<int>
 using namespace std;
-
+//aaaaaaabbbb
 int main(){
 sync;
 string a;
