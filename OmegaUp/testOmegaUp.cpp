@@ -41,6 +41,5 @@ long long gcdWithMidPointContraction(int m){
 }
 int main(){
 sync;
-
 return 0;
 }
