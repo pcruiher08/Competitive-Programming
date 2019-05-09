@@ -31,7 +31,6 @@ L7 = str2double(answer{19});
 xViejas = [x1;x2;x3;x4;x5;x6;x7];
 longitudes = [L1;L2;L3;L4;L5;L6;L7];
 flag = true;
-
 %inicia ciclo while que itera hasta que el error de las ecuaciones sea menor al que se busca
 iteracion = 0;
 while(flag)
