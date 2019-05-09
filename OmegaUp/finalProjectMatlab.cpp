@@ -7,7 +7,6 @@ dims = [0.9 50];
 definput = {'0.1','1','1','1','1','1','1','1','997.08','0.0008937','154','0.046','100','300','1200','1200','300','1200','300'};
 opts.Interpreter = 'tex';
 answer = inputdlg(promt,title,dims,definput,opts);
-
 %valores de entrada en GUI
 C = str2double(answer{1});
 x1 = str2double(answer{2});
