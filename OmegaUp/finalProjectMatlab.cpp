@@ -40,7 +40,6 @@ while(flag)
     [ReynoldsNumber5,factor5] = frictionFactor(p,V,d,R,x5);
     [ReynoldsNumber6,factor6] = frictionFactor(p,V,d,R,x6);
     [ReynoldsNumber7,factor7] = frictionFactor(p,V,d,R,x7);
-
     iteracion = iteracion + 1;
     X=[x1;x2;x3;x4;x5;x6;x7];
     
