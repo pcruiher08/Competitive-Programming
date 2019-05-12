@@ -39,6 +39,7 @@ long long gcdWithMidPointContraction(int m){
         vs.push_back(s);
     }
 }
+
 int main(){
 sync;
 return 0;
