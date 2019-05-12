@@ -27,6 +27,7 @@ using namespace std;
 
 bool isTriangular(ull n){
 return ((float)sqrt(8*n+1) == floor(floor((float)sqrt(8*n+1))));
+
 }
 /test
 long long gcdWithMidPointContraction(int m){
