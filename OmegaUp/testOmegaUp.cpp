@@ -29,7 +29,7 @@ bool isTriangular(ull n){
 return ((float)sqrt(8*n+1) == floor(floor((float)sqrt(8*n+1))));
 
 }
-/test
+//test
 long long gcdWithMidPointContraction(int m){
     vector<stack<int> > vs;
     FOR(i,0,m,1){
