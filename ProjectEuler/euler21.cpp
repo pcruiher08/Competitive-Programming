@@ -28,15 +28,19 @@ using namespace std;
 //no terminado
 ull sumaDeDivisores(ull n){ 
     ull suma = 0; 
+    cout<<n<<": ";
     for(ull i=2; i<=sqrt(n); i++){ 
         if(n%i==0){
             if(i==(n/i)){
                 suma += i; 
+                cout<<i<<" ";
             }else{
                 suma+=(i+n/i); 
+                cout<<(i+n/i)<<" ";
             }
         } 
     } 
+    cout<<endl;
     return (suma + 1); 
 } 
 
@@ -46,7 +50,7 @@ sync;
 ull suma = 0; 
 
 FOR(i,1,10000,1){
-    if(sumaDeDivisores(sumaDeDivisores(i))==i){
+    if(sumaDeDivisores(i)==i){
         suma+=i;
     }
 }
