@@ -46,7 +46,6 @@ ull sumaDeDivisores(ull n){
 
 int main(){
 sync;
-
 ull suma = 0; 
 
 FOR(i,1,10000,1){
