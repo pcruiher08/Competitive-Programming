@@ -88,7 +88,6 @@ Tile::Tile(int x, int y, char type){
     this -> type = type;
 }
 
-
 Player player(); 
 Player enemy();
 Tile Map[12][12];
