@@ -28,6 +28,31 @@ Mine::Mine(int x, int y){
     this->y = y; 
 }
 
+class Unit{
+  public:
+    int owner; 
+    int unitID;
+    int level; 
+    int x, y;
+    Unit();
+    Unit(int,int,int,int);
+};
+
+Unit::Unit(){
+    x = 0; 
+    y = 0; 
+    unitID = 0; 
+    level = 0;
+}
+
+Unit::Unit(int x, int y, int unitID, int level){
+    this -> x = x; 
+    this -> y = y;
+    this -> unitID = unitID; 
+    this -> level = level;
+}
+
+
 class Player{
     public:
         Player();
@@ -39,10 +64,16 @@ class Player{
         int numberOfBuildings;
         int gold; 
         int income;
-        void setGold(int);
+        void updateUnits(vector<Unit>);
 };
 
-void Player::setGold(int gold){this->gold = gold;}
+void Player::updateUnits(vector<Unit> units){
+    for(int i=0; i<units.size(); i++){
+        if(units[i].owner == 0){
+            numberOfUnits++;
+        }
+    }
+}
 
 Player::Player(){
     id = 0; 
@@ -127,29 +158,6 @@ Building::Building(int x, int y, int owner, int type){
 }
 
 
-class Unit{
-  public:
-    int owner; 
-    int unitID;
-    int level; 
-    int x, y;
-    Unit();
-    Unit(int,int,int,int);
-};
-
-Unit::Unit(){
-    x = 0; 
-    y = 0; 
-    unitID = 0; 
-    level = 0;
-}
-
-Unit::Unit(int x, int y, int unitID, int level){
-    this -> x = x; 
-    this -> y = y;
-    this -> unitID = unitID; 
-    this -> level = level;
-}
 
 Tile Map[12][12];
 int main(){
@@ -225,8 +233,20 @@ Player *enemy = new Player();
             Unit aux(x,y,unitId, level);
             units.push_back(aux);
         }
+        
+        for(int i=0; i<units.size(); i++){
+            cerr<<units[i].unitID<<" ";
+        }cerr<<endl;
 
 
-        cout << "WAIT" << endl;
+        
+        if(player->numberOfUnits < 1 && player->gold >= 10){
+            cout<<"TRAIN 1 0 1;"<<endl; 
+        }
+        if(player->numberOfUnits < 2 && player->numberOfUnits >= 1 && player->gold >= 10){
+            cout<<"TRAIN 1 1 1;"<<endl; 
+        }
+        
+        //cout << "WAIT" << endl;
     }
 }
