@@ -237,8 +237,6 @@ Player *enemy = new Player();
         for(int i=0; i<units.size(); i++){
             cerr<<units[i].unitID<<" ";
         }cerr<<endl;
-
-
         
         if(player->numberOfUnits < 1 && player->gold >= 10){
             cout<<"TRAIN 1 0 1;"<<endl; 

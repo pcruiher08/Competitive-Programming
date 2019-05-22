@@ -42,7 +42,8 @@ ull sumaDeDivisores(ull n){
 
 int main(){
 sync;
-ull suma = 0; 
+ull suma = 0;  
+set <int> rep;
 
 map<int, int> yaRevisados;
 FOR(i,1,10000,1){
