@@ -43,13 +43,18 @@ ull sumaDeDivisores(ull n){
 int main(){
 sync;
 ull suma = 0;  
-set <int> rep;
-
-map<int, int> yaRevisados;
+ull actualSetSize = 0;
+set<int> yaRevisados;
+bool firstIsCorrect = false;
+bool secondIsCorrect = false;
 FOR(i,1,10000,1){
-    if(sumaDeDivisores(i)==i){
-        suma+=i;
-    }
+    ull actualRes = sumaDeDivisores(i);
+    yaRevisados.insert(i);
+    if(yaRevisados.size() > actualSetSize) firstIsCorrect = true, actualSetSize++;
+    yaRevisados.insert(actualRes);
+    if(yaRevisados.size() > actualSetSize) secondIsCorrect = true, actualSetSize++;
+    ull newRes = sumaDeDivisores(actualRes);
+    if(newRes == i && actualRes != newRes && secondIsCorrect && firstIsCorrect) suma+=(actualRes+newRes);
 }
 cout<<suma;
 
