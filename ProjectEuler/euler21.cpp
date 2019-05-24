@@ -57,6 +57,5 @@ FOR(i,1,10000,1){
     if(newRes == i && actualRes != newRes && secondIsCorrect && firstIsCorrect) suma+=(actualRes+newRes);
 }
 cout<<suma;
-
 return 0;
 }
