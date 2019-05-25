@@ -29,14 +29,7 @@ int main(){
 sync;
 
 int a; cin>>a; 
-int luckyNums[5] = {4,7,47,74,477};
 
-FOR(i,0,6,1){
-    if(!(a%luckyNums[i])){
-        cout<<"YES"<<endl;
-        return 0;
-    }
-}
-cout<<"NO"<<endl;
+cout<<((a%4 && a%7 && a%47 && a%74 && a%477)?"NO":"YES")<<endl;
 return 0;
 }
