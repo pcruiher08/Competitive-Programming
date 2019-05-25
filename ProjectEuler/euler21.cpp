@@ -38,8 +38,7 @@ ull sumaDeDivisores(ull n){
         } 
     } 
     return (suma + 1); 
-} 
-
+}
 int main(){
 sync;
 ull suma = 0;  
