@@ -26,7 +26,6 @@
 using namespace std;
 
 int main(){
-sync;
 int n; string a,b; cin>>n;
 cin.ignore();
 getline(cin,a);
