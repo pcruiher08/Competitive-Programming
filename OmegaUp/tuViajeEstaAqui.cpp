@@ -27,8 +27,8 @@ using namespace std;
 
 int main(){
 
-  int n = 1; //cin>>n;
-
+  int n = 1; cin>>n;
+  n/=2;
   while(n--){
 
 	string s1;
