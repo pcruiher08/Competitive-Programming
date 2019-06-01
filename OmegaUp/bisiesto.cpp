@@ -35,7 +35,6 @@ bool isLeapYear(int year){
    else
       return false;
 }
-
 int main(){
     int a;
     cin>>a;
