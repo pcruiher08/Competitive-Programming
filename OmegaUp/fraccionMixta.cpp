@@ -30,6 +30,7 @@ ll gcd(ll a,ll b){
     return b==0 ? a : gcd(b,a%b);
 }
 
+
 bool isInteger(float a){
     return (a == floor(a));
 }
