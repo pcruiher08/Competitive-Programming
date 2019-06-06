@@ -29,7 +29,7 @@ using namespace std;
 int main(){
 sync;
 float r; cin>>r; 
-cout<<fixed<<setprecision(2)<<PI*r*r<<" "<<PI*2*r;
+cout<<setprecision(2)<<PI*r*r<<" "<<PI*2*r;
 
 return 0;
 }

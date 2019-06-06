@@ -40,6 +40,6 @@ FOR(i,0,n,1)FOR(j,0,n,1){
         return 0;
     }
 }
-cout<<"YES"<<endl;
+cout<<"SI"<<endl;
 return 0;
 }
