@@ -25,7 +25,6 @@
 #define sync ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 #define vi vector<int>
 using namespace std;
-
 ll gcd(ll a,ll b){
     return b==0 ? a : gcd(b,a%b);
 }
