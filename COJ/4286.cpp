@@ -58,7 +58,7 @@ void fastscan(int &number)  // from geeks4geeks
 
 int main(){
 sync;
-int n; cin>>n;
+int n; fastscan(n);
 int minimo,maximo;
 int aux;
 FOR(i,0,n,1){fastscan(aux);  if(i == 0){maximo=aux; minimo = aux;} if(aux>maximo) maximo = aux; if(aux<minimo) minimo = aux; cout<<(maximo+minimo)<<"\n";}
