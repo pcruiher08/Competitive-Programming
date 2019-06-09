@@ -26,34 +26,19 @@
 #define vi vector<int>
 using namespace std;
 
-void fastscan(int &number)  // from geeks4geeks
-{ 
-    //variable to indicate sign of input number 
-    bool negative = false; 
-    register int c; 
-  
-    number = 0; 
-  
-    // extract current character from buffer 
-    c = getchar(); 
-    if (c=='-') 
-    { 
-        // number is negative 
-        negative = true; 
-  
-        // extract the next character from the buffer 
-        c = getchar(); 
-    } 
-  
-    // Keep on extracting characters if they are integers 
-    // i.e ASCII Value lies from '0'(48) to '9' (57) 
-    for (; (c>47 && c<58); c=getchar()) 
-        number = number *10 + c - 48; 
-  
-    // if scanned input has a negative sign, negate the 
-    // value of the input number 
-    if (negative) 
-        number *= -1; 
+void fastscan(int &x){
+    bool neg=false;
+    register int c;
+    x =0;
+    c=getchar();
+    if(c=='-'){
+        neg = true;
+        c=getchar();
+    }
+    for(;(c>47 && c<58);c=getchar())
+        x = (x<<1) + (x<<3) +c -48;
+    if(neg)
+        x *=-1;
 }
 
 int main(){
