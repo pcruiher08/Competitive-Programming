@@ -46,10 +46,12 @@ int main(){
         getline(cin, thirdInput);
         string fourthInput;
         getline(cin, fourthInput);
+        cerr<< firstInput<<" "<< secondInput<<" "<< thirdInput<<" "<<fourthInput<<endl;
         for (int i = 0; i < thirdInitInput; i++) {
             int fifthInput;
             int sixthInput;
             cin >> fifthInput >> sixthInput; cin.ignore();
+            cerr << fifthInput <<" "<<sixthInput<<endl;
         }
 
         // Write an action using cout. DON'T FORGET THE "<< endl"

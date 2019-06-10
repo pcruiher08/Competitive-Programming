@@ -43,13 +43,12 @@ void fastscan(int &x){
 
 int main(){
 sync;
-int n; fastscan(n);
+int n; cin>>n;
 
 while(n--){
     int a,b;
     cin>>a>>b;
-    cout<<log10(5)<<endl<<log10(2)<<endl;
-    cout<<(a>b?b:a) + (int)((a<b?(b-a):(a-b)) * (a>b?0.301029995663981195:0.698970004336) +1) <<'\n';
+    cout<<1 + min(a,b) + (int)( (max(a,b)-min(a,b)) * (a>b?0.301029995663981195:0.698970004336) )<<'\n';
 }
 
 return 0;
