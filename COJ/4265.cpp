@@ -27,18 +27,11 @@
 using namespace std;
 
 void fastscan(int &x){
-    bool neg=false;
-    register int c;
-    x =0;
-    c=getchar();
-    if(c=='-'){
-        neg = true;
-        c=getchar();
-    }
-    for(;(c>47 && c<58);c=getchar())
-        x = (x<<1) + (x<<3) +c -48;
-    if(neg)
-        x *=-1;
+    char ch; bool f= 0; int a=0; 
+    while(!((((ch=getchar())>='0')&&(ch<='9'))||(ch=='-')));
+    if(ch!='-')a*=10,a+=ch-'0';else f=1;
+    while(((ch=getchar())>='0')&&(ch<='9'))a*=10, a+=ch-'0';
+    if(f)a=-a;x=a;
 }
 
 int main(){
@@ -47,7 +40,8 @@ int n; cin>>n;
 
 while(n--){
     int a,b;
-    cin>>a>>b;
+    fastscan(a);
+    fastscan(b);
     cout<<1 + min(a,b) + (int)( (max(a,b)-min(a,b)) * (a>b?0.301029995663981195:0.698970004336) )<<'\n';
 }
 
