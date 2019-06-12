@@ -28,9 +28,10 @@ using namespace std;
 
 int main(){
 sync;
-//int n; cin>>n; 
-//cout<<n<<endl;
+int n; cin>>n; 
+cout<<n<<endl;
 int mat[15][15];
+cout<<endl;
 
 FOR(i,0,15,1)FOR(j,0,15,1)mat[i][j]=round(hypot(i,j));
 
