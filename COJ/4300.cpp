@@ -26,75 +26,90 @@
 #define vi vector<int>
 using namespace std;
 
-void fastscan(int &x){
-    char ch; bool f= 0; int a=0;
-    while(!((((ch=getchar())>='0')&&(ch<='9'))||(ch=='-')));
-    if(ch!='-')a*=10,a+=ch-'0';else f=1;
-    while(((ch=getchar())>='0')&&(ch<='9'))a*=10, a+=ch-'0';
-    if(f)a=-a;x=a;
+void printpls(pair<int,int> mat[][15]){
+  cout<<"first"<<endl;
+  FOR(i,0,15,1){
+  FOR(j,0,15,1){
+    cout<<mat[i][j].first;
+  }cout<<endl;
+}
+cout<<endl; 
+cout<<"second"<<endl;
+FOR(i,0,15,1){
+  FOR(j,0,15,1){
+    cout<<mat[i][j].second;
+  }cout<<endl;
+}
+cout<<endl; 
+
+}
+
+void recalcula(pair<int,int> mat[][15], ull index){
+  int aux = index;
+  //ROF(k,0,index,1){
+    //index--;
+    FOR(i,0,index+1,1) mat[i][index].first = (mat[i+1][index].second + /*mat[i][index+1].second + mat[i+1][index+1].second*/  +
+                                          mat[i][index-1].second + (i>0?mat[i-1][index-1].second /*+ mat[i-1][index+1].second*/ + mat[i-1][index].second:0) + mat[i+1][index-1].second) /*, cout<<mat[i][index].first<<endl*/;
+
+    FOR(i,0,index,1) mat[index][i].first = (mat[index][i+1].second + 
+                                           /*mat[index+1][i].second + 
+                                          mat[index+1][i+1].second*/  +
+                                          mat[index-1][i].second + (i>0?mat[index-1][i-1].second /*+ mat[index+1][i-1].second*/ + mat[index][i-1].second:0)+ mat[index-1][i+1].second) /*, cout<<mat[index][i].first<<endl*/;
+
+                                          //cout<<"index: "<<index<<endl;printpls(mat);
+  //}                                
 }
 
 int main(){
 sync;
-int n; fastscan(n);
-pair<int,int> mat[16][16];
-FOR(i,0,16,1){
-    FOR(j,0,16,1){
-        if(i==0)mat[i][j] = make_pair(1,j+1);
-        else{
-            if(j==0) mat[i][j] = make_pair(1,1);
-            else mat[i][j] = make_pair(mat[i-1][j].second,mat[i-1][j].second + mat[i][j-1].second);
-        }
-    }
-}
+pair<int, int> mat[15][15];
 
+//num, steps
+
+mat[0][0].first=0;
+mat[0][1].first=1;
+mat[1][0].first=1;
+mat[1][1].first=1;
+
+mat[0][0].second=0;
+mat[0][1].second=0;
+mat[1][0].second=0;
+mat[1][1].second=0;
 /*
-FOR(i,0,16,1){
-    FOR(j,0,16,1){
-        cout<<mat[i][j].first<<" ";
-    }cout<<endl;
+FOR(i,0,15,1){
+  FOR(j,0,15,1){
+    cout<<mat[i][j].first;
+  }cout<<endl;
 }
-cout<<endl;
-
+cout<<endl; 
+FOR(i,0,15,1){
+  FOR(j,0,15,1){
+    cout<<mat[i][j].second;
+  }cout<<endl;
+}
+cout<<endl; 
 */
-mat[1][1].first ++;
-
-FOR(i,2,16,1){
-    FOR(j,2,16,1){
-        if(j>i)mat[i][j].first += mat[i-1][j].first;
-        if(j<i)mat[i][j].first += mat[i][j-1].first;
-    }
-}
-
-FOR(i,2,16,1)mat[i][i].first += (mat[i-1][i].first + mat[i][i-1].first + mat[i-1][i-1].first);
-/*
-FOR(i,0,16,1){
-    FOR(j,0,16,1){
-        cout<<mat[i][j].first<<" ";
-    }cout<<endl;
-}
-cout<<endl;
-*/
-
 vector<int> res; 
 
-FOR(i,0,16,1)res.pb(mat[i][i].first);
 
-//FOR(i,0,16,1)cout<<res[i]<<endl;
+ull sumalos = 0;
+ull adicion = 1;
 
-/*
-FOR(i,0,16,1){
-    FOR(j,0,16,1){
-        cout<<mat[i][j].second<<" ";
-    }cout<<endl;
+while(adicion++ <= 15){
+  sumalos = 0;
+  FOR(i,0,adicion,1){
+    FOR(j,0,adicion,1){
+      sumalos += mat[i][j].first;
+      //cout<<mat[i];
+      mat[i][j].second = mat[i][j].first;
+    }//cout<<endl;
+  }
+
+  int aux = adicion;
+  FOR(i,0,aux,1)recalcula(mat, adicion-i);
+  cout<<"res: "<<sumalos<<endl;
+  //printpls(mat);
 }
-cout<<endl;
-*/
 
-
-while(n--){
-    int query; fastscan(query);
-    cout<<res[query]<<endl;
-}
 return 0;
 }

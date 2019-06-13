@@ -26,21 +26,65 @@
 #define vi vector<int>
 using namespace std;
 
+
+void recalcula(pair<int,int> mat[][15], int index){
+  ROF(i,0,index,1){
+    FOR(i,0,index,1) mat[i][index].first = mat[i+1][index].second + mat[i][index+1].second + mat[i+1][index+1].second  +
+                                          mat[i][index-1].second + (i>0?mat[i-1][index-1].second + mat[i-1][index+1].second + mat[i-1][index].second:0) + mat[i+1][index-1].second , cout<<mat[i][index].first<<endl;
+
+    FOR(i,0,index,1) mat[index][i].first = mat[index][i+1].second + 
+                                           mat[index+1][i].second + 
+                                          mat[index+1][i+1].second  +
+                                          mat[index-1][i].second + (i>0?mat[index-1][i-1].second + mat[index+1][i-1].second + mat[index][i-1].second:0)+ mat[index-1][i+1].second , cout<<mat[index][i].first<<endl;
+  }                                
+}
+
 int main(){
 sync;
-int n; cin>>n; 
-cout<<n<<endl;
-int mat[15][15];
-cout<<endl;
+pair<int, int> mat[15][15];
 
-FOR(i,0,15,1)FOR(j,0,15,1)mat[i][j]=round(hypot(i,j));
+//num, steps
+
+mat[0][0].first=0;
+mat[0][1].first=1;
+mat[1][0].first=1;
+mat[1][1].first=1;
+
+mat[0][0].second=0;
+mat[0][1].second=0;
+mat[1][0].second=0;
+mat[1][1].second=0;
 
 FOR(i,0,15,1){
-    FOR(j,0,15,1){
-        cout<<mat[i][j]<<" ";
-    }
-    cout<<endl;
+  FOR(j,0,15,1){
+    cout<<mat[i][j].first;
+  }cout<<endl;
 }
-cout<<"hola"<<endl;
+cout<<endl; 
+FOR(i,0,15,1){
+  FOR(j,0,15,1){
+    cout<<mat[i][j].second;
+  }cout<<endl;
+}
+
+vector<int> res; 
+cout<<endl; 
+
+int sumalos = 0;
+int adicion = 1;
+
+while(adicion++ < 15){
+  sumalos = 0;
+  FOR(i,0,adicion,1){
+    FOR(j,0,15,1){
+      sumalos += mat[i][j].first;
+      //cout<<mat[i];
+      mat[i][j].second = mat[i][j].first;
+    }//cout<<endl;
+  }
+  cout<<sumalos;
+  recalcula(mat, adicion);
+}
+
 return 0;
 }
