@@ -26,64 +26,22 @@
 #define vi vector<int>
 using namespace std;
 
-
-void recalcula(pair<int,int> mat[][15], int index){
-  ROF(i,0,index,1){
-    FOR(i,0,index,1) mat[i][index].first = mat[i+1][index].second + mat[i][index+1].second + mat[i+1][index+1].second  +
-                                          mat[i][index-1].second + (i>0?mat[i-1][index-1].second + mat[i-1][index+1].second + mat[i-1][index].second:0) + mat[i+1][index-1].second , cout<<mat[i][index].first<<endl;
-
-    FOR(i,0,index,1) mat[index][i].first = mat[index][i+1].second + 
-                                           mat[index+1][i].second + 
-                                          mat[index+1][i+1].second  +
-                                          mat[index-1][i].second + (i>0?mat[index-1][i-1].second + mat[index+1][i-1].second + mat[index][i-1].second:0)+ mat[index-1][i+1].second , cout<<mat[index][i].first<<endl;
-  }                                
+void fastscan(int &x){
+    char ch; bool f= 0; int a=0;
+    while(!((((ch=getchar())>='0')&&(ch<='9'))||(ch=='-')));
+    if(ch!='-')a*=10,a+=ch-'0';else f=1;
+    while(((ch=getchar())>='0')&&(ch<='9'))a*=10, a+=ch-'0';
+    if(f)a=-a;x=a;
 }
+
+ull res[16] = {1, 3, 15, 75, 391, 2065, 11091, 60215, 330003, 1820869, 10103153, 56313047, 315071801,1768489771, 9953853677, 56158682949};
 
 int main(){
 sync;
-pair<int, int> mat[15][15];
-
-//num, steps
-
-mat[0][0].first=0;
-mat[0][1].first=1;
-mat[1][0].first=1;
-mat[1][1].first=1;
-
-mat[0][0].second=0;
-mat[0][1].second=0;
-mat[1][0].second=0;
-mat[1][1].second=0;
-
-FOR(i,0,15,1){
-  FOR(j,0,15,1){
-    cout<<mat[i][j].first;
-  }cout<<endl;
-}
-cout<<endl; 
-FOR(i,0,15,1){
-  FOR(j,0,15,1){
-    cout<<mat[i][j].second;
-  }cout<<endl;
-}
-
-vector<int> res; 
-cout<<endl; 
-
-int sumalos = 0;
-int adicion = 1;
-
-while(adicion++ < 15){
-  sumalos = 0;
-  FOR(i,0,adicion,1){
-    FOR(j,0,15,1){
-      sumalos += mat[i][j].first;
-      //cout<<mat[i];
-      mat[i][j].second = mat[i][j].first;
-    }//cout<<endl;
-  }
-  cout<<sumalos;
-  recalcula(mat, adicion);
+int k; fastscan(k); 
+while(k--){
+int n; fastscan(n);
+cout<<res[n]<<'\n';
 }
 
 return 0;
