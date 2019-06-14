@@ -104,7 +104,6 @@ while(adicion++ <= 15){
       mat[i][j].second = mat[i][j].first;
     }//cout<<endl;
   }
-
   int aux = adicion;
   FOR(i,0,aux,1)recalcula(mat, adicion-i);
   cout<<"res: "<<sumalos<<endl;
