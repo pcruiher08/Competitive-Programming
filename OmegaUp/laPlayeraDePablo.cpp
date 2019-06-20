@@ -34,7 +34,6 @@ ull x;
 priority_queue <ull> pq;
 
 FOR(i,0,n,1)cin>>x, pq.push(x);
-
 pq.pop();
 pq.pop();
 cout<<pq.top();
