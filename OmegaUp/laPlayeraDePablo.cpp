@@ -26,7 +26,6 @@
 #define vi vector<int>
 using namespace std;
 
-
 int main(){
 sync;
 ull n; 
