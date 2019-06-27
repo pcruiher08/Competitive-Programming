@@ -1,0 +1,239 @@
+{
+    "Competitive Programming": {
+        "prefix": "comp",
+        "description": "Competitive Progamming Template",
+        "body": [
+            "#include <algorithm>",
+            "#include <math.h>",
+            "#include <cstdio>",
+            "#include <deque>",
+            "#include <iomanip>",
+            "#include <iostream>",
+            "#include <queue>",
+            "#include <map>",
+            "#include <set>",
+            "#include <sstream>",
+            "#include <stack>",
+            "#include <string>",
+			"#include <vector>",
+			"#include <cstring>",
+			"#include <climits>",
+			"#define ll long long",
+			"#define ull unsigned long long",
+			"#define FOR(m,s,n,u) for(int m=s; m<n; m+=u)",
+			"#define ROF(m,s,n,u) for(int m=n; m>=s; m-=u)",
+			"#define FORb(m,s,n,u,k) for(int m=s; m<n&&k; m+=u)",
+			"#define pb push_back",
+			"#define mod 1000000007",
+			"#define PI 3.1415926535897932384626433832795028841971",
+			"#define MOD(x) ((x%mod)+mod)%mod",
+			"#define sync ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)",
+			"#define vi vector<int>",
+			"using namespace std;",
+            "",
+			"int main(){",
+			"sync;",
+			"",
+            "return 0;",
+            "}"
+        ]
+	},
+	
+	"Greatest Common Divisor Algorithm": {
+		"prefix": "gcd",
+		"description": "Greatest Common Divisor Algorithm",
+		"body": [
+			"ll gcd(ll a,ll b){",
+			"	return b==0 ? a : gcd(b,a%b);",
+			"}"
+		]
+	},
+
+		
+	"Full Adder Bitwise": {
+		"prefix": "fullAdder",
+		"description": "Add without +",
+		"body": [
+			"int suma(int num, int carry){",
+			"	if(!carry)return num;",
+			"	return suma(num^carry,(num&carry)<<1);",
+			"}"
+		]
+	},
+
+	"Fast Scan Input for Integers": {
+		"prefix": "fastscan",
+		"description": "Fast Scan Integers",
+		"body": [
+			"void fastscan(int &x){",
+			"	char ch; bool f= 0; int a=0;",
+			"	while(!((((ch=getchar())>='0')&&(ch<='9'))||(ch=='-')));",
+			"	if(ch!='-')a*=10,a+=ch-'0';else f=1;",
+			"	while(((ch=getchar())>='0')&&(ch<='9'))a*=10, a+=ch-'0';",
+			"	if(f)a=-a;x=a;",
+			"}"
+		]
+	},
+
+
+	"Sieve of Erathostenes": {
+		"prefix": "sieve",
+		"description": "Sieve of Erathostenes",
+		"body": [
+			"bool p[1000001];",
+			"void sieve(int n){",
+			"  for(int i=2; i<sqrt(n); i++){",
+			"	if(!p[i]){",
+			"	  for(int j=i*i; j<n; j+=i){",
+			"		p[j]=true;",
+			"	  }",
+			"	}",
+			"  }",
+			"}",
+			"",
+			"bool prime(int a){",
+			"	return !p[a];",
+			"}"
+		]
+	},
+
+
+
+	"Least Common Multiple Algorithm": {
+		"prefix": "lcm",
+		"description": "Least Common Multiple Algorithm",
+		"body": [
+			"ll lcm(ll a,ll b){",
+			"	return (a*b)/gcd(a,b);",
+			"}"
+		]
+	},
+
+	"Point struct": {
+		"prefix": "point",
+		"description": "struct for a point",
+		"body": [
+			"struct point{",
+			"	int x, y;",
+			"	bool operator <(const point& pt) const{",
+			"		return (x < pt.x) || ((!(pt.x < x)) && (y < pt.y));",
+			"	}",
+			"};"
+		]
+	},
+
+
+	"DP Factorial Algorithm": {
+		"prefix": "fact",
+		"description": "DP Factorial Algorithm",
+		"body": [
+			"long long fact[100001];",
+
+			"long long actual = 1;",
+			
+			"long long fac(long long n){",
+			"	fact[0]=1;",
+			"	fact[1]=1;",
+				
+			"	if(n>actual){",
+			"	for(long long i=actual; i<=n; i++){",
+			"		fact[i]=(fact[i-1]*i)%mod;",
+			"	}",
+			"	actual = n;",
+			"	}",
+			"	return fact[n];",
+			"}"
+		]
+	},
+
+
+
+
+	"Multiplicative Inverse Algorithm": {
+		"prefix": "inv",
+		"description": "Multiplicative Inverse Algorithm",
+		"body": [
+			"long long inve(long long a){",
+			"	long long b = mod-2, ans = 1;",
+			"	while (b) {",
+			"		if (b&1) {",
+			"			ans = (ans * a) % mod;",
+			"		}",
+			"		a = (a * a) % mod;",
+			"		b >>= 1;",
+			"	}",
+			"	return ans;",
+			"}"
+		]
+	},
+
+
+	"Fast Power Algorithm": {
+		"prefix": "fastpow",
+		"description": "Fast Power Algorithm",
+		"body": [
+			"ll fastPow(ll a,ll b){",
+			"	ll ret = 1;",
+			"	while(b>0){",
+			"		if(b&1) ret = (ret*a);"
+			"		a=(a*a);",
+			"		b>>=1;",
+			"	}",
+			"	return ret;",
+			"}"
+		]
+	},
+
+
+	"isSquare boolean function": {
+		"prefix": "isSquare",
+		"description": "Function that returns if a given number is a perfect square or not",
+		"body": [
+			"bool isSquare(ull x){",
+				"ull s = sqrt(x);",
+				"return (s*s == x);",
+			"}"
+		]
+	},
+
+	"isFibonacci boolean function": {
+		"prefix": "isFib",
+		"description": "Function that returns if a given number is part of the fibonacci sequence or not",
+		"body": [
+			"bool isFib(ull n){",
+				"return isSquare(5*n*n+4)||isSquare(5*n*n-4);",
+			"}"
+		]
+	},
+
+	"isTriangular boolean function": {
+		"prefix": "isTri",
+		"description": "Function that returns if a given number is triangular or not",
+		"body": [
+			"bool isTriangular(ull n){",
+				"return ((float)sqrt(8*n+1) == floor(floor((float)sqrt(8*n+1))));",
+			"}"
+		]
+	},
+
+	"Fibonacci DP": {
+		"prefix": "fib",
+		"description": "Fibonacci with DP",
+		"body": [
+			"const int MAX = 1000001;", 
+			"ull f[MAX] = {0};",
+			
+			"ull fib(ull n){", 
+			"	if (n == 0)",
+			"		return 0;", 
+			"	if (n == 1 || n == 2)", 
+			"		return (f[n] = 1);", 
+			"	if (f[n])",
+			"		return f[n];",
+			"	ull k = (n & 1)? (n+1)/2 : n/2;", 
+			"	f[n] = (n & 1)? (fib(k)%mod*fib(k)%mod + fib(k-1)%mod*fib(k-1)%mod)%mod : (2*fib(k-1)%mod + fib(k)%mod)%mod*fib(k)%mod;", 
+			"	return f[n]%mod;", 
+			"}"
+		]
+	}
+}
