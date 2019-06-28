@@ -1,18 +1,15 @@
 {
     "configurations": [
         {
-            "name": "Win32",
+            "name": "MinGW",
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "C:/mingw64/bin/gcc.exe",
             "includePath": [
-                "D:\\\\Arduino\\\\tools\\\\**",
-                "D:\\\\Arduino\\\\hardware\\\\arduino\\\\avr\\\\**"
+                "${workspaceFolder}"
             ],
-            "forcedInclude": [
-                "D:\\\\Arduino\\\\hardware\\\\arduino\\\\avr\\\\cores\\\\arduino\\\\Arduino.h"
-            ],
-            "intelliSenseMode": "msvc-x64",
-            "compilerPath": "C:\\MinGW64\\bin\\gcc.exe",
+            "defines": [],
             "cStandard": "c11",
-            "cppStandard": "c++14"
+            "cppStandard": "c++17"
         }
     ],
     "version": 4
