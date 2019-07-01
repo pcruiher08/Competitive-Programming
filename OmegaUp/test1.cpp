@@ -15,6 +15,7 @@ ll fastPow(ll a,ll b){
 ///for the following implementation I use my competitive programming template with a little mods
 int main(){
 sync;
+
 //given the size of the set
 int n; cin>>n;
 int givenSet[n];
