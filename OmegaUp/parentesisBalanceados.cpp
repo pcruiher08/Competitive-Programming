@@ -32,7 +32,6 @@ bool Brackets(char opening, char closing){
 	return false;
 }
 
-
 bool BalancedParentheses(string b){
 	stack<char> a;
 	for(int i = 0; i < b.length(); i++){
