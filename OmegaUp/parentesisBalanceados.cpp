@@ -46,6 +46,7 @@ bool BalancedParentheses(string b){
 	}
 	return a.empty();
 }
+
 int main(){
 	sync;	
 
