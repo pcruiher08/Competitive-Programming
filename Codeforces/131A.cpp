@@ -25,23 +25,44 @@
 #define vi vector<int>
 using namespace std;
 
+void cambio(string s){
+    s[0]=toupper(s[0]);
+	FOR(i,1,s.length(),1){
+        s[i] = tolower(s[i]);
+    }
+    cout<<s<<endl;
+}
+
 int main(){
 sync;
 string a; cin>>a; 
 
 bool isFirstLower = false; 
-bool areRestUpper = true;
-if(a[0]<='z'&&a[0]>='z') isFirstLower = true; 
-FOR(i,1,a.size(),1)if(a[i]>'Z'||a[i]<'A') areRestUpper = false;
-
 bool areAllUpper = true;
-FOR(i,0,a.size(),1)if(a[i]>'Z'||a[i]<'A') areAllUpper = false;
 
-if((isFirstLower &&  areRestUpper) || areAllUpper){
-    a[0]=toupper(a[0]);
-    FOR(i,1,a.size(),1)a[i]=tolower(a[i]);
+if(a[0]<='z'&&a[0]>='a'){
+	isFirstLower = true;
 }
-cout<<a<<endl;
+	
+FOR(i,1,a.length(),1){
+	if(a[i]<='z'&&a[i]>='a'){
+		areAllUpper = false;
+		break;
+	}
+}
 
+if(areAllUpper && !isFirstLower){
+	//se cambia
+	cambio(a);
+	return 0;
+}
+
+if(areAllUpper && isFirstLower){
+	//se cambia
+	cambio(a);
+	return 0;
+}
+
+cout<<a<<endl;
 return 0;
 }
