@@ -25,11 +25,18 @@
 #define vi vector<int>
 using namespace std;
 
-void cambio(string s){
-    s[0]=toupper(s[0]);
-	FOR(i,1,s.length(),1){
-        s[i] = tolower(s[i]);
-    }
+void cambio(string s, bool especial){
+	
+	if(!especial){
+	    s[0]=toupper(s[0]);
+		FOR(i,1,s.length(),1){
+	        s[i] = tolower(s[i]);
+	    }
+	}else{
+		FOR(i,0,s.length(),1){
+	        s[i] = tolower(s[i]);
+	    }
+	}	
     cout<<s<<endl;
 }
 
@@ -53,13 +60,13 @@ FOR(i,1,a.length(),1){
 
 if(areAllUpper && !isFirstLower){
 	//se cambia
-	cambio(a);
+	cambio(a, true);
 	return 0;
 }
 
 if(areAllUpper && isFirstLower){
 	//se cambia
-	cambio(a);
+	cambio(a, false);
 	return 0;
 }
 
