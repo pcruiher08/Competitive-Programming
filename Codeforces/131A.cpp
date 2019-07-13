@@ -43,7 +43,6 @@ void cambio(string s, bool especial){
 int main(){
 sync;
 string a; cin>>a; 
-
 bool isFirstLower = false; 
 bool areAllUpper = true;
 

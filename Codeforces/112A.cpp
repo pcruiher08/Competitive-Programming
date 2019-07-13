@@ -25,6 +25,7 @@
 #define vi vector<int>
 using namespace std;
 
+
 int main(){
 sync;
 string a, b;
