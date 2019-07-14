@@ -30,7 +30,6 @@ int main(){
 sync;
 int luckys = 0;
 string num; cin>>num;
-
 FOR(i,0,num.length(),1){
     if(num[i]=='7'||num[i]=='4')luckys++; 
 }
@@ -39,6 +38,5 @@ if(luckys == 4 || luckys == 7){
 }else{
     cout<<"NO"<<endl;
 }
-
 return 0;
 }
