@@ -31,4 +31,5 @@ int a,b;
 cin>>a>>b;
 cout<<floor((a*b)/2);
 return 0;
+
 }
