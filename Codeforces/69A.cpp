@@ -34,3 +34,5 @@ FOR(i,0,n,1)cin>>xi>>yi>>zi, x+=xi, y+=yi, x+=zi;
 cout<<(!x && !y && !z ? "YES":"NO")<<endl;
 return 0;
 }
+
+

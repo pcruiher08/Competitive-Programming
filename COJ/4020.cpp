@@ -25,8 +25,21 @@
 #define vi vector<int>
 using namespace std;
 
-ll fastPow(ll a,ll b){
-    ll ret = 1;
+ull fastPow(ull a,ull b,ull m){
+    a%=m;
+    ull ret = 1;
+    while(b>0){
+        if(b&1) ret = (ret*a%m);
+        a=(a*a%m);
+        b>>=1;
+    }
+    return ret;
+}
+
+
+/*
+ull fastPow(ull a,ull b){
+    ull ret = 1;
     while(b>0){
         if(b&1) ret = (ret*a);
         a=(a*a);
@@ -34,31 +47,16 @@ ll fastPow(ll a,ll b){
     }
     return ret;
 }
+*/
 
 int main(){
 sync;
-int n; 
-int k; 
-cin>>n; 
-/*
-2^1 = 2
-2^2 = 4
-2^3 = 8
-2^4 = 16
-2^5 = 32
-2^6 = 64
-2^7 = 128
-2^8 = 256
-2^9 = 512
-2^10 = 1024
-2^11 = 2048
-2^12 = 4096
-2^13 = 8000
-2^14 = 16000
-*/
+ull n;
+ull k;
+cin>>n;
 while(n--){
     cin>>k;
-    cout<<fastPow(2,(k*4+1)/2)-(k-1);
+    cout<< (fastPow(k,k+1, mod) - k + 1) % mod<< endl; 
 }
 return 0;
 }
