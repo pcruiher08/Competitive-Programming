@@ -56,6 +56,7 @@ ull k;
 cin>>n;
 while(n--){
     cin>>k;
+    
     cout<< (fastPow(k,k+1, mod) - k + 1) % mod<< endl; 
 }
 return 0;
