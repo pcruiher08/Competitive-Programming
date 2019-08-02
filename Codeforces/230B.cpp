@@ -20,35 +20,34 @@
 #define FORb(m,s,n,u,k) for(int m=s; m<n&&k; m+=u)
 #define pb push_back
 #define mod 1000000007
+#define PI 3.1415926535897932384626433832795028841971
 #define MOD(x) ((x%mod)+mod)%mod
 #define sync ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 #define vi vector<int>
 using namespace std;
 
-ll fastPow(ll a,ll b,ll m){
-    ll ret = 1;
-    while(b>0){
-        if(b&1) ret = (ret*a)%m;
-        a=(a*a)%m;
-        b>>=1;
-    }
-    return ret;
-}
-ll arr[1000001];
+bool isPrime(int n) { 
+    if (n <= 1) return false; 
+    if (n <= 3) return true; 
+    if (n % 2 == 0 || n % 3 == 0) return false; 
+    for (int i = 5; i * i <= n; i = i + 6) if (n % i == 0 || n % (i + 2) == 0) return false; 
+    return true; 
+} 
+  
+bool tPrime(long long n) { 
+    int raiz = (int)sqrt(n); 
+    if(1LL * raiz * raiz != n) return false; 
+    return isPrime(raiz); 
+} 
+
+
 int main(){
 sync;
-
-ll n;
-ll k;
-cin>>n;
-
-memset(arr,0,sizeof(arr));
+int n; cin>>n; 
+ull k; 
 while(n--){
-    cin>>k;
-    if(!arr[k]){
-        arr[k] = (fastPow(k,k+1,mod) - k + 1);
-    }
-    cout<<arr[k]<<endl;
+cin>>k; 
+cout<<(tPrime(k)?"YES":"NO")<<endl;
 }
 
 return 0;
