@@ -40,7 +40,6 @@ bool tPrime(long long n) {
     return isPrime(raiz); 
 } 
 
-
 int main(){
 sync;
 int n; cin>>n; 
