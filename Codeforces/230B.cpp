@@ -34,6 +34,7 @@ bool isPrime(int n) {
     return true; 
 } 
   
+  
 bool tPrime(long long n) { 
     int raiz = (int)sqrt(n); 
     if(1LL * raiz * raiz != n) return false; 
