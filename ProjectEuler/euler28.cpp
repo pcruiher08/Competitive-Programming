@@ -26,44 +26,22 @@
 #define vi vector<int>
 using namespace std;
 
-#define len 5
-/*
-decremento j
-incremento i
-incremento j
-dectremento i
-
-
-[0,0][0,1][0,2][0,3][0,4]
-[1,0][][][][1,4]
-[2,0][][][][2,4]
-[3,0][][][][3,4]
-[4,0][4,1][4,2][4,3][4,4]
-
-SIN TERMINAR
-*/
-
-
-void spiralMat(int mat[][len]){
-    int first = len;
-    int cuentaPrimero = 0, cuentaSegundo = 0, cuentaTercero = 0, cuentaCuarto = 0;
-    int i = len-1;
-    int j = 0;
-    while(len>1){
-        for(; i>cuentaPrimero; i--){
-            if(i==cuentaPrimero){
-                cuentaPrimero++;
-                break;
-            }
-        }
-
-    }
-}
-
-
 int main(){
 sync;
+ull tope = 1001; 
+ull count = 1;
+ull actualSquare; 
+for(ull i = 2; i<=tope; i++){
 
+    if(i&1){
+        actualSquare = i*i; 
+        cout<<"actualSquare : " << actualSquare <<endl;
+
+        count += actualSquare + (actualSquare - i + 1) + (actualSquare - 2 * i + 2) + (actualSquare - 3 * i + 3);
+    }
+
+}
+cout<<count<<endl;
 
 
 return 0;
