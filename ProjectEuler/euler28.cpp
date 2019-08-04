@@ -32,17 +32,11 @@ ull tope = 1001;
 ull count = 1;
 ull actualSquare; 
 for(ull i = 2; i<=tope; i++){
-
     if(i&1){
         actualSquare = i*i; 
-        cout<<"actualSquare : " << actualSquare <<endl;
-
         count += actualSquare + (actualSquare - i + 1) + (actualSquare - 2 * i + 2) + (actualSquare - 3 * i + 3);
     }
-
 }
 cout<<count<<endl;
-
-
 return 0;
 }
