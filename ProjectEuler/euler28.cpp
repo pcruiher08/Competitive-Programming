@@ -30,7 +30,8 @@ int main(){
 sync;
 ull tope = 1001; 
 ull count = 1;
-ull actualSquare; 
+ull actualSquare;
+ 
 for(ull i = 2; i<=tope; i++){
     if(i&1){
         actualSquare = i*i; 
