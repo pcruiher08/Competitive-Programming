@@ -25,7 +25,14 @@
 #define vi vector<int>
 using namespace std;
 
-//no terminado
+
+bool hasBeenChecked(set <int> s, ull a){
+    int tam = s.size(); 
+    s.insert(a);
+    return ! (s.size() == tam);
+}
+
+
 ull sumaDeDivisores(ull n){ 
     ull suma = 0; 
     for(ull i=2; i<=sqrt(n); i++){ 
@@ -42,18 +49,23 @@ ull sumaDeDivisores(ull n){
 int main(){
 sync;
 ull suma = 0;  
-ull actualSetSize = 0;
 set<int> yaRevisados;
-bool firstIsCorrect = false;
-bool secondIsCorrect = false;
-FOR(i,1,10000,1){
-    ull actualRes = sumaDeDivisores(i);
-    yaRevisados.insert(i);
-    if(yaRevisados.size() > actualSetSize) firstIsCorrect = true, actualSetSize++;
-    yaRevisados.insert(actualRes);
-    if(yaRevisados.size() > actualSetSize) secondIsCorrect = true, actualSetSize++;
-    ull newRes = sumaDeDivisores(actualRes);
-    if(newRes == i && actualRes != newRes && secondIsCorrect && firstIsCorrect) suma+=(actualRes+newRes);
+int primero = 0; 
+int segundo = 0;
+
+FOR(i,1,10001,1){
+    primero = sumaDeDivisores(i);
+    segundo = sumaDeDivisores(primero);
+    //cout<<"suma primero: "<<i<<" -> "<<primero<<" suma segundo: "<<primero<<" -> "<<segundo<<endl;
+    if(i == segundo){
+        if((hasBeenChecked(yaRevisados, i) && hasBeenChecked(yaRevisados, primero))){
+            yaRevisados.insert(i);
+            yaRevisados.insert(primero);
+            suma += i;
+            suma += primero;
+            cout<<"primero: "<<i<<" segundo: "<<primero<<endl;
+        }
+    }
 }
 cout<<suma;
 return 0;
