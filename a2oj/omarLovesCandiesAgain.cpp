@@ -39,6 +39,5 @@ while(n--){
     FOR(i,0,28,1)if(arr[i]>arr[indexOfBiggest])indexOfBiggest = i;
     cout<<arr[indexOfBiggest]<<" "<<(char)(indexOfBiggest + 'a')<<endl;
 }
-
 return 0;
 }
