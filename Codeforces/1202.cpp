@@ -13,6 +13,7 @@
 #include <vector>
 #include <cstring>
 #include <climits>
+#include <bits/stdc++.h> 
 #define ll long long
 #define ull unsigned long long
 #define FOR(m,s,n,u) for(int m=s; m<n; m+=u)
@@ -26,13 +27,39 @@
 #define vi vector<int>
 using namespace std;
 
+string reverse(string a){
+    string b = ""; 
+    ROF(i,0,a.length()-1,1){
+        b+=a[i];
+    }
+    return b;
+}
+
+string addBinary(string a, string b) { 
+    string result = "";
+    int s = 0;
+    int i = a.size() - 1, j = b.size() - 1; 
+    while (i >= 0 || j >= 0 || s == 1){ 
+        s += ((i >= 0)? a[i] - '0': 0); 
+        s += ((j >= 0)? b[j] - '0': 0); 
+        result = char(s % 2 + '0') + result;
+        s /= 2; 
+        i--; j--; 
+    } 
+    return result; 
+} 
+
+
 int main(){
 sync;
-int n,a,b; 
-cin>>n; 
+int n; cin>>n; cin.ignore();
 while(n--){
-cin>>a>>b;
-cout<<a+b<<endl;
+    string a, b; 
+    getline(cin,a);
+    getline(cin,b);
+    string sum = "";
+    sum = addBinary(a,b);
+    cout<<reverse(sum)<<endl;
 }
 return 0;
 }
