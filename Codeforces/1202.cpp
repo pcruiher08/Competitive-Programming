@@ -35,6 +35,7 @@ string reverse(string a){
     return b;
 }
 
+
 string addBinary(string a, string b) { 
     string result = "";
     int s = 0;
