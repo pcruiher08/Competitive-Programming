@@ -50,7 +50,6 @@ string addBinary(string a, string b) {
     return result; 
 } 
 
-
 int main(){
 sync;
 int n; cin>>n; cin.ignore();
