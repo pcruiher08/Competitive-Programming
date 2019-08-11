@@ -29,7 +29,7 @@ using namespace std;
 int main(){
 sync;
 //queue at the school 
-
+//is this even a real problem?
 //lectura
 int n, a; cin>>n>>a; 
 char arr[n];
