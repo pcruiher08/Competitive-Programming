@@ -34,8 +34,6 @@ sync;
 int n, a; cin>>n>>a; 
 char arr[n];
 FOR(i,0,n,1)cin>>arr[i];
-
 //procesamiento TODO
-
 return 0;
 }
