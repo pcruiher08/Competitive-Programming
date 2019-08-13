@@ -17,9 +17,9 @@
                 "/Library/Frameworks"
             ],
             "intelliSenseMode": "clang-x64",
-            "compilerPath": "/usr/bin/clang",
+            "compilerPath": "C:\\MinGW64\\bin\\g++.exe",
             "cStandard": "c11",
-            "cppStandard": "c++17"
+            "cppStandard": "c++11"
         }
     ],
     "version": 4

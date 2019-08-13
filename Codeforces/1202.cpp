@@ -1,18 +1,3 @@
-#include <algorithm>
-#include <math.h>
-#include <cstdio>
-#include <deque>
-#include <iomanip>
-#include <iostream>
-#include <queue>
-#include <map>
-#include <set>
-#include <sstream>
-#include <stack>
-#include <string>
-#include <vector>
-#include <cstring>
-#include <climits>
 #include <bits/stdc++.h> 
 #define ll long long
 #define ull unsigned long long
@@ -34,7 +19,6 @@ string reverse(string a){
     }
     return b;
 }
-
 
 string addBinary(string a, string b) { 
     string result = "";
