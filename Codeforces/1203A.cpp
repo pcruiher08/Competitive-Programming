@@ -43,7 +43,6 @@ bool isCounter(int arr[], int n){
     return true;
 }
 
-
 bool isClock(int arr[], int n){
     int minimo = arr[0];
     int minimoIndex = 0;
@@ -63,8 +62,7 @@ bool isClock(int arr[], int n){
 
 int main(){
 sync;
-
-int n; 
+int n;
 cin>>n; 
 while(n--){
     int k; cin>>k;
