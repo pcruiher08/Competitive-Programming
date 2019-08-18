@@ -45,6 +45,6 @@ while(n--){
     sum = addBinary(a,b);
     cout<<reverse(sum)<<endl;
 }
-
+ 
 return 0;
 }
