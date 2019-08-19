@@ -59,7 +59,6 @@ bool isClock(int arr[], int n){
     }
     return true;
 }
-
 int main(){
 sync;
 int n;
