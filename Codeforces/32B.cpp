@@ -28,21 +28,24 @@ using namespace std;
 
 int main(){
 sync;
-//queue at the school 
-//is this even a real problem?
-//lectura
-int n, t; cin>>n>>t; 
-char arr[n];
-FOR(i,0,n,1)cin>>arr[i];
-//procesamiento TODO
-while(t--)
-FOR(i,0,n,1){
-    if(arr[i]=='B'&&arr[i+1]=='G'){
-        arr[i]='G'; 
-        arr[i+1]='B';
-        i++;
+string a; 
+cin>>a; 
+queue <int> q;
+FOR(i,0,a.length()+1,1){
+    if(a[i]=='.'){
+        cout<<0;
+        continue;
+    }
+    if(a[i]=='-'&&a[i+1] == '.'){
+        i+=1;
+        cout<<1;
+        continue;
+    }
+    if(a[i]=='-'&&a[i+1] == '-'){
+        i+=1;
+        cout<<2;
+        continue;
     }
 }
-FOR(i,0,n,1)cout<<arr[i];
 return 0;
 }
