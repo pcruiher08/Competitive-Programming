@@ -28,19 +28,25 @@ using namespace std;
 
 int main(){
 sync;
-string year; cin>>year; 
-int d1, d2, d3, d4; 
-d1 = year[0] - '0'; 
-d2 = year[1] - '0'; 
-d3 = year[2] - '0'; 
-d4 = year[3] - '0';
-cout<<"orig: "<<year<<endl;
-int totYear = 0;
-totYear += d1 * 1000 + d2 * 100 + d3 * 10 + d4;
-cout<<"d1: " <<d1<<endl;
-cout<<"d2: " <<d2<<endl;
-cout<<"d3: " <<d3<<endl;
-cout<<"d4: " <<d4<<endl;
-cout<<totYear<<endl;
+int year; cin>>year; 
+stringstream s; 
+string vacio = "";
+FOR(i,year+1,90010,1){
+    year++;
+    int p1,p2,p3,p4,help;
+    help = i; 
+    p1 = help%10;
+    help /= 10; 
+    p2 = help%10; 
+    help /= 10; 
+    p3 = help %10; 
+    help /= 10; 
+    p4 = help %10; 
+    if((p1 != p2) && (p1 != p3) && (p1 != p4) && (p2 != p3) && (p2 != p4) && (p3 != p4)){
+        cout<<year<<endl; 
+        return 0;
+    } 
+}
+
 return 0;
 }
