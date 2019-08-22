@@ -47,6 +47,5 @@ FOR(i,year+1,90010,1){
         return 0;
     } 
 }
-
 return 0;
 }
