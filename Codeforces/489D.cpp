@@ -50,13 +50,7 @@ int piso = 0;
 int acumulador = 0;
 
 while(piso<nodos){
-    FOR(i,0,nodos,1){
-        if(matAdj[piso][i]){
-            FOR(j,0,nodos,1)
-            if(matAdj[i][j])
-            matrizDeNodos[piso][j]++;
-        }
-    }
+    FOR(i,0,nodos,1)if(matAdj[piso][i])FOR(j,0,nodos,1)if(matAdj[i][j])matrizDeNodos[piso][j]++;
     piso++;
 }
 
