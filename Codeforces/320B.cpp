@@ -35,25 +35,22 @@ bool isCompatible(nodo a, nodo b){
     return ((b.nums.first<a.nums.first && a.nums.first < b.nums.second) || (b.nums.first<a.nums.second && a.nums.second < b.nums.second));
 }
 
-bool dfs(vector< vector<int> > grafo, bool visitados[], int origen, int destino){
-    cout << "este " << origen << " : ";
+void dfs(vector< vector<int> > grafo, bool visitados[], int origen, int destino, bool &encontrado){
     FOR(i,0,grafo[origen].size(),1){
-        cout << grafo[origen][i] << " | ";
         if(!visitados[grafo[origen][i]]){
-            cout<<grafo[origen][i]<<"->";
             visitados[grafo[origen][i]] = true;
-            if(grafo[origen][i] == destino) return true;
-            dfs(grafo,visitados,grafo[origen][i],destino);
+            if(grafo[origen][i] == destino){encontrado = true; return;}
+            dfs(grafo,visitados,grafo[origen][i],destino,encontrado);
         }
     }
-    return false;
+    return;
 }
 
 int main(){
 sync;
 vector <nodo> vectorDeNodos;
 int queries; cin>>queries; 
-vector< vector<int> > grafo(queries + 2);
+vector< vector<int> > grafo(queries);
 int contadorDeIDs = 0;
 FOR(q,0,queries,1){
     int tipo; cin>>tipo; 
@@ -80,8 +77,10 @@ FOR(q,0,queries,1){
         //preguntamos
         bool visitados[100];
         int a,b; cin>>a>>b;
+        bool encontrado = false;
         memset(visitados,false,sizeof(visitados));
-        cout<<(dfs(grafo,visitados,a-1,b-1)?"YES":"NO")<<endl;
+        dfs(grafo,visitados,a-1,b-1,encontrado);
+        cout<<(encontrado?"YES":"NO")<<endl;
 
     }
 }
