@@ -29,13 +29,16 @@ using namespace std;
 void dfs(vector<int> &acumulador, int nodoActual, bool visitados[], int cuantosNodosHay, int *mat[], int sumaActual, bool realmenteVisitados[]){   
     FOR(i,0,cuantosNodosHay,1){
         realmenteVisitados[i+1] = true;
-        if(i>=cuantosNodosHay) visitados[i+1] = true;
+        //visitados[i+1] = true;
+        //if(i>=cuantosNodosHay) visitados[i+1] = true;
         //FOR(k,0,cuantosNodosHay,1)cout<<visitados[k]<<",";
         //memset(visitados,0,sizeof(visitados));
         //FOR(k,0,i,1)visitados[k] = true;
         FOR(j,0,cuantosNodosHay,1){
+            //visitados[i+1] = true;
             if(!visitados[j+1] && mat[i][j]!=0 && i!=j){
                 //visitados[j+1] = true;
+                
                 if(!visitados[j+1]) sumaActual = 0;
                 acumulador.pb(sumaActual+mat[i][j]);
                 cout<<"nodo: " << i + 1 <<" a "<< j + 1 << " peso: " << mat[i][j] <<" acum: " << sumaActual + mat[i][j] <<endl;
