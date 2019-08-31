@@ -92,7 +92,6 @@ bool realmenteVisitados[n+1];
 FOR(i,0,n,1)visitados[i] = 0;
 int sumaActual = 0;
 
-
 cout<<"......PRINT MATRIZ ACTUAL........"<<endl;
 FOR(i,0,n,1){FOR(j,0,n,1){cout<<mat[i][j]<<" ";}cout<<endl;}
 
