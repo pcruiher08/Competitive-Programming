@@ -32,7 +32,7 @@ using namespace std;
 
 class Graph{
 	int V;
-	list< pair<int, int> > *adj;
+	list< pii > *adj;
 
 public:
 	Graph(int V); // Constructor
