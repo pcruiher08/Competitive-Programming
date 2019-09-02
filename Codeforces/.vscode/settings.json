@@ -8,6 +8,7 @@
         "algorithm": "cpp",
         "iostream": "cpp",
         "map": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "cstdio": "cpp"
     }
 }
