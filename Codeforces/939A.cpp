@@ -33,15 +33,11 @@ using namespace std;
 int main(){
 sync;
 int n; cin>>n;
-
 int amor[3][n];
-
 FOR(i,0,n,1)cin>>amor[0][i];
 FOR(i,0,n,1)amor[1][i] = amor[0][amor[0][i]-1];
 FOR(i,0,n,1) amor[2][i] = amor[1][amor[1][i]-1];
-
 FOR(i,0,n,1)if(amor[0][i] == amor[2][i]){cout<<"YES"<<endl; return 0;}
-
 cout<<"NO"<<endl;
 return 0;
 }
