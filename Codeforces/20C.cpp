@@ -52,7 +52,6 @@ void Graph::addEdge(int u, int v, int w){
 }
 
 
-
 // imprime todos los caminos mas cortos desde un origen hacia todos los nodos
 vector<int> Graph::Dijkstra(int src){
     priority_queue< pii, vector <pii > , greater<pii > > pq;
@@ -93,7 +92,7 @@ FOR(i,0,k,1){
 
 vector<int> res = g.Dijkstra(0);
 
-FOR(i,1,v,1)cout<<(res[i]?res[i]:0)<<" ";
+FOR(i,1,v,1)cout<<(res[i]?res[i]:-1)<<" ";
 cout<<endl;
 
 //FOR(i,1,v,1)cout<<i<<" "<<res[i]<<endl;
