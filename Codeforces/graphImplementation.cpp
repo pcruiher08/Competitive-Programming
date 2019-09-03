@@ -37,7 +37,7 @@ class Graph{
 public:
 	Graph(int V); // Constructor
 	void addEdge(int u, int v, int w);
-	vector<int> shortestPath(int s);
+	vector<int> Dijkstra(int s);
 };
 
 Graph::Graph(int V){
@@ -51,8 +51,10 @@ void Graph::addEdge(int u, int v, int w){
 	adj[v].pb(mp(u, w));
 }
 
+
+
 // imprime todos los caminos mas cortos desde un origen hacia todos los nodos
-vector<int> Graph::shortestPath(int src){
+vector<int> Graph::Dijkstra(int src){
 	priority_queue< pii, vector <pii > , greater<pii > > pq;
 	vector<int> dist(V, INF);
 	//se ingresa el origen con distancia 0 hacia si mismo
@@ -96,7 +98,7 @@ sync;
 	g.addEdge(6, 8, 6);
 	g.addEdge(7, 8, 7);
     vector<int> distancias(V);
-	distancias = g.shortestPath(0);
+	distancias = g.Dijkstra(0);
     FOR(i,0,V,1)cout<<i<<" "<<distancias[i]<<endl;
 	return 0;
 
