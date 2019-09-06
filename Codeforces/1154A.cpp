@@ -32,7 +32,6 @@ using namespace std;
 
 int main(){
 sync;
-
 int arr[4];
 FOR(i,0,4,1)cin>>arr[i];
 sort(arr,arr+4);
