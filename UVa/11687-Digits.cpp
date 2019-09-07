@@ -39,7 +39,6 @@ while(cin>>s){
     if(s=="END")return 0;
     medida = s.length();
     cuenta = 1;
-
     //cout<<"fuaaaa: "<<floor(log10(medida))+1<<endl;
     //medida = floor(log10(medida))+1 ;
     if (s == "1") cuenta = 0;
