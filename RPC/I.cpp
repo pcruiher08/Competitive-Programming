@@ -31,15 +31,15 @@
 using namespace std;
 
 int main(){
-sync;
+    sync;
 
-int n, m; cin>>n>>m; 
-int arr[300010];
-int memoria[300010];
-FOR(i,1,n+1,1)cin>>arr[i];
-FOR(i,1,m+1,1) memoria[i]=0;
-FOR(i,m+1,n+1,1)memoria[i] = max(memoria[i-m]+arr[i],memoria[i-1]);
+    int n, m; cin>>n>>m; 
+    int arr[300010];
+    int memoria[300010];
+    FOR(i,1,n+1,1)cin>>arr[i];
+    FOR(i,1,m+1,1) memoria[i]=0;
+    FOR(i,m+1,n+1,1)memoria[i] = max(memoria[i-m]+arr[i],memoria[i-1]);
 
-cout<<memoria[n]<<endl;
-return 0;
+    cout<<memoria[n]<<endl;
+    return 0;
 }
