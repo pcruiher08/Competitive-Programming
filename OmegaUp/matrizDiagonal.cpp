@@ -26,6 +26,7 @@
 using namespace std;
 int main(){
 sync;
+
 int n; cin>>n;
 int mat[n][n];
 int comparacion;
