@@ -29,7 +29,6 @@
 #define vi vector<int>
 #define pii pair<int,int>
 using namespace std;
-
 int main(){
 sync;
 int n; cin>>n;
