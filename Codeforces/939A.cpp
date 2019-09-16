@@ -31,7 +31,6 @@
 using namespace std;
 int main(){
 sync;
-
 int n; cin>>n;
 int amor[3][n];
 FOR(i,0,n,1)cin>>amor[0][i];
