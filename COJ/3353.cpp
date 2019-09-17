@@ -7,6 +7,7 @@
 #include <math.h>
 
 using namespace std;
+
 int main(){
     int n,e,suma=0,g;
     cin>>n>>e;
