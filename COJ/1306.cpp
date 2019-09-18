@@ -29,11 +29,9 @@
 #define vi vector<int>
 #define pii pair<int,int>
 using namespace std;
-
 int main(){
 sync;
 int n,k; cin>>n; 
 while(n--){cin>>k;cout<<(k%4==0?"YES":"NO")<<endl;}
-
 return 0;
 }
