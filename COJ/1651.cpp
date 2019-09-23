@@ -37,7 +37,6 @@ void fastscan(int &x){
     while(((ch=getchar())>='0')&&(ch<='9'))a*=10, a+=ch-'0';
     if(f)a=-a;x=a;
 }
-
 class RMQ {
 private:
 //int SpT[100000][20];
