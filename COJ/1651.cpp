@@ -63,7 +63,6 @@ public:
     if (_A[SpT[k][i]] <= _A[SpT[k][j-(1<<k)+1]]) return SpT[k][i];
     else return SpT[k][j-(1<<k)+1];
 } };
-
 int main(){
 sync;
 int n, k, a, b, aux; fastscan(n);  
