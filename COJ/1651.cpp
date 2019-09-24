@@ -58,7 +58,6 @@ public:
         else
           SpT[j][i] = SpT[j-1][i+(1<<(j-1))];
   }
-
   int query(int i, int j) {
     int k = (int)floor(log((double)j-i+1) / log(2.0));
     if (_A[SpT[k][i]] <= _A[SpT[k][j-(1<<k)+1]]) return SpT[k][i];
