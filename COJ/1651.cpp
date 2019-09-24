@@ -66,7 +66,6 @@ public:
 int main(){
 sync;
 int n, k, a, b, aux; fastscan(n);  
-
 vi arr; 
 FOR(i,0,n,1){fastscan(aux); arr.pb(aux);}
 RMQ arbolitoDeNavidad(n,arr);
