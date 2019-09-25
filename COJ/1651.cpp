@@ -39,7 +39,7 @@ void fastscan(int &x){
 }
 class RMQ {
 private:
-//intSpT[100000][20];
+//int SpT[100000][20];
   int *SpT[20];
   vi _A;
 public:
