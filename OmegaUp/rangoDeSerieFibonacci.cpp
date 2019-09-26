@@ -30,19 +30,27 @@
 #define pii pair<int,int>
 using namespace std;
 
-ull fst = 0, sec = 1, aux;
+const int MAX = 1000001;
+ull f[MAX] = {0};
+ull fib(ull n){
+    if (n == 0)
+        return 0;
+    if (n == 1 || n == 2)
+        return (f[n] = 1);
+    if (f[n])
+        return f[n];
+    ull k = (n & 1)? (n+1)/2 : n/2;
+    f[n] = (n & 1)? (fib(k)%mod*fib(k)%mod + fib(k-1)%mod*fib(k-1)%mod)%mod : (2*fib(k-1)%mod + fib(k)%mod)%mod*fib(k)%mod;
+    return f[n]%mod;
+}
+
 int main(){
 sync;
 ull a, b; cin>>a>>b;
-ull pos = min(a,b);
-FOR(i,0,max(a,b)-1,1){
-    aux = sec;
-    sec = fst + sec;
-    fst = aux;
-    if(i>=pos-1){
-        cout<<sec;
-    }
+FOR(i,a+1,b+1,1){
+    cout<<fib(i);
 }
+if(a==b)cout<<fib(b+1);
 cout<<endl;
 
 return 0;
