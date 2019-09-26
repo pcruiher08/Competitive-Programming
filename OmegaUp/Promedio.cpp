@@ -32,13 +32,8 @@ using namespace std;
 
 int main(){
 sync;
-string s; 
-cin>>s; 
-int cuenta = 0;
-FOR(i,0,s.size(),1){
-    cuenta += s[i] - 'A'+1;
-}
-cout<<cuenta<<endl;
+int a,b; cin>>a>>b; 
+cout<<b*2-a<<endl;
 
 return 0;
 }
