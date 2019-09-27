@@ -40,13 +40,13 @@ ull fib(ull n){
     if (f[n])
         return f[n];
     ull k = (n & 1)? (n+1)/2 : n/2;
-    f[n] = (n & 1)? (fib(k)%mod*fib(k)%mod + fib(k-1)%mod*fib(k-1)%mod)%mod : (2*fib(k-1)%mod + fib(k)%mod)%mod*fib(k)%mod;
-    return f[n]%mod;
+    f[n] = (n & 1)? (fib(k)*fib(k) + fib(k-1)*fib(k-1)) : (2*fib(k-1) + fib(k))*fib(k);
+    return f[n];
 }
-
 int main(){
 sync;
 ull a, b; cin>>a>>b;
+if(a==0)cout<<0;
 FOR(i,a+1,b+1,1){
     cout<<fib(i);
 }
