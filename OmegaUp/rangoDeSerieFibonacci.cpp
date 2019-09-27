@@ -52,6 +52,5 @@ FOR(i,a+1,b+1,1){
 }
 if(a==b)cout<<fib(b+1);
 cout<<endl;
-
 return 0;
 }
