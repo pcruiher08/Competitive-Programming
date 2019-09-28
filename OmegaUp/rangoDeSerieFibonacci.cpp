@@ -29,7 +29,6 @@
 #define vi vector<int>
 #define pii pair<int,int>
 using namespace std;
-
 const int MAX = 1000001;
 ull f[MAX] = {0};
 ull fib(ull n){
