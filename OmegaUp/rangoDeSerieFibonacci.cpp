@@ -42,6 +42,7 @@ ull fib(ull n){
     f[n] = (n & 1)? (fib(k)*fib(k) + fib(k-1)*fib(k-1)) : (2*fib(k-1) + fib(k))*fib(k);
     return f[n];
 }
+
 int main(){
 sync;
 ull a, b; cin>>a>>b;
