@@ -32,7 +32,11 @@ using namespace std;
 
 int main(){
 sync;
-ull n; cin>>n; 
-cout<<(n*(n+1)*0.5)<<endl;
+int n,a; cin>>n;
+vi uno,dos;
+FOR(i,0,n,1)cin>>a,uno.pb(a);
+FOR(i,0,n,1)cin>>a,dos.pb(a);
+cout<<(uno==dos?"SI":"NO")<<endl;
+
 return 0;
 }

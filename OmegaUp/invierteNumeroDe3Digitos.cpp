@@ -32,7 +32,20 @@ using namespace std;
 
 int main(){
 sync;
-ull n; cin>>n; 
-cout<<(n*(n+1)*0.5)<<endl;
+string s; 
+cin>>s;
+reverse(s.begin(),s.end());
+while(s.length()<3){
+    s.pb('0');
+}
+bool flag = false;
+FOR(i,0,3,1){
+    
+    if(s[i]!='0'||flag){
+        cout<<s[i];
+        flag = true;
+    }
+}
+
 return 0;
 }

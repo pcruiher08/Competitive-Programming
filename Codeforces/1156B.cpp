@@ -32,7 +32,24 @@ using namespace std;
 
 int main(){
 sync;
-ull n; cin>>n; 
-cout<<(n*(n+1)*0.5)<<endl;
+int n; cin>>n; 
+while(n--){
+    string s; cin>>s;
+    string pares = "", impares = "";
+    string res = "";
+    FOR(i,0,s.length(),1)if(s[i]%2==0)pares.pb(s[i]);else impares.pb(s[i]);
+    sort(pares.begin(),pares.end());
+    sort(impares.begin(),impares.end());
+    res+=pares;
+    res+=impares;
+    if(abs(pares[pares.length()-1] - impares[0])!=1){
+        cout<<pares<<impares<<endl;
+    }else if(abs(impares[impares.length()-1] - pares[0])!=1){
+        cout<<impares<<pares<<endl;
+    }else{
+        cout<<"No answer"<<endl;
+    }
+}
+
 return 0;
 }

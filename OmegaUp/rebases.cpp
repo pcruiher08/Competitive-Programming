@@ -32,7 +32,12 @@ using namespace std;
 
 int main(){
 sync;
-ull n; cin>>n; 
-cout<<(n*(n+1)*0.5)<<endl;
+int n; cin>>n;
+int arr[n];
+FOR(i,0,n,1)cin>>arr[n-i-1];
+int c = 0; 
+FOR(i,0,n,1)FOR(j,i,n,1)if(arr[j]>arr[i])c++;
+cout<<c<<endl;
+
 return 0;
 }

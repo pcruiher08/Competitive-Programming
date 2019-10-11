@@ -32,7 +32,18 @@ using namespace std;
 
 int main(){
 sync;
-ull n; cin>>n; 
-cout<<(n*(n+1)*0.5)<<endl;
+
+int n; cin>>n; 
+
+
+while(n--){
+    int ov = 0; 
+    int k; cin>>k;
+    while(k--){
+        string s; cin>>s; 
+        if(s=="oveja")ov++;
+    }
+    cout<<ov<<endl;
+}
 return 0;
 }

@@ -32,7 +32,8 @@ using namespace std;
 
 int main(){
 sync;
-ull n; cin>>n; 
-cout<<(n*(n+1)*0.5)<<endl;
+
+
+
 return 0;
 }

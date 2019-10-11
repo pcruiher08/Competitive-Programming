@@ -32,7 +32,15 @@ using namespace std;
 
 int main(){
 sync;
-ull n; cin>>n; 
-cout<<(n*(n+1)*0.5)<<endl;
+int n,k; cin>>n; 
+int suma = 0;
+k = n*(n+1)*0.5;
+n--;
+while(n--){
+    int j; 
+    cin>>j; 
+    suma+=j;
+}
+cout<<k-suma<<endl;
 return 0;
 }

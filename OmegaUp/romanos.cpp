@@ -32,7 +32,35 @@ using namespace std;
 
 int main(){
 sync;
-ull n; cin>>n; 
-cout<<(n*(n+1)*0.5)<<endl;
+int n; cin>>n;
+int uno = 0,cinco = 0,diez = 0,cincuenta = 0,cien = 0;
+uno = n%5;
+cout<<uno<<endl;
+n-=uno;
+cinco = n%10;
+cinco %=5;
+cout<<cinco<<endl;
+n-=cinco;
+diez=n%50;
+diez%=10;
+diez%=5;
+cout<<diez<<endl;
+n-=diez;
+cincuenta = n%100;
+cincuenta%=50;
+cincuenta%=10;
+cincuenta%=5;
+cout<<cincuenta<<endl;
+n-=cincuenta;
+cien = n;
+cout<<cien<<endl;
+
+FOR(i,0,cien,1)cout<<"C";
+FOR(i,0,cincuenta,1)cout<<"L";
+FOR(i,0,diez,1)cout<<"X";
+FOR(i,0,cinco,1)cout<<"V";
+FOR(i,0,uno,1)cout<<"I";
+cout<<endl;
+
 return 0;
 }

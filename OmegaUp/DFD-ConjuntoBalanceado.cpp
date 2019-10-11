@@ -32,7 +32,25 @@ using namespace std;
 
 int main(){
 sync;
-ull n; cin>>n; 
-cout<<(n*(n+1)*0.5)<<endl;
+int n; cin>>n; 
+int pos = 0,neg = 0;
+int j;
+while(n--){
+    cin>>j;
+    if(j<0){
+        neg+=(j*-1);
+    }else{
+        pos+=j;
+    }
+}
+
+if(pos==neg){
+    cout<<"BALANCEADO"<<endl;
+}else if(pos>neg){
+    cout<<"POSITIVO"<<endl;
+}else{
+    cout<<"NEGATIVO"<<endl;
+}
+
 return 0;
 }

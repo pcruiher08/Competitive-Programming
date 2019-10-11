@@ -30,9 +30,25 @@
 #define pii pair<int,int>
 using namespace std;
 
+
+
 int main(){
-sync;
-ull n; cin>>n; 
-cout<<(n*(n+1)*0.5)<<endl;
-return 0;
+    sync;
+    long long int dia, mes, anio, diasAnio, total= 0;
+    cin>>dia>>mes>>anio;
+    if(anio==2001){
+        total+=((mes-1)*57)%7;
+        if(mes>2)total+=2;
+        total+=dia;
+    }else{
+        diasAnio=(anio-2000)/5;
+        if(anio%5==0)diasAnio--;
+        total+=((anio-diasAnio-2000)*686+diasAnio*685)%7;
+        total+=((mes-1)*57)%7;
+        if(mes>2){
+            total+= 2;if(anio%5==0)total--;
+        }
+        total+=dia;
+    }
+    cout<<(total%7?total%7:7)<<endl;
 }

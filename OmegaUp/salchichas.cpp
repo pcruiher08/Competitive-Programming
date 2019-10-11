@@ -32,7 +32,18 @@ using namespace std;
 
 int main(){
 sync;
-ull n; cin>>n; 
-cout<<(n*(n+1)*0.5)<<endl;
+int n,t,s,c = 0; cin>>n>>t;
+vi sal; 
+FOR(i,0,n,1)cin>>s,sal.pb(s);
+sort(sal.begin(),sal.end());
+FOR(i,1,n,1)sal[i]+=sal[i-1];
+FOR(i,0,n,1){
+    if(sal[i]>t){
+        cout<<i<<endl;
+        return 0;
+    }
+}
+cout<<n<<endl;
+
 return 0;
 }
