@@ -32,21 +32,28 @@ using namespace std;
 
 int main(){
 sync;
-/*
-a * 2^n = b * 2^m;
-a/b = 2^(m-n);
-log2(a/b) = m-n;
-*/
-double a,b; cin>>a>>b;
-double uno,dos;
-uno = log(a/b)/log(2);
-dos = floor(uno);
 
-if(uno == dos){
-    cout<<"felizmil"<<endl;
+ull n,m; cin>>n>>m; 
+ull k; cin>>k; 
+ull x,y; cin>>x>>y;
+
+
+ull costoHorizontal = (m-1) * x + y; 
+ull costoVertical = (n-1) * y + x; 
+if(costoHorizontal * n - y <= k || costoVertical * m - y <= k){
+    cout<<n*m<<endl;
+}else if(x<y){
+    ull filas = k / costoHorizontal;
+    k-= filas * costoHorizontal;
+    cout<<m*filas + min(k/x, m-1) + 1 <<endl;
 }else{
-    cout<<"tristemil"<<endl;
+    ull columnas = k / costoVertical; 
+    k-= columnas * costoVertical; 
+    cout<<n * columnas + min(k / y, n-1) +1 <<endl;
 }
+
+
+
 
 return 0;
 }

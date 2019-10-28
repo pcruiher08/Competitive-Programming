@@ -29,24 +29,52 @@
 #define vi vector<int>
 #define pii pair<int,int>
 using namespace std;
-
+int mat[101][101];
 int main(){
 sync;
-/*
-a * 2^n = b * 2^m;
-a/b = 2^(m-n);
-log2(a/b) = m-n;
-*/
-double a,b; cin>>a>>b;
-double uno,dos;
-uno = log(a/b)/log(2);
-dos = floor(uno);
 
-if(uno == dos){
-    cout<<"felizmil"<<endl;
-}else{
-    cout<<"tristemil"<<endl;
+
+    int x1,y1; cin>>x1>>y1;
+    int x2,y2; cin>>x2>>y2;
+    mat[x1][y1] = 1;
+    mat[x2][y2] = 1; 
+    mat[x2][y1] = 1; 
+    mat[x1][y2] = 1; 
+
+
+
+
+    int x3,y3; cin>>x3>>y3;
+    int x4,y4; cin>>x4>>y4;
+    mat[x3][y3] = 2;
+    mat[x4][y4] = 2; 
+    mat[x4][y3] = 2; 
+    mat[x3][y4] = 2; 
+bool hay = false;
+
+
+FOR(i,min(x1,x2),max(x1,x2)+1,1){
+    FOR(j,min(y1,y2),max(y1,y2)+1,1){
+        if(mat[i][j]==2){ hay = true;
+        cout<<"SI"<<endl; return 0;}
+    }
 }
+
+
+ 
+
+FOR(i,min(x3,x4),max(x3,x4)+1,1){
+    FOR(j,min(y3,y4),max(y3,y4)+1,1){
+        if(mat[i][j]==1){ hay = true;
+        cout<<"SI"<<endl; return 0;}
+    }
+}
+
+cout<<"NO"<<endl;
+
+//xyxyxyxyxy
+
+
 
 return 0;
 }

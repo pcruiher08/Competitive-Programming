@@ -32,21 +32,28 @@ using namespace std;
 
 int main(){
 sync;
-/*
-a * 2^n = b * 2^m;
-a/b = 2^(m-n);
-log2(a/b) = m-n;
-*/
-double a,b; cin>>a>>b;
-double uno,dos;
-uno = log(a/b)/log(2);
-dos = floor(uno);
+int n; cin>>n; 
+vi arr; int aux;
+int peligro = 0, peligro2 = 0;
+int sum = 0;
+vi pares;
+vi pares2;
+FOR(i,0,n*2,1)cin>>aux,arr.pb(aux);
+sort(arr.begin(), arr.end());
 
-if(uno == dos){
-    cout<<"felizmil"<<endl;
-}else{
-    cout<<"tristemil"<<endl;
-}
+
+//pares
+FOR(i,0,n*2,2)peligro+=abs(arr[i]-arr[i+1]),pares.pb(abs(arr[i]-arr[i+1]));
+FOR(i,1,n*2-1,2)peligro2+=abs(arr[i]-arr[i+1]),pares2.pb(abs(arr[i]-arr[i+1]));
+
+sort(pares.begin(), pares.end());
+
+peligro-=pares[n-1];
+//FOR(i,0,n-1,1)peligro2+=pares[i];
+
+cout<<min(peligro2,peligro)<<endl;
+
+
 
 return 0;
 }

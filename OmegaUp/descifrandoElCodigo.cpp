@@ -32,21 +32,9 @@ using namespace std;
 
 int main(){
 sync;
-/*
-a * 2^n = b * 2^m;
-a/b = 2^(m-n);
-log2(a/b) = m-n;
-*/
-double a,b; cin>>a>>b;
-double uno,dos;
-uno = log(a/b)/log(2);
-dos = floor(uno);
 
-if(uno == dos){
-    cout<<"felizmil"<<endl;
-}else{
-    cout<<"tristemil"<<endl;
-}
-
+string a; 
+cin>>a; 
+cout<<a[a.length()-1]<<endl;
 return 0;
 }

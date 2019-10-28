@@ -32,21 +32,17 @@ using namespace std;
 
 int main(){
 sync;
-/*
-a * 2^n = b * 2^m;
-a/b = 2^(m-n);
-log2(a/b) = m-n;
-*/
-double a,b; cin>>a>>b;
-double uno,dos;
-uno = log(a/b)/log(2);
-dos = floor(uno);
+string a;
+getline(cin,a);
 
-if(uno == dos){
-    cout<<"felizmil"<<endl;
-}else{
-    cout<<"tristemil"<<endl;
+FOR(i,0,a.length(),1){
+    if(a[i]=='B') a[i] = 'D';
+
+    else if(a[i]=='b') a[i] = 'd';
+    else if(a[i] == 'D') a[i] = 'B';
+    else if(a[i] == 'd') a[i] = 'b';
+
 }
-
+cout<<a<<endl;
 return 0;
 }

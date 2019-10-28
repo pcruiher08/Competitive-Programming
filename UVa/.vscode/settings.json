@@ -4,6 +4,11 @@
         "iostream": "cpp",
         "ostream": "cpp",
         "valarray": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "array": "cpp",
+        "bitset": "cpp",
+        "initializer_list": "cpp",
+        "regex": "cpp",
+        "utility": "cpp"
     }
 }

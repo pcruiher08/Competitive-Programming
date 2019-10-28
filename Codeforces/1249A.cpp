@@ -24,6 +24,7 @@
 #define mod 1000000007
 #define PI 3.1415926535897932384626433832795028841971
 #define INF 0x3f3f3f3f
+#define EPS 1e-9
 #define MOD(x) ((x%mod)+mod)%mod
 #define sync ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 #define vi vector<int>
@@ -32,21 +33,36 @@ using namespace std;
 
 int main(){
 sync;
-/*
-a * 2^n = b * 2^m;
-a/b = 2^(m-n);
-log2(a/b) = m-n;
-*/
-double a,b; cin>>a>>b;
-double uno,dos;
-uno = log(a/b)/log(2);
-dos = floor(uno);
+int n; cin>>n;
+while(n--){
+    int k; cin>>k;
+        vi l;
+        int x; 
+        FOR(i,0,k,1){cin>>x; l.pb(x);}
+        sort(l.begin(),l.end());
+        FOR(i,1,l.size(),1)if(l[i]==l[i-1]+1){cout<<2<<endl; goto here;}
 
-if(uno == dos){
-    cout<<"felizmil"<<endl;
-}else{
-    cout<<"tristemil"<<endl;
+        cout<<1<<endl;
+        
+here: ;
+    
 }
+/*
 
+4
+4
+2 10 1 20
+2
+3 6
+5
+2 3 4 99 100
+1
+42
+
+
+
+
+*/
 return 0;
 }
+

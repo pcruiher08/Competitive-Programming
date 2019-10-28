@@ -29,24 +29,18 @@
 #define vi vector<int>
 #define pii pair<int,int>
 using namespace std;
-
+ll arr[1000001];
 int main(){
 sync;
-/*
-a * 2^n = b * 2^m;
-a/b = 2^(m-n);
-log2(a/b) = m-n;
-*/
-double a,b; cin>>a>>b;
-double uno,dos;
-uno = log(a/b)/log(2);
-dos = floor(uno);
-
-if(uno == dos){
-    cout<<"felizmil"<<endl;
-}else{
-    cout<<"tristemil"<<endl;
+ll n; cin>>n; 
+FOR(i,0,n,1){
+    ll lec; cin>>lec;
+    arr[lec]++;
 }
-
+int k; cin>>k; 
+while(k--){
+    int query; cin>>query; 
+    cout<<arr[query]<<endl;
+}
 return 0;
 }

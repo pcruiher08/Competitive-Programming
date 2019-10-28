@@ -14,7 +14,7 @@
 #include <vector>
 #include <cstring>
 #include <climits>
-#define ll long long
+#define ll long longlol
 #define ull unsigned long long
 #define FOR(m,s,n,u) for(int m=s; m<n; m+=u)
 #define ROF(m,s,n,u) for(int m=n; m>=s; m-=u)
@@ -32,21 +32,9 @@ using namespace std;
 
 int main(){
 sync;
-/*
-a * 2^n = b * 2^m;
-a/b = 2^(m-n);
-log2(a/b) = m-n;
-*/
-double a,b; cin>>a>>b;
-double uno,dos;
-uno = log(a/b)/log(2);
-dos = floor(uno);
-
-if(uno == dos){
-    cout<<"felizmil"<<endl;
-}else{
-    cout<<"tristemil"<<endl;
-}
-
+ull n; cin>>n;
+int res = 0;
+while(n>0)res+=n,n/=2;
+cout<<res<<endl;
 return 0;
 }

@@ -30,23 +30,28 @@
 #define pii pair<int,int>
 using namespace std;
 
-int main(){
-sync;
-/*
-a * 2^n = b * 2^m;
-a/b = 2^(m-n);
-log2(a/b) = m-n;
-*/
-double a,b; cin>>a>>b;
-double uno,dos;
-uno = log(a/b)/log(2);
-dos = floor(uno);
-
-if(uno == dos){
-    cout<<"felizmil"<<endl;
-}else{
-    cout<<"tristemil"<<endl;
+void pinta(bool manchados[], int inicio, int final){
+    ROF(i,final, inicio, 1){
+        manchados[i] = true;
+    }
 }
 
+int main(){
+sync;
+int n; cin>>n;
+int cuenta = 0, lec;
+vi fuerzas;
+bool personas[n];
+memset(personas,false,sizeof(personas));
+FOR(i,0,n,1)cin>>lec,fuerzas.pb(lec);
+reverse(fuerzas.begin(),fuerzas.end());
+FOR(i,0,n,1){
+    FOR(j,i+1,fuerzas[i]+i+1,1){
+        personas[j] = true;
+    }
+}
+
+FOR(i,0,n,1)cuenta+=(!personas[i]);
+cout<<cuenta<<endl;
 return 0;
 }

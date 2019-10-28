@@ -30,23 +30,33 @@
 #define pii pair<int,int>
 using namespace std;
 
+
+ull cuenta(ull number, ull digit){
+    
+ull remainder, quotient;
+ull count, i;
+count = i = 0;
+
+quotient = number;
+
+while(quotient){
+    remainder = quotient % 10;
+    quotient = quotient / 10;
+
+    if (digit == remainder){
+        count = count + 1;
+    }
+}
+return count;
+
+}
+
 int main(){
 sync;
-/*
-a * 2^n = b * 2^m;
-a/b = 2^(m-n);
-log2(a/b) = m-n;
-*/
-double a,b; cin>>a>>b;
-double uno,dos;
-uno = log(a/b)/log(2);
-dos = floor(uno);
 
-if(uno == dos){
-    cout<<"felizmil"<<endl;
-}else{
-    cout<<"tristemil"<<endl;
-}
+ull n; cin>>n;
+cout<<cuenta(n,2)+cuenta(n,4)+cuenta(n,6)+cuenta(n,8);
 
 return 0;
 }
+

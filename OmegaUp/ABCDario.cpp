@@ -32,20 +32,17 @@ using namespace std;
 
 int main(){
 sync;
-/*
-a * 2^n = b * 2^m;
-a/b = 2^(m-n);
-log2(a/b) = m-n;
-*/
-double a,b; cin>>a>>b;
-double uno,dos;
-uno = log(a/b)/log(2);
-dos = floor(uno);
-
-if(uno == dos){
-    cout<<"felizmil"<<endl;
-}else{
-    cout<<"tristemil"<<endl;
+int n; 
+cin>>n;
+while(n--){
+    string lec; 
+    int cuantos = 0;
+    cin>>lec; 
+    int arr[26];
+    memset(arr,0,sizeof(arr));
+    FOR(i,0,lec.size(),1){
+        if(!arr[lec[i]-'a'])cuantos++;arr[lec[i]-'a']++;}
+    cout<<(cuantos==26?"PERFECT":"NO WAY")<<endl;
 }
 
 return 0;

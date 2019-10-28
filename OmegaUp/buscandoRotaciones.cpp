@@ -30,22 +30,48 @@
 #define pii pair<int,int>
 using namespace std;
 
+
+bool validaDesde(string a, string b, int index){
+    FOR(i,0,a.length(),1){
+        if(a[i]!=b[(index + i ) % b.length()]) return false;
+    }
+    return true;
+}
+
+vi letrasA(26),letrasB(26);
+
 int main(){
 sync;
-/*
-a * 2^n = b * 2^m;
-a/b = 2^(m-n);
-log2(a/b) = m-n;
-*/
-double a,b; cin>>a>>b;
-double uno,dos;
-uno = log(a/b)/log(2);
-dos = floor(uno);
 
-if(uno == dos){
-    cout<<"felizmil"<<endl;
+string a, b; 
+cin>>a>>b;
+
+
+
+int indice = 0;
+
+if(a.length()==b.length()){
+    char busca = a[0];
+    FOR(i,0,b.length(),1){
+        if(b[i]==busca){
+            indice = i;
+            if(validaDesde(a,b,indice)){
+                //si
+                cout<<"Rotacion"<<endl;
+                return 0;
+            }  
+        }
+
+    }
+    //nel
+    cout<<"No rotacion"<<endl;
+    return 0;
+
+
 }else{
-    cout<<"tristemil"<<endl;
+    //nel
+    cout<<"No rotacion"<<endl;
+    return 0;
 }
 
 return 0;
