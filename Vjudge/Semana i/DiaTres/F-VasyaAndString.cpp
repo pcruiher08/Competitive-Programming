@@ -31,35 +31,35 @@
 #define pii pair<int,int>
 using namespace std;
 
-bool func(char a, char b){
-    return a>b;
-}
-
 int main(){
 sync;
-ll n,k; cin>>n>>k; 
-ll aux; 
-ll arr[n];
-ll res = 0;
-FOR(i,0,n,1)cin>>arr[i];
-string combo; 
-cin>>combo;
-ll cuenta1, cuentaRangoDeLetras; 
-cuenta1 = 0; cuentaRangoDeLetras = 0; 
-while(cuenta1<n){
-    cuentaRangoDeLetras = 0;
-    while(cuentaRangoDeLetras<n && combo[cuenta1]==combo[cuentaRangoDeLetras+cuenta1])cuentaRangoDeLetras++;
-    priority_queue<ll, vector<ll>, less<ll> > pq;
-    FOR(i,cuenta1,cuenta1+cuentaRangoDeLetras,1)pq.push(arr[i]);
-    ll c = 0;
-    while(!pq.empty() && c < k){
-        res+=pq.top(), pq.pop();
-        c++;
+
+string s; 
+int n,k; cin>>n>>k>>s;
+int uno =0, dos = 0; 
+int cuentaA = 0; 
+int cuentaB = 0;
+int i = 0;
+int j = 0;
+int respuesta = 0;
+
+while(i<n){
+
+    if(s[i]=='b') cuentaB++;
+    if(s[i]=='a') cuentaA++;
+    if(cuentaA<=k || cuentaB<=k){
+        respuesta++;
+        i++;
+    }else{
+        if(s[j] == 'a') cuentaA--;
+        if(s[j] == 'b') cuentaB--;
+        j++;
+        i++;
     }
-    cuenta1+=cuentaRangoDeLetras;
-    
+
+
 }
-cout<<res<<endl;
+cout<<respuesta<<endl;
 
 return 0;
 }

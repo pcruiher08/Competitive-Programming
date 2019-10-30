@@ -31,35 +31,26 @@
 #define pii pair<int,int>
 using namespace std;
 
-bool func(char a, char b){
-    return a>b;
-}
-
 int main(){
 sync;
-ll n,k; cin>>n>>k; 
-ll aux; 
-ll arr[n];
-ll res = 0;
+int n; cin>>n; 
+int arr[n+1]; 
+int dondeEstoy = 0;
 FOR(i,0,n,1)cin>>arr[i];
-string combo; 
-cin>>combo;
-ll cuenta1, cuentaRangoDeLetras; 
-cuenta1 = 0; cuentaRangoDeLetras = 0; 
-while(cuenta1<n){
-    cuentaRangoDeLetras = 0;
-    while(cuentaRangoDeLetras<n && combo[cuenta1]==combo[cuentaRangoDeLetras+cuenta1])cuentaRangoDeLetras++;
-    priority_queue<ll, vector<ll>, less<ll> > pq;
-    FOR(i,cuenta1,cuenta1+cuentaRangoDeLetras,1)pq.push(arr[i]);
-    ll c = 0;
-    while(!pq.empty() && c < k){
-        res+=pq.top(), pq.pop();
-        c++;
-    }
-    cuenta1+=cuentaRangoDeLetras;
-    
-}
-cout<<res<<endl;
+arr[n] = 0;
+int test = 0;
 
+while(arr[dondeEstoy] < arr[dondeEstoy+1]){
+     dondeEstoy++;
+}
+while(arr[dondeEstoy] == arr[dondeEstoy+1]){
+    dondeEstoy++;
+}
+while(arr[dondeEstoy] > arr[dondeEstoy+1]){
+     dondeEstoy++;
+}
+
+
+cout<<(dondeEstoy == n?"YES":"NO")<<endl;
 return 0;
 }

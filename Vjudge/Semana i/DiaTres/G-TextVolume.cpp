@@ -31,35 +31,36 @@
 #define pii pair<int,int>
 using namespace std;
 
-bool func(char a, char b){
-    return a>b;
-}
-
 int main(){
 sync;
-ll n,k; cin>>n>>k; 
-ll aux; 
-ll arr[n];
-ll res = 0;
-FOR(i,0,n,1)cin>>arr[i];
-string combo; 
-cin>>combo;
-ll cuenta1, cuentaRangoDeLetras; 
-cuenta1 = 0; cuentaRangoDeLetras = 0; 
-while(cuenta1<n){
-    cuentaRangoDeLetras = 0;
-    while(cuentaRangoDeLetras<n && combo[cuenta1]==combo[cuentaRangoDeLetras+cuenta1])cuentaRangoDeLetras++;
-    priority_queue<ll, vector<ll>, less<ll> > pq;
-    FOR(i,cuenta1,cuenta1+cuentaRangoDeLetras,1)pq.push(arr[i]);
-    ll c = 0;
-    while(!pq.empty() && c < k){
-        res+=pq.top(), pq.pop();
-        c++;
+int n; cin>>n; 
+vector<string>s;
+vector<int> vol;
+vol.pb(0);
+string a = "";
+string lee;
+cin.ignore();
+getline(cin,lee);
+int mayor = 0;
+int cuentaMayus = 0;
+FOR(i,0,n,1){
+    char c; 
+    c = lee[i];
+    if(c==' '){
+        
+        mayor = max(mayor,cuentaMayus);
+        //cout<<"mayor: " <<mayor<<endl;
+        cuentaMayus = 0;
+
+    }else{
+        if(lee[i]>='A'&&lee[i]<='Z'){
+          //  cout<<"sume"<<endl;
+            cuentaMayus++;
+        }
     }
-    cuenta1+=cuentaRangoDeLetras;
-    
+
 }
-cout<<res<<endl;
+cout<<max(mayor,cuentaMayus)<<endl;
 
 return 0;
 }
