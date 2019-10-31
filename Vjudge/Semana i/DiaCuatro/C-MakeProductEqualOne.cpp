@@ -33,21 +33,38 @@ using namespace std;
 
 int main(){
 sync;
-int q; cin>>q;
-int n; string s;
-while(q--){
-    cin>>n; 
-    cin>>s;
-    if(n==2 && s[0]-'0' >= s[1]-'0'){
-        cout<<"NO"<<endl;
-        goto here;    
+ll n; cin>>n; 
+ll arr[n];
+ll aux = 0;
+ll monedas = 0, cambiarlos = 0; 
+FOR(i,0,n,1)cin>>arr[i];
+
+FOR(i,0,n,1){
+
+    if(arr[i]-1==-1){
+        cambiarlos = 1; 
+        monedas++;
+    }else{
+        if(arr[i]*-1>0){
+            aux++;
+        }
     }
-    cout<<"YES"<<endl<<2<<endl;
-    cout<<s[0]<<" ";
-    FOR(i,1,n,1)cout<<s[i];
-    cout<<endl;
-    here:;
+
+    if(arr[i]>0 ||arr[i]<0){
+        if(arr[i]<0){
+            monedas = monedas + (arr[i])*-1 - 1;
+        }else{
+            monedas = monedas + arr[i] - 1;
+        }
+    }
 }
 
+if(cambiarlos==0){
+    if(aux%2!=0){
+        monedas++;
+        monedas++;
+    }
+}
+cout<<monedas<<endl;
 return 0;
 }

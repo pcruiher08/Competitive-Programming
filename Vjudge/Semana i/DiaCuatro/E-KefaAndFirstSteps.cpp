@@ -33,21 +33,22 @@ using namespace std;
 
 int main(){
 sync;
-int q; cin>>q;
-int n; string s;
-while(q--){
-    cin>>n; 
-    cin>>s;
-    if(n==2 && s[0]-'0' >= s[1]-'0'){
-        cout<<"NO"<<endl;
-        goto here;    
+int n; cin>>n; 
+int arr[n];
+int cuenta = 0;
+int aux = 0;
+int res = 0;
+FOR(i,0,n,1)cin>>arr[i];
+FOR(i,0,n,1){
+    if(arr[i]>=aux){
+        cuenta++;
+    }else{
+        res = max(res,cuenta);
+        cuenta = 1;
     }
-    cout<<"YES"<<endl<<2<<endl;
-    cout<<s[0]<<" ";
-    FOR(i,1,n,1)cout<<s[i];
-    cout<<endl;
-    here:;
+    aux = arr[i];
 }
 
+cout<<max(res,cuenta)<<endl;
 return 0;
 }

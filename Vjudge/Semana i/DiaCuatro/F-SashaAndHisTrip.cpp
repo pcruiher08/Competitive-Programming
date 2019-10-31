@@ -33,21 +33,13 @@ using namespace std;
 
 int main(){
 sync;
-int q; cin>>q;
-int n; string s;
-while(q--){
-    cin>>n; 
-    cin>>s;
-    if(n==2 && s[0]-'0' >= s[1]-'0'){
-        cout<<"NO"<<endl;
-        goto here;    
-    }
-    cout<<"YES"<<endl<<2<<endl;
-    cout<<s[0]<<" ";
-    FOR(i,1,n,1)cout<<s[i];
-    cout<<endl;
-    here:;
-}
 
+int n,v;
+cin>>n>>v;
+//compra todo rapido, es lo optimo
+//primero n-1
+//despues (n-v)*(n-v+1)/2 + v - 1
+cout<<(v>=n-1?n-1:(n-v)*(n-v+1)*0.5+v-1)<<endl;
 return 0;
+
 }

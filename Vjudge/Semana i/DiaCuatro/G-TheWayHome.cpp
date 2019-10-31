@@ -33,21 +33,42 @@ using namespace std;
 
 int main(){
 sync;
-int q; cin>>q;
-int n; string s;
-while(q--){
-    cin>>n; 
-    cin>>s;
-    if(n==2 && s[0]-'0' >= s[1]-'0'){
-        cout<<"NO"<<endl;
-        goto here;    
+int n, d; 
+cin>>n>>d; 
+string campo; 
+cin>>campo;
+bool sePuedeLlegar = true;
+int brincos = 0; 
+FOR(i,0,d+1,1)campo.pb('0');
+
+FOR(i,0,n,0){
+    int j;
+    int k = i;
+    for(j = k+d; j>k; j--){//para atras
+        if(campo[j]=='1'){
+            i = j; 
+            brincos++;
+            if(i == n - 1){
+                //salgo aqui
+
+               // cout<<"Aqui mero"<<endl;
+                cout<<brincos<<endl; 
+                return 0; 
+            }
+            break;
+        }
+    
     }
-    cout<<"YES"<<endl<<2<<endl;
-    cout<<s[0]<<" ";
-    FOR(i,1,n,1)cout<<s[i];
-    cout<<endl;
-    here:;
+//Acabo
+    if(j - k == 0) {
+        cout << -1 << endl;
+        return 0;
+    }
+
 }
 
 return 0;
 }
+
+
+

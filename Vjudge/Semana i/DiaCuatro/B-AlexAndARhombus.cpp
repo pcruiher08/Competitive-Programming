@@ -31,23 +31,21 @@
 #define pii pair<int,int>
 using namespace std;
 
+ll fastPow(ll a,ll b){
+   ll ret = 1;
+   while(b>0){
+       if(b&1) ret = (ret*a);
+       a=(a*a);
+       b>>=1;
+   }
+   return ret;
+}
+
 int main(){
 sync;
-int q; cin>>q;
-int n; string s;
-while(q--){
-    cin>>n; 
-    cin>>s;
-    if(n==2 && s[0]-'0' >= s[1]-'0'){
-        cout<<"NO"<<endl;
-        goto here;    
-    }
-    cout<<"YES"<<endl<<2<<endl;
-    cout<<s[0]<<" ";
-    FOR(i,1,n,1)cout<<s[i];
-    cout<<endl;
-    here:;
-}
+ll n; cin>>n; 
+cout<<fastPow(n,2)+fastPow(n-1,2)<<endl;
 
 return 0;
 }
+

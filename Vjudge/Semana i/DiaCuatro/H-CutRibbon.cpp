@@ -33,21 +33,17 @@ using namespace std;
 
 int main(){
 sync;
-int q; cin>>q;
-int n; string s;
-while(q--){
-    cin>>n; 
-    cin>>s;
-    if(n==2 && s[0]-'0' >= s[1]-'0'){
-        cout<<"NO"<<endl;
-        goto here;    
-    }
-    cout<<"YES"<<endl<<2<<endl;
-    cout<<s[0]<<" ";
-    FOR(i,1,n,1)cout<<s[i];
-    cout<<endl;
-    here:;
-}
+int n,a,b,c; 
+cin>>n>>a>>b>>c; 
+int res = -INF; 
+if(a==1||b==1||c==1){cout<<n<<endl; return 0;}//optimo
 
+for(int i=0; a*i<=n; i++)for(int j=0; j*b+a*i<=n; j++)for(int k=0; k*c+j*b+a*i<=n; k++){
+    if(i*a+j*b+k*c==n){
+        if (i+j+k>res)res=i+j+k;
+        break;
+    }
+}
+cout<<res<<endl;
 return 0;
 }

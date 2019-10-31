@@ -33,21 +33,17 @@ using namespace std;
 
 int main(){
 sync;
-int q; cin>>q;
-int n; string s;
-while(q--){
-    cin>>n; 
-    cin>>s;
-    if(n==2 && s[0]-'0' >= s[1]-'0'){
-        cout<<"NO"<<endl;
-        goto here;    
-    }
-    cout<<"YES"<<endl<<2<<endl;
-    cout<<s[0]<<" ";
-    FOR(i,1,n,1)cout<<s[i];
-    cout<<endl;
-    here:;
-}
 
+ull n; cin>>n; 
+
+ull sum = 0; 
+sum+=n/100;
+sum+=(n%100)/20;
+sum+=(n%20)/10;
+sum+=(n%10)/5;
+sum+=n%5;
+
+
+cout<<sum<<endl;
 return 0;
 }
