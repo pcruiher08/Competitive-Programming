@@ -6,7 +6,6 @@
 #include <iostream>
 #include <queue>
 #include <map>
-#include <list>
 #include <set>
 #include <sstream>
 #include <stack>
@@ -20,32 +19,29 @@
 #define ROF(m,s,n,u) for(int m=n; m>=s; m-=u)
 #define FORb(m,s,n,u,k) for(int m=s; m<n&&k; m+=u)
 #define pb push_back
-#define mp make_pair
 #define mod 1000000007
-#define PI 3.1415926535897932384626433832795028841971
-#define INF 0x3f3f3f3f
-#define EPS 1e-9
 #define MOD(x) ((x%mod)+mod)%mod
 #define sync ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 #define vi vector<int>
-#define pii pair<int,int>
 using namespace std;
 
 int main(){
 sync;
-int n,a,b,c; 
-cin>>n>>a>>b>>c; 
-int res = -INF; 
-if(a==1||b==1||c==1){cout<<n<<endl; return 0;}//optimo
+int x,y,z,a,b,c; cin>>a>>b>>c>>x>>y>>z;
 
-for(int i=0; a*i<=n; i++)
-    for(int j=0; j*b+a*i<=n; j++)
-        for(int k=0; k*c+j*b+a*i<=n; k++){
-            if(i*a+j*b+k*c==n){
-                if(i+j+k>res)res=i+j+k;
-                break; // ultima var
-            }
-}
-cout<<res<<endl;
+if((x-a)<0){cout<<"NO"<<endl; return 0;}
+
+x-=a;
+
+int sum = x + y;
+if((sum-b)<0){cout<<"NO"<<endl; return 0;}
+
+sum-=b;
+
+sum+=z;
+
+if((sum-c)<0){cout<<"NO"<<endl; return 0;}
+cout<<"YES"<<endl;
+
 return 0;
 }
