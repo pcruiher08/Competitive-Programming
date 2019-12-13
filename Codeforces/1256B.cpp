@@ -6,44 +6,47 @@
 #include <iostream>
 #include <queue>
 #include <map>
+#include <list>
 #include <set>
 #include <sstream>
 #include <stack>
 #include <string>
 #include <vector>
+#include <cstring>
+#include <climits>
 #define ll long long
 #define ull unsigned long long
 #define FOR(m,s,n,u) for(int m=s; m<n; m+=u)
 #define ROF(m,s,n,u) for(int m=n; m>=s; m-=u)
 #define FORb(m,s,n,u,k) for(int m=s; m<n&&k; m+=u)
-#define min(x,y) x<y?x:y
-#define max(x,y) x>y?x:y
 #define pb push_back
+#define mp make_pair
 #define mod 1000000007
+#define PI 3.1415926535897932384626433832795028841971
+#define INF 0x3f3f3f3f
+#define EPS 1e-9
 #define MOD(x) ((x%mod)+mod)%mod
 #define sync ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 #define vi vector<int>
+#define pii pair<int,int>
 using namespace std;
 
-bool isLeapYear(int year){
-   if (year % 4 != 0)
-      return false;
-   if (year % 100 != 0)
-      return true;
-   if (year % 400 == 0)
-      return true;
-   else
-      return false;
+int main(){
+sync;
+int k; cin>>k;
+while(k--){
+    int n; cin>>n; 
+    int arr[n];
+    int arr2[n];
+    memset(arr,0,sizeof(arr));
+    memset(arr2,0,sizeof(arr2));
+
+    FOR(i,0,n,1)cin>>arr[i];
+    ROF(i,0,n-2,1)FOR(j,i,n-1,1)if(arr[j]>arr[j+1]&&arr2[j]==0){swap(arr[j],arr[j+1]); arr2[j]=1;}
+    FOR(i,0,n,1)cout<<arr[i]<<" ";
+    cout<<endl;
+
 }
 
-
-
-int main(){
-    int a;
-    cin>>a;
-    int x;
-    while(a--){
-        cin>>x;
-        cout<<(isLeapYear(x)?"S":"N")<<endl;
-    }
+return 0;
 }
