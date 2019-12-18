@@ -31,52 +31,19 @@
 #define pii pair<int,int>
 using namespace std;
 
-bool p[1000001];
-void sieve(int n){
-  for(int i=2; i<sqrt(n); i++){
-   if(!p[i]){
-     for(int j=i*i; j<n; j+=i){
-       p[j]=true;
-     }
-   }
-  }
-}
-
-bool prime(int a){
-   return !p[a];
-}
-
 int main(){
 sync;
-int n; cin>>n; 
-int arr[n];
-int dp[n];
-FOR(i,0,n,1)cin>>arr[i], dp[i] = 0;
-
-FOR(i,0,n,1)dp[i] = 0; 
-dp[0] = 1;
-int compara = arr[0];
-
-FOR(i,1,n,1){
-
-    if(arr[i] < compara){
-        dp[i] = 1;
+string k; 
+getline(cin,k);
+FOR(i,0,k.length(),1){
+    if(k[i]=='/'||k[i]=='+'||k[i]=='-'||k[i]=='*'){
+        
+        k.insert(i," ");
+        k.insert(i+2," ");
+        i++;
     }
-
-    compara = arr[i];
 }
-int maximo = INT_MIN;
-int cuenta = 1; 
-FOR(i,0,n,1){
-    if(dp[i]){
-        maximo = max(cuenta,maximo);
-        cuenta = 1;
-    }else{
-        cuenta++;
-    }
-    maximo = max(cuenta, maximo);
-}
-cout<<maximo<<endl;;
 
+cout<<k<<endl;
 return 0;
 }

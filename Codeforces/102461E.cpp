@@ -16,7 +16,7 @@
 #include <climits>
 #define ll long long
 #define ull unsigned long long
-#define FOR(m,s,n,u) for(int m=s; m<n; m+=u)
+#define FOR(m,s,n,u) for(ull m=s; m<n; m+=u)
 #define ROF(m,s,n,u) for(int m=n; m>=s; m-=u)
 #define FORb(m,s,n,u,k) for(int m=s; m<n&&k; m+=u)
 #define pb push_back
@@ -32,12 +32,12 @@
 using namespace std;
 
 struct cards{
-    int fenwickTop;
-    int fenwickBot;
-    int a; 
-    int b;
-    int id;
-    int aporte = 0;
+    ull fenwickTop;
+    ull fenwickBot;
+    ull a; 
+    ull b;
+    ull id;
+    ull aporte = 0;
 };
 
 bool minimos(cards x, cards y){
@@ -56,7 +56,7 @@ bool ids(cards x, cards y){
 
 int main(){
 sync;
-int n,maximo; 
+ull n,maximo; 
 cin>>n>>maximo; 
     vector<cards> v; 
 FOR(i,0,n,1){
@@ -77,16 +77,16 @@ FOR(i,1,n,1){
 v[i].fenwickBot+=v[i-1].fenwickBot;
 v[i].fenwickTop+=v[i-1].fenwickTop;
 }
-int buscaTope = 0; 
+ull buscaTope = 0; 
 vector<cards> v2;
 vector<cards> respuesta;
 
 while(v[buscaTope].fenwickBot<maximo && buscaTope<n){v2.pb(v[buscaTope++]);};
 FOR(i,buscaTope,n,1){respuesta.pb(v[i]);}
 
-sort(v2.begin(),v2.end(),maximos);
+//sort(v2.begin(),v2.end(),maximos);
 
-int suma = 0; 
+ull suma = 0; 
 
 FOR(i,0,v2.size(),1){
     if(suma+v2[i].b<=maximo){
