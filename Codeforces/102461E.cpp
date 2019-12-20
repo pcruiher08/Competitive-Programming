@@ -103,7 +103,6 @@ FOR(i,0,v2.size(),1){
         respuesta.pb(v2[i]);
     }
 }
-
 /*
 3 40
 1 999
