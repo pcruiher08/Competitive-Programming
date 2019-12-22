@@ -31,6 +31,7 @@
 #define pii pair<int,int>
 using namespace std;
 
+
 struct cards{
     ull fenwickTop;
     ull fenwickBot;
