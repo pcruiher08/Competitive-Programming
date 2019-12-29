@@ -47,6 +47,7 @@ FOR(i,1,m+1,1){
         cout<<0<<" ";
         aux++;
         longitud--;
+        
     }
     FOR(j,1,arr[i]+1,1){
         cout<<i<<" ";

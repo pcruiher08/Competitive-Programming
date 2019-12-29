@@ -15,7 +15,7 @@
 #include <cstring>
 #include <climits>
 #define ll long long
-#define ull unsigned long long
+#define ull long long
 #define FOR(m,s,n,u) for(ull m=s; m<n; m+=u)
 #define ROF(m,s,n,u) for(int m=n; m>=s; m-=u)
 #define FORb(m,s,n,u,k) for(int m=s; m<n&&k; m+=u)

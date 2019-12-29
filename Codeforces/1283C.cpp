@@ -33,8 +33,34 @@ using namespace std;
 
 int main(){
 sync;
-ull n; cin>>n; 
-cout<<(ull)(floor((n-1.0)/2.0)*n-(n%3==0?2.0*n/3.0:0));
+
+vector<int> vec; 
+int n; cin>>n; 
+map<int,int> m;
+int arr[n+1],cuenta=0;
+FOR(i,1,n+1,1){
+    cin>>arr[i];
+    m[arr[i]]=1;
+}
+FOR(i,1,n+1,1) if(m[i] == 0)vec.pb(i);
+
+FOR(i,n+1,1,-1){
+    if(!arr[i]){
+        if(vec[cuenta]==i){
+            int aux; 
+            cout<<vec[cuenta]<<"<->"<<vec[cuenta+1]<<endl;
+            aux = vec[cuenta];
+            vec[cuenta] = vec[cuenta+1];
+            vec[cuenta+1] = aux;
+        }
+        arr[i] = vec[cuenta];
+        cuenta++;
+
+    }
+}
+
+FOR(i,1,n+1,1)cout<<arr[i]<<" ";
+
 
 return 0;
 }

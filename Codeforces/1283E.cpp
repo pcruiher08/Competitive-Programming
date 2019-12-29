@@ -33,8 +33,22 @@ using namespace std;
 
 int main(){
 sync;
-ull n; cin>>n; 
-cout<<(ull)(floor((n-1.0)/2.0)*n-(n%3==0?2.0*n/3.0:0));
+int n; cin>>n; 
+int arr[n];
+memset(arr,0,sizeof(arr));
+FOR(i,0,n,1){
+    int x; cin>>x; 
+    arr[x]++;
+}
+int minimo[n], maximo[n];
+FOR(i,0,n,1){
+    minimo[i] = arr[i];
+    maximo[i] = arr[i];
+}
+
+FOR(i,0,n,1){
+    
+}
 
 return 0;
 }

@@ -33,8 +33,12 @@ using namespace std;
 
 int main(){
 sync;
-ull n; cin>>n; 
-cout<<(ull)(floor((n-1.0)/2.0)*n-(n%3==0?2.0*n/3.0:0));
+int t; cin>>t;
+while(t--){
+    int n,k; cin>>n>>k;
+    int mit = floor(k/2);
+    cout<<n-(mit<=n%k?n%k-mit:0)<<endl;
+}
 
 return 0;
 }

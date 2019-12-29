@@ -33,8 +33,22 @@ using namespace std;
 
 int main(){
 sync;
-ull n; cin>>n; 
-cout<<(ull)(floor((n-1.0)/2.0)*n-(n%3==0?2.0*n/3.0:0));
+int n; cin>>n; 
+while(n--){
+    int a,b,c;
+    char trash1, trash2; 
+    cin>>a>>trash1>>b>>trash2>>c;
+    string year = to_string(c);
+    while(year.length()<4){
+        year = "0"+year;
+    }
+    if(trash1=='.'){
+        cout<<(a<10?"0":"")<<a<<'.'<<(b<10?"0":"")<<b<<'.'<<year<<" "<<(b<10?"0":"")<<b<<'/'<<(a<10?"0":"")<<a<<'/'<<year<<endl;
+    }else{
+        cout<<(b<10?"0":"")<<b<<'.'<<(a<10?"0":"")<<a<<'.'<<year<<" "<<(a<10?"0":"")<<a<<'/'<<(b<10?"0":"")<<b<<'/'<<year<<endl;        
+    }
+    
+}
 
 return 0;
 }

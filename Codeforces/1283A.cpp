@@ -33,8 +33,13 @@ using namespace std;
 
 int main(){
 sync;
-ull n; cin>>n; 
-cout<<(ull)(floor((n-1.0)/2.0)*n-(n%3==0?2.0*n/3.0:0));
+int n; cin>>n; 
 
+while(n--){
+int horas, minutos; 
+cin>>horas>>minutos;
+
+cout<<24*60-(horas*60+minutos)<<endl;
+}
 return 0;
 }

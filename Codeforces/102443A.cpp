@@ -38,9 +38,6 @@ int arr[n];
 FOR(i,0,n,1)cin>>arr[i];
 sort(arr,arr+n);
 int bouquet = 0;
-
 FOR(i,n%2==0,n,1)if(arr[i]&1)bouquet+=arr[i];else bouquet+=arr[i]-1;
-
 cout<<bouquet;
-
 }
