@@ -46,27 +46,27 @@ ull sumaDeDivisores(ull n){
     } 
     return (suma + 1); 
 }
+
 int main(){
 sync;
-ull suma = 0;  
-set<int> yaRevisados;
-int primero = 0; 
-int segundo = 0;
-
-FOR(i,1,10001,1){
-    primero = sumaDeDivisores(i);
-    segundo = sumaDeDivisores(primero);
-    //cout<<"suma primero: "<<i<<" -> "<<primero<<" suma segundo: "<<primero<<" -> "<<segundo<<endl;
-    if(i == segundo){
-        if((hasBeenChecked(yaRevisados, i) && hasBeenChecked(yaRevisados, primero))){
-            yaRevisados.insert(i);
-            yaRevisados.insert(primero);
-            suma += i;
-            suma += primero;
-            cout<<"primero: "<<i<<" segundo: "<<primero<<endl;
-        }
+ull suma = 0;
+set<int> s;
+FOR(i,2,10001,1){
+    if(sumaDeDivisores(sumaDeDivisores(i))==i && i != sumaDeDivisores(i)){
+        s.insert(i);
+        s.insert(sumaDeDivisores(i));
     }
 }
-cout<<suma;
+set<int>::iterator it = s.begin();
+while(it!=s.end()){
+    cout<<*it<<endl;
+    suma+= *it;
+    it++;
+}
+
+
+cout<<"sum = "<<suma<<endl;
+
+
 return 0;
 }
