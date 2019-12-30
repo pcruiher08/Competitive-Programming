@@ -9,7 +9,6 @@
 #include <list>
 #include <set>
 #include <sstream>
-#include <fstream>
 #include <stack>
 #include <string>
 #include <vector>
@@ -32,45 +31,42 @@
 #define pii pair<int,int>
 using namespace std;
 
-struct name{
-    string title; 
-    int alphaValue; 
-    int posValue;
-    int total;
-};
+string ciclo(int numerador, int denominador) 
+{ 
+    string cicloCompleto;
+    map <int, int> m; 
+    m.clear(); 
+    int residuo = numerador%denominador; 
+    while (residuo && (m.find(residuo) == m.end())){ 
+        m[residuo] = cicloCompleto.length(); 
+        residuo = residuo*10; 
+        int residuoReal = residuo / denominador; 
+        cicloCompleto += to_string(residuoReal); 
+        residuo = residuo % denominador; 
+    } 
 
-bool sortByAlpha(name a, name b){
-    return a.title < b.title;
-};
-
-bool sortByTotal(name a, name b){
-
-}
+    if(residuo){
+        return cicloCompleto.substr(m[residuo]);
+    }else{
+        string noHay = "";
+        return noHay;
+    } 
+} 
 
 int main(){
 sync;
-ifstream file("p022_names.txt");
-vector<name> v;
-string read; 
-while(file.good()){
-    getline(file,read,',');
-    string realName = string(read,1,read.length()-2);
-    name toProcess; 
-    toProcess.title = realName;
-    int sum = 0;
-    FOR(i,0,realName.length(),1)sum+=(realName[i]-'A'+1);
-    toProcess.alphaValue = sum;
-    v.pb(toProcess);
-}
-sort(v.begin(),v.end(),sortByAlpha);
-ull totalSum = 0;
-FOR(i,0,v.size(),1){
-    v[i].posValue = i+1;
-    v[i].total = v[i].posValue * v[i].alphaValue;
-    totalSum += v[i].total;
+int maxLen = 0;
+int maxD = 0;
+
+FOR(i,1,1001,1){
+    int len = ciclo(1,i).length();
+    if(len>maxLen){
+        maxLen = len;
+        maxD = i;
+    }
 }
 
-cout<<totalSum;
+cout<<maxD;
 
 return 0;
 }

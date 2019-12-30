@@ -9,7 +9,6 @@
 #include <list>
 #include <set>
 #include <sstream>
-#include <fstream>
 #include <stack>
 #include <string>
 #include <vector>
@@ -32,45 +31,28 @@
 #define pii pair<int,int>
 using namespace std;
 
-struct name{
-    string title; 
-    int alphaValue; 
-    int posValue;
-    int total;
-};
-
-bool sortByAlpha(name a, name b){
-    return a.title < b.title;
-};
-
-bool sortByTotal(name a, name b){
-
+void solve(int *arr, int n){
+    FOR(i,1,n,1){
+        if(abs(arr[i]-arr[i-1])>1){
+            cout<<"YES\n";
+            cout<<i<<" "<<i+1<<"\n";
+            return;
+        }
+    }
+    cout<<"NO\n";
+    return;
 }
+
 
 int main(){
 sync;
-ifstream file("p022_names.txt");
-vector<name> v;
-string read; 
-while(file.good()){
-    getline(file,read,',');
-    string realName = string(read,1,read.length()-2);
-    name toProcess; 
-    toProcess.title = realName;
-    int sum = 0;
-    FOR(i,0,realName.length(),1)sum+=(realName[i]-'A'+1);
-    toProcess.alphaValue = sum;
-    v.pb(toProcess);
+int n; cin>>n;
+while(n--){
+    int k; cin>>k;
+    int arr[k];
+    FOR(i,0,k,1)cin>>arr[i];
+    solve(arr,k);
 }
-sort(v.begin(),v.end(),sortByAlpha);
-ull totalSum = 0;
-FOR(i,0,v.size(),1){
-    v[i].posValue = i+1;
-    v[i].total = v[i].posValue * v[i].alphaValue;
-    totalSum += v[i].total;
-}
-
-cout<<totalSum;
 
 return 0;
 }
