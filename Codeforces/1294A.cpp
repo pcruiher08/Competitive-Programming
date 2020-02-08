@@ -34,20 +34,14 @@ using namespace std;
 int main(){
 sync;
 
-int n; cin>>n; 
-while(n--){
-    int k; 
-    int arr[3]; 
-    cin>>arr[0]>>arr[1]>>arr[2]>>k;
-    sort(arr,arr+3);
-    int suma = arr[0]+arr[1]+arr[2];
-    int check = k - ((arr[2]-arr[1]) + (arr[2]-arr[0]));
-
-    if(check %3 == 0 && check>=0){
-        cout<<"YES"<<endl;
-    }else{
-        cout<<"NO"<<endl;
-    }
+int k; cin>>k; 
+while(k--){
+       int n,a[3],c=0;
+       cin>>n;
+       for(int i=2;i*i<n&&c<2;i++)
+        if(n%i==0) a[c++]=i,n/=i;
+       if(c!=2) cout<<"NO\n"<<endl;
+       else printf("YES\n%d %d %d",a[0],a[1],n);
 }
 return 0;
 }
