@@ -3,7 +3,7 @@ for Y in {2020..2020}
 do
   mkdir $Y
   cd $Y
-  for M in {5..6}
+  for M in {5..7}
   do
     mkdir $M
     cd $M

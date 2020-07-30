@@ -47,7 +47,7 @@ void convierte(string str){
     stack<char> s; 
     FOR(i,0,str.length(),1){ 
         if(str[i] >= 'A' && str[i] <= 'Z' || str[i] >= 'a' && str[i] <= 'z'){
-            cout<<str[i];
+            cout<<str[i];                       
         }else if(str[i] == '+' || str[i] == '-' || str[i] == '*' || str[i] == '/' || str[i] == '(') { 
             if(s.empty()||(prioridadAfuera(str[i])>prioridadAdentro(s.top()))){
                 s.push(str[i]); 
@@ -57,7 +57,7 @@ void convierte(string str){
             } 
         }else if(str[i]==')'){ 
             while(s.top()!='(')cout<<s.top(),s.pop(); 
-            s.pop(); 
+            s.pop();            
         } 
     } 
     //vacia
