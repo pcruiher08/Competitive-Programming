@@ -31,30 +31,19 @@
 #define pii pair<int,int>
 using namespace std;
 
-void toLow(string s){
-    FOR(i,0,s.length(),1)cout<<(char)tolower(s[i]);
-
-
-}
-
-void toUp(string s){
-    FOR(i,0,s.length(),1)cout<<(char)toupper(s[i]);
-}
-
 int main(){
 sync;
-string s; cin>>s;
-long up = 0, lo = 0; 
+int n; cin>>n; 
+int a = 0,b = 0;
+FOR(i,0,n,1){
+    int x;
+    cin>>x; 
+    a+=x; 
+    cin>>x; 
+    b+=x;
+}
 
-FOR(i,0,s.length(),1){
-    if(s[i]<='z'&&s[i]>='a')lo++;
-    if(s[i]<='Z'&&s[i]>='A')up++;
-}
-if(up>lo){
-    toUp(s);
-}else{
-    toLow(s);
-}
+cout<<min(n-a,a) + min(n-b,b);
 
 return 0;
 }
