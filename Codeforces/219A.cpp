@@ -42,6 +42,6 @@ FOR(i,0,s.length(),1)m[s[i]]++;
 for(auto it = m.begin(); it!=m.end(); it++){
     if(it->second != m.begin()->second)
 }
-
+//
 return 0;
 }
