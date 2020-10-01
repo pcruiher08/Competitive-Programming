@@ -3,7 +3,6 @@
 using namespace std;
 
 int main(){
-    sync;
     //te dan un arreglo de enteros cualquiera
     int arregloDeEnteros[10] = {2,43,5,23,6,23,678,43,1,8};
 
@@ -31,7 +30,7 @@ int main(){
 
     //tambien se puede hacer sin memoria adicional utilizando el arreglo original
 
-    //como ya calculamos las sumas de rangos de [0,i], podemos calcular cualquier rango [a,b] restando dos rangos
+    //como ya calculamos las sumas de rangos de [0,i] y las guardamos en fenwick[i], podemos calcular cualquier rango [a,b] restando dos rangos
     //de forma general queda [a,b]-[0,a-1] = [a,b]
     //esto se traduce a accesos en tiempo constante al arreglo fenwick 
     //rango = fenwick[b] - fenwick[a-1]
