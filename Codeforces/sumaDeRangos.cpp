@@ -20,7 +20,7 @@ int main(){
 
     //supongamos que arregloDeEnteros no est'a vacio
 
-    //vamos a modificar armar un arreglo nuevo basandonos en nuestro arreglo anterior para que nos de mas informacion
+    //vamos a modificar/armar un arreglo nuevo basandonos en nuestro arreglo anterior para que nos de mas informacion
     int fenwick[10] = {arregloDeEnteros[0],0,0,0,0,0,0,0,0,0};
 
     //guardemos en el indice i del arreglo fenwick la suma del rango [0,i]
