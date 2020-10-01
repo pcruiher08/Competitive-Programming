@@ -5,7 +5,7 @@ using namespace std;
 int main(){
     sync;
     //te dan un arreglo de enteros cualquiera
-    int arregloDeEnteros[10] = {2,43,5,23,6,23,678,43,1};
+    int arregloDeEnteros[10] = {2,43,5,23,6,23,678,43,1,8};
 
     //te dan queries [a,b] para calcular la suma del indice a al indice b
     int a = 3;
