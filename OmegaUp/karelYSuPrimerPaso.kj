@@ -1,6 +1,0 @@
-class program {
-    program () {
-        move();
-        turnoff();
-    }
-}
