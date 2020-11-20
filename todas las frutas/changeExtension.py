@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 
-directory = r'C:\\Users\\pcruiher08\\Desktop\\Musica'
+directory = r'D:\\Musica'
 newExtension = '.wav'
 for filename in os.listdir(directory):
     if filename.endswith(".m4a"):

@@ -1,0 +1,1 @@
+print(''.join(format(ord(i),'08b')+' 'for i in input()))

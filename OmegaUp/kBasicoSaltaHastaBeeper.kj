@@ -1,0 +1,24 @@
+class program {
+    program () {
+    while(notNextToABeeper()){
+        if(frontIsClear()){
+        move();
+        }
+        if(frontIsBlocked()&&notNextToABeeper()){
+        turnleft();
+        move();
+        turnleft();
+        turnleft();
+        turnleft();
+        move();
+        turnleft();
+        turnleft();
+        turnleft();
+        move();
+        turnleft();
+        }
+        }
+        turnoff();
+        
+    }
+}

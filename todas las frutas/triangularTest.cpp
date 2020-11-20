@@ -34,7 +34,8 @@ using namespace std;
 bool isTriangular(ull n){
 return ((float)sqrt(8*n+1) == floor(floor((float)sqrt(8*n+1))));
 }
-
+int find(vector<int> &C, int x) { return (C[x] == x) ? x : C[x] = find(C, C[x]); } 
+void merge(vector<int> &C, int x, int y) { C[find(C, x)] = find(C, y); }
 int main(){
 sync;
 

@@ -1,0 +1,1 @@
+print(int(int(input()) * 0.6 + int(input()) * 0.2 + int(input()) * 0.2))

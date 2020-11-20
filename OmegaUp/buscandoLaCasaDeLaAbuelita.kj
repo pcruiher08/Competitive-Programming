@@ -1,0 +1,43 @@
+class program {
+
+void stop() {
+if(frontIsBlocked) {
+turnoff();
+}
+}
+
+
+void busca() {
+while(frontIsClear){
+while(notNextToABeeper){
+stop();
+move();
+}
+turnleft();
+pickbeeper();
+stop();
+
+}
+}
+
+
+
+
+
+
+
+
+program() {
+stop();
+busca();
+stop();
+while(frontIsBlocked){
+turnoff();
+}
+
+
+    ;
+    turnoff();
+}
+
+}

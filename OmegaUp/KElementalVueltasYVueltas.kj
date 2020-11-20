@@ -1,0 +1,18 @@
+class program {
+
+define gira(){
+if(nextToABeeper()){
+pickbeeper();
+gira();
+turnleft();
+}
+}
+
+    program () {
+    while(nextToABeeper()){
+        gira();
+        move();
+        }
+        turnoff();
+    }
+}

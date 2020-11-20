@@ -1,0 +1,32 @@
+class program {
+    program () {
+        // TODO poner codigo aqui
+        while(!facingEast())turnleft();
+        while(frontIsClear()){
+        if(nextToABeeper()){
+        pickbeeper();
+        }
+        move();
+        if(nextToABeeper()){
+        pickbeeper();
+        }
+        }
+        turnleft();
+        move();
+        iterate(3)turnleft();
+        move();
+        iterate(3)turnleft();
+        move();
+        putbeeper();
+        turnleft();
+        turnleft();
+        move();
+        turnleft();
+        while(frontIsClear()){
+        move();
+        }
+        turnleft();
+        move();
+        turnoff();
+    }
+}

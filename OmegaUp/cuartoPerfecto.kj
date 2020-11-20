@@ -1,0 +1,73 @@
+class program {
+
+define cuentaAbajo(){
+if(notNextToABeeper()){
+if(frontIsClear()){
+move();
+cuentaAbajo();
+}
+putbeeper();
+}
+}
+
+define checa(){
+if(nextToABeeper()){
+pickbeeper();
+checa();
+putbeeper();
+if(frontIsBlocked()){
+menor();
+}
+move();
+}
+}
+
+define menor(){
+turnleft();
+turnleft();
+cuentamelos();
+turnoff();
+}
+
+define cuentamelos(){
+if(nextToABeeper()){
+if(frontIsClear()){
+pickbeeper();
+move();
+cuentamelos();
+putbeeper();
+}
+}
+}
+
+    program () {
+       while(notFacingNorth()){
+       turnleft();
+       }
+       while(frontIsClear()){
+       move();
+       }
+       while(notFacingWest()){
+       turnleft();
+       }
+       while(frontIsClear()){
+       move();
+       }
+       turnleft();
+       cuentaAbajo();
+       turnleft();
+       checa();
+       if(frontIsClear()){
+       turnleft();
+       turnleft();
+      move();
+       }
+       if(frontIsBlocked()){
+       turnleft();
+       turnleft();
+      move();
+       }
+       cuentamelos();
+        turnoff();
+    }
+}

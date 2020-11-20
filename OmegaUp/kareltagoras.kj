@@ -1,0 +1,69 @@
+class program {
+	void gira(x){ 
+    iterate(x){ 
+      turnleft(); 
+    }
+  }
+    
+    void count(veces){
+    if(frontIsClear()){
+        move();
+        count(succ(veces));
+      }else{
+        gira(2);
+        while(frontIsClear()){ 
+          move();
+        }
+        iterate(veces){ 
+          iterate(veces){ 
+            putbeeper();
+          }
+        }
+      }
+    }
+    
+    void busca(){
+    	count(1);
+      gira(1);
+      count(1);
+    }
+    void esCuadradoPerfecto(r){
+        while(!facingNorth()){ 
+          gira(1);
+        }
+        iterate(r){ 
+          iterate(r){
+            if(nextToABeeper()){
+                pickbeeper();
+            }else{
+                while(!facingSouth()){ 
+                  gira(1);
+                }
+            }
+          }
+        }
+        if(nextToABeeper()){
+            iterate(r){ 
+              iterate(r){ 
+                putbeeper();
+              }
+            }
+            esCuadradoPerfecto(succ(r));
+        }else{
+            if(facingNorth()){
+            	busca();
+                gira(3);
+            }else{
+            	gira(2);
+            	busca();
+                gira(1);
+            }
+        }        
+    }
+    
+    program(){
+        busca();
+        esCuadradoPerfecto(1);
+        turnoff();
+    }
+}

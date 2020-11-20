@@ -1,0 +1,16 @@
+class program {
+    program () {
+       while(frontIsClear()){
+       if(nextToABeeper()){
+       while(nextToABeeper()){
+       pickbeeper();
+       }
+       }
+       move();
+       }
+       while(anyBeepersInBeeperBag()){
+       putbeeper();
+       }
+        turnoff();
+    }
+}

@@ -1,0 +1,65 @@
+class program {
+define sube(){
+if(frontIsBlocked()){
+pickbeeper();
+if(nextToABeeper()){
+putbeeper();
+retorna();
+}
+if(notNextToABeeper()){
+retorna();
+}
+}
+while(frontIsClear()){
+pickbeeper();
+if(nextToABeeper()){
+putbeeper();
+move();
+}
+if(notNextToABeeper()){
+move();
+}
+if(frontIsBlocked()){
+pickbeeper();
+if(nextToABeeper()){
+putbeeper();
+retorna();
+}
+if(notNextToABeeper()){
+retorna();
+}
+}
+}
+}
+
+define retorna(){
+turnleft();
+turnleft();
+while(frontIsClear()){
+move();
+}
+turnleft();
+if(frontIsClear()){
+move();
+turnleft();
+sube();
+}
+if(frontIsBlocked()){
+if(nextToABeeper()){
+pickbeeper();
+}
+if(nextToABeeper()){
+putbeeper();
+turnoff();
+}
+if(notNextToABeeper()){
+turnoff();
+}
+}
+}
+
+    program () {
+    sube();
+        turnoff();
+    }
+}

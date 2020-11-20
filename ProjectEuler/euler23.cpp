@@ -31,18 +31,42 @@
 #define pii pair<int,int>
 using namespace std;
 
+bool isAbundant(int n){
+    int sum=0; 
+    FOR(i,1,sqrt(n)+1,1){ 
+        if(n%i==0){ 
+            if(n/i==i){
+                sum+=i; 
+            }else{ 
+                sum+=i; 
+                sum+=n/i; 
+            } 
+        } 
+    } 
+    sum-=n; 
+    return sum > n; 
+} 
 int main(){
 sync;
+    vi abundants;
+    FOR(i,0,28123,1){
+        if(isAbundant(i) && i!=2 && i!=6){
+            abundants.pb(i);
+        }
+    } 
 
-int nums[] = {0,1,2,3,4,5,6,7,8,9};
-int iteration = 1;
-while(iteration < 1000000){
-   
-    next_permutation(nums,nums+10);
-    iteration++;
-}
-cout<<iteration<<" - ";
-FOR(i,0,10,1)cout<<nums[i]<<" ";
-cout<<endl;
-return 0;
+    set<int> sums;
+    FOR(i,0,abundants.size(),1){
+        FOR(j,0,abundants.size(),1){
+            sums.insert(abundants[i]+abundants[j]);
+        }
+    }
+
+    set<int>::iterator it = sums.begin();
+    set<int>::reverse_iterator lastElement = sums.rbegin();
+    ull sumaTotal = 0;
+    ull gaussMayor = (*lastElement) * (*lastElement + 1) * 0.5;
+    FOR(i,0,sums.size(),1){sumaTotal+=*it; it++;}
+    cout<<gaussMayor - sumaTotal;
+    return 0; 
 }

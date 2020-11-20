@@ -1,0 +1,8 @@
+class program {
+    program () {
+        while(notFacingNorth()){
+        turnleft();
+        }
+        turnoff();
+    }
+}

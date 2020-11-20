@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "vector": "cpp",
+        "cstdlib": "cpp",
+        "algorithm": "cpp",
+        "xiosbase": "cpp",
+        "ostream": "cpp",
+        "utility": "cpp",
+        "map": "cpp"
+    }
+}
