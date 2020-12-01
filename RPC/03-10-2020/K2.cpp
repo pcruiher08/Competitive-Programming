@@ -63,6 +63,21 @@ FOR(i,0,n,1){
 sort(enX.begin(),enX.end(),ordX);
 sort(enY.begin(),enY.end(),ordY);
 
+int cuenta = 0;
+
+for(int i = 0; i<n; i++){
+    point leftMost = enX[i];
+    auto it = std::lower_bound(begin(enY), end(enY), leftMost , ordY);
+    int indexOfLeftMostInY= it - enY.begin();
+    vector<point> aRevisar;
+    aRevisar.insert( aRevisar.begin() , enY.begin(), it);
+    vector<point> prospectosMayores;
+    prospectosMayores.insert(prospectosMayores.begin(), it, enY.end());
+
+    
+
+}
+
 point test;
 test.x = 1;
 test.y = 5;
