@@ -1733,9 +1733,6 @@ int main(){
         P.SetX(res.GetX());
         P.SetY(res.GetY());
         P.SetZ(res.GetZ());
-
     }
     cout<<fixed<<setprecision(3)<<P.GetX()<<" "<<P.GetY()<<" "<<P.GetZ()<<endl;
-    
-
 }
