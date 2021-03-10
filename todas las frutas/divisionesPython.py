@@ -1,3 +1,3 @@
-edad = 25
+import nltk
 
-print("David tiene",edad)
+nltk.download('punkt')
