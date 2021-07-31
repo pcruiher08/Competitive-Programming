@@ -35,7 +35,7 @@ int main(){
 sync;
 
 int n; cin>>n;
-
+pc
 while(n--){
     int n,a,b; cin>>n>>a>>b;
     //de la forma (b - a) / (n - 1)
