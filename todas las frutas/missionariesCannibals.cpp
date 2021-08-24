@@ -63,7 +63,7 @@ struct node{
 
 bool isTransitionValid(node n, string action){
 
-    bool whereIsTheBoat = n.state[2]; //1 for left, 0 for right
+    int whereIsTheBoat = n.state[2]; //1 for left, 0 for right
     int missionariesLeftSide = n.state[0];
     int cannibalsLeftSide = n.state[1];
     int missionariesRightSide = initialMissionaries - missionariesLeftSide;
@@ -100,10 +100,6 @@ bool isTransitionValid(node n, string action){
                 noOneWillBeEaten = (missionariesLeftSide - 1 >= cannibalsLeftSide || missionariesLeftSide == 0);
             }
 
-            cout<<"missR "<<missionariesRightSide << " canR "<<cannibalsRightSide<<endl;
-            cout<<"missL "<<missionariesLeftSide << " canL "<<cannibalsLeftSide<<endl;
-
-            cout<<enoughToMove<<" "<<noOneWillBeEaten<<endl;
         break;
         case 2:
             //1C
@@ -114,6 +110,11 @@ bool isTransitionValid(node n, string action){
                 enoughToMove = cannibalsLeftSide >= 1;
                 noOneWillBeEaten = missionariesRightSide >= cannibalsRightSide + 1 || missionariesRightSide == 0;
             }
+
+            cout<<"missR "<<missionariesRightSide << " canR "<<cannibalsRightSide<<endl;
+            cout<<"missL "<<missionariesLeftSide << " canL "<<cannibalsLeftSide<<endl;
+
+            cout<<enoughToMove<<" "<<noOneWillBeEaten<<endl;
         break;
         case 3:
             //1M1C
@@ -152,7 +153,7 @@ bool isTransitionValid(node n, string action){
 
 
 
-vector<node*> bfs(node n){
+vector<node*> dfs(node n){
     cout<< "("<<n.state[0]<<","<<n.state[1]<<","<<n.state[2]<<")"<<endl;
 
     if(n.state[0] == 0 && n.state[1] == 0 && n.state[2] == 0){
@@ -166,7 +167,10 @@ vector<node*> bfs(node n){
         if(isTransitionValid(n, action)){
             node newNode;
             newNode.action = action;
+            cout<<action<<endl;
             newNode.parents.push_back(&n);
+            cout<<"tamanio "<<newNode.parents.size()<<endl;
+
             newNode.pathCostUpToThisNode = newNode.parents.size();
             newNode.state[2] = !n.state[2];
             int whereIsTheBoat = n.state[2];
@@ -188,10 +192,12 @@ vector<node*> bfs(node n){
                 case 1:
                     //1M
                     if(!whereIsTheBoat){//boat is on the right side
-                        newNode.state[0] = n.state[0] - 1;
-                    }else{//boat is on the left side
                         newNode.state[0] = n.state[0] + 1;
+                    }else{//boat is on the left side
+                        newNode.state[0] = n.state[0] - 1;
                     }
+                    cout<<"Caso 1"<<endl;
+                    cout<<"state 0 "<<n.state[0]<<endl;
                 break;
                 case 2:
                     //1C
@@ -200,6 +206,9 @@ vector<node*> bfs(node n){
                     }else{//boat is on the left side
                         newNode.state[1] = n.state[1] + 1;
                     }
+                    cout<<"Caso 2"<<endl;
+                    cout<<"state 0 "<<n.state[0]<<endl;
+
                 break;
                 case 3:
                     //1M1C
@@ -228,8 +237,11 @@ vector<node*> bfs(node n){
                     }
                 break;
             }
-        }
+            int x; cin>>x;
+            cout<<action<<endl;
+            dfs(newNode);
 
+        }
 
     }
 }
@@ -242,7 +254,7 @@ start.state[0] = initialMissionaries;
 start.state[1] = initialCannibals;
 start.state[2] = 1;
 
-vector<node*> path = bfs(start);
+vector<node*> path = dfs(start);
 
 for(int i = 0; i < path.size(); i++){
     cout<<"Paso " << i+1 << ": ("<<path[i]->state[0]<<","<<path[i]->state[1]<<","<<path[i]->state[2]<<")"<<endl;

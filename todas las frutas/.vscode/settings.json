@@ -3,6 +3,7 @@
         "stdlib.h": "c",
         "stdio.h": "c",
         "ostream": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "vector": "cpp"
     }
 }
