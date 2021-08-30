@@ -7,6 +7,8 @@
         "vector": "cpp",
         "deque": "cpp",
         "list": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "ios": "cpp",
+        "xiosbase": "cpp"
     }
 }

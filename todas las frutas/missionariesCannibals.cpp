@@ -155,14 +155,14 @@ bool isTransitionValid(node n, string action){
 
 vector<node> dfs(node padre){
     map<vector<int>, bool> visitados;
-    stack<node> dfsQ;
-    dfsQ.push(padre);
+    stack<node> dfsS;
+    dfsS.push(padre);
     visitados[padre.state] = true;
 
-    while(!dfsQ.empty()){
-        node n = dfsQ.top();
+    while(!dfsS.empty()){
+        node n = dfsS.top();
 
-        dfsQ.pop();
+        dfsS.pop();
 
         if(n.state[0] == 0 && n.state[1] == 0 && n.state[2] == 0){
             n.parents.push_back(n);
@@ -252,7 +252,7 @@ vector<node> dfs(node padre){
                 }
                 if(!visitados[newNode.state]){
                     visitados[newNode.state] = true;
-                    dfsQ.push(newNode);
+                    dfsS.push(newNode);
                 }
                 
 
