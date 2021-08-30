@@ -31,14 +31,15 @@
 #define pii pair<int,int>
 using namespace std;
 
+
 int initialMissionaries = 3;
 int initialCannibals = 3;
 int boatInitialState = 1;
 
-string actions[5] = {"1M", "1C", "1M1C", "2M", "2C"};
+string actions[5] = {"1M", "1C", "2M", "2C", "1M1C"};
 
 struct node{
-    int state[3]; //{numberOfMissionariesOnLeftSide, numberOfCannibalsOnLeftSide, whereIsTheBoat} 
+    vector<int> state = {0,0,0}; //{numberOfMissionariesOnLeftSide, numberOfCannibalsOnLeftSide, whereIsTheBoat} 
     /*
     0<=numberOfMissionariesOnLeftSide<=n
     0<=numberOfCannibalsOnLeftSide<=n
@@ -57,7 +58,7 @@ struct node{
     */  
 
     int pathCostUpToThisNode; 
-    vector<node*> parents;
+    vector<node> parents;
 };
 
 
@@ -83,7 +84,6 @@ bool isTransitionValid(node n, string action){
         actions = 5;
     }
     
-    cout<<actions<<endl;
 
     bool enoughToMove = false;
     bool noOneWillBeEaten = false;
@@ -94,10 +94,12 @@ bool isTransitionValid(node n, string action){
             //1M
             if(!whereIsTheBoat){//boat is on the right side
                 enoughToMove = missionariesRightSide >= 1;
-                noOneWillBeEaten = (missionariesRightSide - 1 >= cannibalsRightSide || missionariesRightSide == 0);
+                noOneWillBeEaten = (missionariesRightSide - 1 >= cannibalsRightSide) && (missionariesLeftSide + 1 >= cannibalsLeftSide);
+
             }else{//boat is on the left side
                 enoughToMove = missionariesLeftSide >= 1;
-                noOneWillBeEaten = (missionariesLeftSide - 1 >= cannibalsLeftSide || missionariesLeftSide == 0);
+                noOneWillBeEaten = (missionariesLeftSide - 1 >= cannibalsLeftSide) && (missionariesRightSide + 1 >= cannibalsRightSide);
+
             }
 
         break;
@@ -111,39 +113,39 @@ bool isTransitionValid(node n, string action){
                 noOneWillBeEaten = missionariesRightSide >= cannibalsRightSide + 1 || missionariesRightSide == 0;
             }
 
-            cout<<"missR "<<missionariesRightSide << " canR "<<cannibalsRightSide<<endl;
-            cout<<"missL "<<missionariesLeftSide << " canL "<<cannibalsLeftSide<<endl;
 
-            cout<<enoughToMove<<" "<<noOneWillBeEaten<<endl;
         break;
         case 3:
             //1M1C
             if(!whereIsTheBoat){//boat is on the right side
                 enoughToMove = missionariesRightSide >= 1 && cannibalsRightSide >= 1;
-                noOneWillBeEaten = true;
+                noOneWillBeEaten = missionariesRightSide - 1 <= cannibalsRightSide - 1 && missionariesLeftSide + 1 >= cannibalsLeftSide + 1;
             }else{//boat is on the left side
                 enoughToMove = missionariesLeftSide >= 1 && cannibalsLeftSide >= 1;
-                noOneWillBeEaten = true;
+                noOneWillBeEaten = missionariesRightSide + 1 >= cannibalsRightSide + 1 && missionariesLeftSide - 1 >= cannibalsLeftSide - 1;
             }
+
         break;
         case 4:
             //2M
             if(!whereIsTheBoat){//boat is on the right side
                 enoughToMove = missionariesRightSide >= 2;
-                noOneWillBeEaten = (missionariesRightSide - 2 >= cannibalsRightSide || missionariesRightSide == 0);
+                noOneWillBeEaten = (missionariesRightSide - 2 >= cannibalsRightSide) || missionariesRightSide - 2 == 0;
+            
             }else{//boat is on the left side
                 enoughToMove = missionariesLeftSide >= 2;
-                noOneWillBeEaten = (missionariesLeftSide - 2 >= cannibalsLeftSide || missionariesLeftSide == 0);
+            
+                noOneWillBeEaten = (missionariesLeftSide - 2 >= cannibalsLeftSide) || missionariesLeftSide - 2 == 0;
             }
         break;
         case 5:
             //2C
             if(!whereIsTheBoat){//boat is on the right side
                 enoughToMove = cannibalsRightSide >= 2;
-                noOneWillBeEaten = missionariesLeftSide >= cannibalsLeftSide + 2 || missionariesLeftSide == 0;
+                noOneWillBeEaten = (missionariesLeftSide >= cannibalsLeftSide + 2) || missionariesLeftSide == 0;
             }else{//boat is on the left side
                 enoughToMove = cannibalsLeftSide >= 2;
-                noOneWillBeEaten = missionariesRightSide >= cannibalsRightSide + 2 || missionariesRightSide == 0;
+                noOneWillBeEaten = (missionariesRightSide >= cannibalsRightSide + 2) || missionariesRightSide  == 0;
             }
         break;
     }
@@ -151,100 +153,226 @@ bool isTransitionValid(node n, string action){
     return enoughToMove && noOneWillBeEaten;
 }
 
+vector<node> dfs(node padre){
+    map<vector<int>, bool> visitados;
+    stack<node> dfsQ;
+    dfsQ.push(padre);
+    visitados[padre.state] = true;
 
+    while(!dfsQ.empty()){
+        node n = dfsQ.top();
 
-vector<node*> dfs(node n){
-    cout<< "("<<n.state[0]<<","<<n.state[1]<<","<<n.state[2]<<")"<<endl;
+        dfsQ.pop();
 
-    if(n.state[0] == 0 && n.state[1] == 0 && n.state[2] == 0){
-        return n.parents;
-    }
-
-    for(int i = 0; i < sizeof(actions)/sizeof(actions[0]); i++){
-        
-        string action = actions[i];
-        cout<<i<<" "<<action<<endl;
-        if(isTransitionValid(n, action)){
-            node newNode;
-            newNode.action = action;
-            cout<<action<<endl;
-            newNode.parents.push_back(&n);
-            cout<<"tamanio "<<newNode.parents.size()<<endl;
-
-            newNode.pathCostUpToThisNode = newNode.parents.size();
-            newNode.state[2] = !n.state[2];
-            int whereIsTheBoat = n.state[2];
-            int actions = 0;
-
-            if(action == "1M"){
-                actions = 1;
-            }else if(action == "1C"){
-                actions = 2;
-            }else if(action == "1M1C"){
-                actions = 3;
-            }else if(action == "2M"){
-                actions = 4;
-            }else if(action == "2C"){
-                actions = 5;
-            }
-
-            switch(actions){
-                case 1:
-                    //1M
-                    if(!whereIsTheBoat){//boat is on the right side
-                        newNode.state[0] = n.state[0] + 1;
-                    }else{//boat is on the left side
-                        newNode.state[0] = n.state[0] - 1;
-                    }
-                    cout<<"Caso 1"<<endl;
-                    cout<<"state 0 "<<n.state[0]<<endl;
-                break;
-                case 2:
-                    //1C
-                    if(!whereIsTheBoat){//boat is on the right side
-                        newNode.state[1] = n.state[1] - 1;
-                    }else{//boat is on the left side
-                        newNode.state[1] = n.state[1] + 1;
-                    }
-                    cout<<"Caso 2"<<endl;
-                    cout<<"state 0 "<<n.state[0]<<endl;
-
-                break;
-                case 3:
-                    //1M1C
-                    if(!whereIsTheBoat){//boat is on the right side
-                        newNode.state[1] = n.state[1] - 1;
-                        newNode.state[0] = n.state[0] - 1;
-                    }else{//boat is on the left side
-                        newNode.state[1] = n.state[1] + 1;
-                        newNode.state[0] = n.state[0] + 1;
-                    }
-                break;
-                case 4:
-                    //2M
-                    if(!whereIsTheBoat){//boat is on the right side
-                        newNode.state[0] = n.state[0] - 2;
-                    }else{//boat is on the left side
-                        newNode.state[0] = n.state[0] + 2;
-                    }
-                break;
-                case 5:
-                    //2C
-                    if(!whereIsTheBoat){//boat is on the right side
-                        newNode.state[1] = n.state[1] - 2;
-                    }else{//boat is on the left side
-                        newNode.state[1] = n.state[1] + 2;
-                    }
-                break;
-            }
-            int x; cin>>x;
-            cout<<action<<endl;
-            dfs(newNode);
-
+        if(n.state[0] == 0 && n.state[1] == 0 && n.state[2] == 0){
+            n.parents.push_back(n);
+            return n.parents;
         }
 
+        for(int i = 0; i < sizeof(actions)/sizeof(actions[0]); i++){
+            
+            string action = actions[i];
+            if(isTransitionValid(n, action)){
+                node newNode;
+                newNode.action = action;
+                for(int j = 0; j<n.parents.size(); j++){
+                    newNode.parents.push_back(n.parents[j]);
+                }
+                newNode.parents.push_back(n);
+                
+
+                newNode.pathCostUpToThisNode = newNode.parents.size();
+                newNode.state[2] = !n.state[2];
+                newNode.state[0] = n.state[0];
+                newNode.state[1] = n.state[1];
+                int whereIsTheBoat = n.state[2];
+                int actions = 0;
+
+                if(action == "1M"){
+                    actions = 1;
+                }else if(action == "1C"){
+                    actions = 2;
+                }else if(action == "1M1C"){
+                    actions = 3;
+                }else if(action == "2M"){
+                    actions = 4;
+                }else if(action == "2C"){
+                    actions = 5;
+                }
+
+                switch(actions){
+                    case 1:
+                        //1M
+
+                        if(!whereIsTheBoat){//boat is on the right side
+                            newNode.state[0] = n.state[0] + 1;
+                        }else{//boat is on the left side
+                            newNode.state[0] = n.state[0] - 1;
+                        }
+                    break;
+                    case 2:
+                        //1C
+
+                        if(!whereIsTheBoat){//boat is on the right side
+                            newNode.state[1] = n.state[1] + 1;
+                        }else{//boat is on the left side
+                            newNode.state[1] = n.state[1] - 1;
+                        }
+
+                    break;
+                    case 3:
+                        //1M1C
+                        if(!whereIsTheBoat){//boat is on the right side
+                            newNode.state[1] = n.state[1] + 1;
+                            newNode.state[0] = n.state[0] + 1;
+                        }else{//boat is on the left side
+                            newNode.state[1] = n.state[1] - 1;
+                            newNode.state[0] = n.state[0] - 1;
+                        }
+
+                    break;
+                    case 4:
+                        //2M
+                        if(!whereIsTheBoat){//boat is on the right side
+                            newNode.state[0] = n.state[0] + 2;
+                        }else{//boat is on the left side
+                            newNode.state[0] = n.state[0] - 2;
+                        }
+
+                    break;
+                    case 5:
+                        //2C
+                        if(!whereIsTheBoat){//boat is on the right side
+                            newNode.state[1] = n.state[1] + 2;
+                        }else{//boat is on the left side
+                            newNode.state[1] = n.state[1] - 2;
+                        }
+
+                    break;
+                }
+                if(!visitados[newNode.state]){
+                    visitados[newNode.state] = true;
+                    dfsQ.push(newNode);
+                }
+                
+
+            }
+
+        }
     }
 }
+
+
+vector<node> bfs(node padre){
+    map<vector<int>, bool> visitados;
+    queue<node> bfsQ;
+    bfsQ.push(padre);
+    visitados[padre.state] = true;
+
+    while(!bfsQ.empty()){
+        node n = bfsQ.front();
+
+        bfsQ.pop();
+
+        if(n.state[0] == 0 && n.state[1] == 0 && n.state[2] == 0){
+            n.parents.push_back(n);
+            return n.parents;
+        }
+
+        for(int i = 0; i < sizeof(actions)/sizeof(actions[0]); i++){
+            
+            string action = actions[i];
+            if(isTransitionValid(n, action)){
+                node newNode;
+                newNode.action = action;
+
+                for(int j = 0; j<n.parents.size(); j++){
+                    newNode.parents.push_back(n.parents[j]);
+                }
+                newNode.parents.push_back(n);
+                
+
+                newNode.pathCostUpToThisNode = newNode.parents.size();
+                newNode.state[2] = !n.state[2];
+                newNode.state[0] = n.state[0];
+                newNode.state[1] = n.state[1];
+                int whereIsTheBoat = n.state[2];
+                int actions = 0;
+
+                if(action == "1M"){
+                    actions = 1;
+                }else if(action == "1C"){
+                    actions = 2;
+                }else if(action == "1M1C"){
+                    actions = 3;
+                }else if(action == "2M"){
+                    actions = 4;
+                }else if(action == "2C"){
+                    actions = 5;
+                }
+
+                switch(actions){
+                    case 1:
+                        //1M
+
+                        if(!whereIsTheBoat){//boat is on the right side
+                            newNode.state[0] = n.state[0] + 1;
+                        }else{//boat is on the left side
+                            newNode.state[0] = n.state[0] - 1;
+                        }
+                    break;
+                    case 2:
+                        //1C
+
+                        if(!whereIsTheBoat){//boat is on the right side
+                            newNode.state[1] = n.state[1] + 1;
+                        }else{//boat is on the left side
+                            newNode.state[1] = n.state[1] - 1;
+                        }
+
+                    break;
+                    case 3:
+                        //1M1C
+                        if(!whereIsTheBoat){//boat is on the right side
+                            newNode.state[1] = n.state[1] + 1;
+                            newNode.state[0] = n.state[0] + 1;
+                        }else{//boat is on the left side
+                            newNode.state[1] = n.state[1] - 1;
+                            newNode.state[0] = n.state[0] - 1;
+                        }
+
+                    break;
+                    case 4:
+                        //2M
+                        if(!whereIsTheBoat){//boat is on the right side
+                            newNode.state[0] = n.state[0] + 2;
+                        }else{//boat is on the left side
+                            newNode.state[0] = n.state[0] - 2;
+                        }
+
+                    break;
+                    case 5:
+                        //2C
+                        if(!whereIsTheBoat){//boat is on the right side
+                            newNode.state[1] = n.state[1] + 2;
+                        }else{//boat is on the left side
+                            newNode.state[1] = n.state[1] - 2;
+                        }
+
+                    break;
+                }
+                if(!visitados[newNode.state]){
+                    visitados[newNode.state] = true;
+                    bfsQ.push(newNode);
+                }
+                
+
+            }
+
+        }
+    }
+}
+
 
 int main(){
 sync;
@@ -254,11 +382,33 @@ start.state[0] = initialMissionaries;
 start.state[1] = initialCannibals;
 start.state[2] = 1;
 
-vector<node*> path = dfs(start);
+vector<node> BFSPath = bfs(start);
+cout<<"Con BFS"<<endl;
 
-for(int i = 0; i < path.size(); i++){
-    cout<<"Paso " << i+1 << ": ("<<path[i]->state[0]<<","<<path[i]->state[1]<<","<<path[i]->state[2]<<")"<<endl;
+for(int i = 0; i < BFSPath.size(); i++){
 
+    cout<<"Paso " << i+1 << ": ("<<BFSPath[i].state[0]<<","<<BFSPath[i].state[1]<<","<<BFSPath[i].state[2]<<")";
+    if(i < BFSPath.size() -1){
+        cout<<"  Operacion: "<<BFSPath[i+1].action<<endl;
+    }else{
+        cout<<" fin"<<endl;
+        cout<<endl;
+    }
+}
+
+vector<node> DFSPath = bfs(start);
+
+cout<<"Con DFS"<<endl;
+
+for(int i = 0; i < DFSPath.size(); i++){
+
+    cout<<"Paso " << i+1 << ": ("<<DFSPath[i].state[0]<<","<<DFSPath[i].state[1]<<","<<DFSPath[i].state[2]<<")";
+    if(i < DFSPath.size() -1){
+        cout<<"  Operacion: "<<DFSPath[i+1].action<<endl;
+    }else{
+        cout<<" fin"<<endl;
+        cout<<endl;
+    }
 }
 
 

@@ -4,6 +4,9 @@
         "stdio.h": "c",
         "ostream": "cpp",
         "iostream": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "deque": "cpp",
+        "list": "cpp",
+        "iosfwd": "cpp"
     }
 }
