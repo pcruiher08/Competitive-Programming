@@ -5,15 +5,16 @@
 #include <queue>
 #include <stack>
 
-#define sync ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 using namespace std;
 
 int cuantosNodos = 10;
 
 //un nodo
 struct nodo{
-   int id;
-   int visitado;
+    int id;
+    int visitado;
+    //en este vector se va a guardar el camino que se vaya encontrando
+    vector<char> camino;
 };
 
 //matriz de adyacencias para representar el grafo y evitar el problema de buscar el orden alfabetico
@@ -31,11 +32,9 @@ int grafo[10][10] = {
 /*J*/{0, 1, 0, 0, 1, 0, 0, 0, 0, 0},
 };
 
-//en este vector se va a guardar el camino que se vaya encontrando
-vector<char> camino;
 
 //funcion de breadth first search, regresa true si se encontro un camino de inicio a fin
-bool bfs(nodo inicio, nodo fin){
+nodo bfs(nodo inicio, nodo fin){
     nodo actual;
 
     //queue para el BFS, esta es la unica diferencia con la implementacion de DFS (y el acceso con front en vez de top)
@@ -60,11 +59,12 @@ bool bfs(nodo inicio, nodo fin){
         queueBFS.pop();
         //se va creando el camino
         //se suma el valor de ascii de A para regresar la configuracion a caracteres
-        camino.push_back(actual.id + 'A');
+        //camino.push_back(actual.id + 'A');
 
         //si se encontro camino, regresa true
         if(actual.id == fin.id){
-            return true;
+            actual.camino.push_back(actual.id+'A');
+            return actual;
         }
 
         //se recorren todas los numeros (configuracion de letras)
@@ -73,18 +73,17 @@ bool bfs(nodo inicio, nodo fin){
             if(grafo[i][actual.id] && vertices[i].visitado == 0){
                 //se marca como visitado y se hace insercion a la queue
                 vertices[i].visitado = 1;
+                vertices[i].camino = actual.camino;
+                vertices[i].camino.push_back(actual.id+'A');
                 queueBFS.push(vertices[i]);
             }
         }
     }
 
-    //si no se encuentra camino, regresa false
-    return false;
 }
 
 
 int main(){
-    sync;
 
     nodo inicio;
     nodo fin;
@@ -101,13 +100,11 @@ int main(){
     cout << "BFS de "<<letraInicio<<" a "<<letraFin<<endl;    
     
     //si se encontro camino, se imprime
-    if(bfs(inicio, fin)){
-        for(int i = 0; i < camino.size(); i++){
-            cout<<camino[i]<<(i < camino.size() - 1 ? "->" : "\n");
-        }
-    }else{
-        cout<<"No hay camino entre los nodos solicitados"<<endl;
+    nodo camino = bfs(inicio, fin);
+    for(int i = 0; i < camino.camino.size(); i++){
+        cout<<camino.camino[i]<<(i < camino.camino.size() - 1 ? "->" : "\n");
     }
+
 
 
 

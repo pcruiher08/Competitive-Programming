@@ -6,7 +6,6 @@
 #include <set>
 #include <stack>
 #define INF 0x3f3f3f3f
-#define sync ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 using namespace std;
 
 int cuantosNodos = 10;
@@ -92,11 +91,12 @@ nodo ucs(nodo inicio, nodo fin){
         }
     }
     cout<<"No hay camino entre los nodos solicitados"<<endl;
+    nodo vacio;
+    return vacio;
 }
 
 
 int main(){
-    sync;
 
     nodo inicio;
     nodo fin;
