@@ -15,7 +15,7 @@ int cuantosNodos = 10;
 struct nodo{
    int id;
    int visitado;
-   vector<char> camino;
+   vector<pair<char, int> > camino;
 };
 
 //matriz de adyacencias para representar el grafo y evitar el problema de buscar el orden alfabetico en BFS y DFS, en UCS da igual porque la prioridad es por peso
@@ -63,28 +63,31 @@ nodo ucs(nodo inicio, nodo fin){
         nodo actual = pqUCS.top().second;
         pqUCS.pop();
 
+        //se revisa que no se haya visitado el actual
         if(visitados.count(actual.id) == 0){
+            //se marca el actual en los visitados
             visitados.insert(actual.id);
             //aqui se guardan los nodos que se expandieron, pero no se imprimen en esta implementacion, puede que sea util para tareas futuras
             expandidos.push_back(actual);
         }
 
+        //se revisa si se llego al objetivo
         if(actual.id == fin.id){
             return actual;
         }
 
+        //se itera sobre los nodos
         for(int i = 0; i<cuantosNodos; i++){
-            if(grafo[actual.id][i]){
-                if(visitados.count(i) == 0){
-                    if(grafo[i][actual.id]){
-                        nodo nuevo;
-                        nuevo.id = i;
-                        nuevo.visitado = 0;
-                        nuevo.camino = actual.camino;
-                        nuevo.camino.push_back(i+'A');
-                        pqUCS.push(make_pair(peso + grafo[actual.id][i], nuevo));
-                    }
-                }
+            //se revisa que exista adyasencia y que no se haya visitado el nodo actual
+            if(grafo[actual.id][i] && visitados.count(i) == 0){                
+                //se hace un nodo nuevo y se actualiza con la informacion que necesita para entrar a la pq
+                nodo nuevo;
+                nuevo.id = i;
+                nuevo.visitado = 0;
+                nuevo.camino = actual.camino;
+                nuevo.camino.push_back(make_pair(i+'A', peso + grafo[actual.id][i]));
+                //se inserta el nodo nuevo en la queue con el peso correspondiente al camino
+                pqUCS.push(make_pair(peso + grafo[actual.id][i], nuevo));
             }
         }
     }
@@ -100,7 +103,7 @@ int main(){
 
     char letraInicio = 'B';
     inicio.id = letraInicio-'A';
-    inicio.camino = {letraInicio};
+    inicio.camino = {make_pair(letraInicio,0)};
     char letraFin = 'D';
     fin.id = letraFin - 'A';
 
@@ -108,12 +111,15 @@ int main(){
     cout << "UCS de "<<letraInicio<<" a "<<letraFin<<endl;
     nodo res = ucs(inicio, fin);
     for(int i = 0; i<res.camino.size(); i++){
-        cout<<char(res.camino[i])<<(i<res.camino.size()-1?"->":"\n");
+        cout<<char(res.camino[i].first)<<"("<<res.camino[i].second<<")"<<(i<res.camino.size()-1?"->":"\n");
     }
 
     /*
     OUTPUT
     ---------------
+
+
+
 
     UCS de B a D
     B->E->A->I->D

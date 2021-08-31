@@ -52,7 +52,7 @@ bool bfs(nodo inicio, nodo fin){
     vertices[inicio.id].visitado = 1;
 
     queueBFS.push(inicio);
-    
+
     //mientras la queue no se quede vacia, se sigue recorriendo
     while(!queueBFS.empty()){
         
@@ -71,9 +71,9 @@ bool bfs(nodo inicio, nodo fin){
         for(int i = 0; i<cuantosNodos; i++){
             //se revisa que haya adyacencia y que no se haya visitado antes
             if(grafo[i][actual.id] && vertices[i].visitado == 0){
-                    //se marca como visitado y se hace insercion a la queue
-                    vertices[i].visitado = 1;
-                    queueBFS.push(vertices[i]);
+                //se marca como visitado y se hace insercion a la queue
+                vertices[i].visitado = 1;
+                queueBFS.push(vertices[i]);
             }
         }
     }
