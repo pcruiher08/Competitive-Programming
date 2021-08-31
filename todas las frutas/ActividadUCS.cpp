@@ -101,6 +101,11 @@ int main(){
     nodo inicio;
     nodo fin;
 
+
+
+    //para simplicidad de recorrido, las letras se usaran como numeros con la configuracion A = 0, B = 1, C = 2, ...
+    
+    //se resta el valor de ascii de A a las letras para obtener la configuracion propuesta
     char letraInicio = 'B';
     inicio.id = letraInicio-'A';
     inicio.camino = {make_pair(letraInicio,0)};
