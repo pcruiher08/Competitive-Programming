@@ -38,10 +38,8 @@ vector<char> camino;
 //funcion de breadth first search, regresa true si se encontro un camino de inicio a fin
 nodo dfs(nodo inicio, nodo fin){
     nodo actual;
-
     //stack para el DFS, esta es la unica diferencia con la implementacion de BFS (y el acceso con top en vez de front)
     stack<nodo> stackDFS;
-
     //este arreglo se usara para recorrer la matriz de adyacencias en orden
     nodo vertices[cuantosNodos];
 
@@ -51,17 +49,13 @@ nodo dfs(nodo inicio, nodo fin){
     }
 
     vertices[inicio.id].visitado = 1;
-
     stackDFS.push(inicio);
     
     //mientras la queue no se quede vacia, se sigue recorriendo
     while(!stackDFS.empty()){
-        
         actual = stackDFS.top();
         stackDFS.pop();
-        //se va creando el camino
-        //se suma el valor de ascii de A para regresar la configuracion a caracteres
-        //camino.push_back(actual.id + 'A');
+        vertices[actual.id].visitado = 1;
 
         //si se encontro camino, regresa true
         if(actual.id == fin.id){
@@ -74,15 +68,13 @@ nodo dfs(nodo inicio, nodo fin){
             //se revisa que haya adyacencia y que no se haya visitado antes
             if(grafo[i][actual.id] && vertices[i].visitado == 0){
                 //se marca como visitado y se hace insercion a la queue
-                vertices[i].visitado = 1;
+                //vertices[i].visitado = 1;
                 vertices[i].camino = actual.camino;
                 vertices[i].camino.push_back(actual.id+'A');
                 stackDFS.push(vertices[i]);
             }
         }
     }
-
-    //si no se encuentra camino, regresa false
 }
 
 
@@ -115,9 +107,9 @@ int main(){
     /*
     OUTPUT
     ---------------
-
+    
     DFS de H a I
-    H->B->G->A->I
+    H->B->J->E->D->I
     
     */
 }

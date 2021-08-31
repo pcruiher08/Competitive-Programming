@@ -57,9 +57,8 @@ nodo bfs(nodo inicio, nodo fin){
         
         actual = queueBFS.front();
         queueBFS.pop();
-        //se va creando el camino
-        //se suma el valor de ascii de A para regresar la configuracion a caracteres
-        //camino.push_back(actual.id + 'A');
+        vertices[actual.id].visitado = 1;
+        
 
         //si se encontro camino, regresa true
         if(actual.id == fin.id){
@@ -72,7 +71,7 @@ nodo bfs(nodo inicio, nodo fin){
             //se revisa que haya adyacencia y que no se haya visitado antes
             if(grafo[i][actual.id] && vertices[i].visitado == 0){
                 //se marca como visitado y se hace insercion a la queue
-                vertices[i].visitado = 1;
+                //vertices[i].visitado = 1;
                 vertices[i].camino = actual.camino;
                 vertices[i].camino.push_back(actual.id+'A');
                 queueBFS.push(vertices[i]);
