@@ -111,9 +111,8 @@ int main(){
     /*
     OUTPUT
     ---------------
-
-    BFS de B a F
-    B->E->G->H->J->A->D->C->F
+        BFS de B a F
+        B->E->A->F
 
     
     
