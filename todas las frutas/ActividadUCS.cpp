@@ -42,7 +42,7 @@ class comparacion{
         }
 };
 
-//funcion de uniform cost search, va a regresar el nodo al que llegue, y el nodo contiene la lista del camino por el cual se alcanzo guardada en un vector de caracteres
+//funcion de uniform cost search, va a regresar el nodo al que llegue, y el nodo contiene la lista del camino por el cual se alcanzo guardada en un vector de pares de caracteres y pesos
 //seria interesante implementarlo con apuntadores de los nodos anteriores pero para esta implementacion no hizo falta
 nodo ucs(nodo inicio, nodo fin){
 
