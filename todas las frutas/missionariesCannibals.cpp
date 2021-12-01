@@ -14,6 +14,7 @@
 #include <vector>
 #include <cstring>
 #include <climits>
+#include <fstream>
 #define ll long long
 #define ull unsigned long long
 #define FOR(m,s,n,u) for(int m=s; m<n; m+=u)
@@ -31,8 +32,9 @@
 #define pii pair<int,int>
 using namespace std;
 
+ofstream salida ("misscann.txt"); 
 
-int initialMissionaries = 3;
+int initialMissionaries = 4;
 int initialCannibals = 3;
 int boatInitialState = 1;
 
@@ -59,8 +61,8 @@ struct node{
 
     int pathCostUpToThisNode; 
     vector<node> parents;
+    node *parent = NULL;
 };
-
 
 bool isTransitionValid(node n, string action){
 
@@ -153,7 +155,7 @@ bool isTransitionValid(node n, string action){
     return enoughToMove && noOneWillBeEaten;
 }
 
-vector<node> dfs(node padre){
+node dfs(node padre){
     map<vector<int>, bool> visitados;
     stack<node> dfsS;
     dfsS.push(padre);
@@ -166,7 +168,7 @@ vector<node> dfs(node padre){
 
         if(n.state[0] == 0 && n.state[1] == 0 && n.state[2] == 0){
             n.parents.push_back(n);
-            return n.parents;
+            return n;
         }
 
         for(int i = 0; i < sizeof(actions)/sizeof(actions[0]); i++){
@@ -179,6 +181,7 @@ vector<node> dfs(node padre){
                     newNode.parents.push_back(n.parents[j]);
                 }
                 newNode.parents.push_back(n);
+                newNode.parent = &n;
                 
 
                 newNode.pathCostUpToThisNode = newNode.parents.size();
@@ -262,35 +265,71 @@ vector<node> dfs(node padre){
     }
 }
 
-
-vector<node> bfs(node padre){
+node n;
+node* bfs(node padre){
     map<vector<int>, bool> visitados;
     queue<node> bfsQ;
     bfsQ.push(padre);
     visitados[padre.state] = true;
-
+    
     while(!bfsQ.empty()){
-        node n = bfsQ.front();
+        n = bfsQ.front();
 
         bfsQ.pop();
 
         if(n.state[0] == 0 && n.state[1] == 0 && n.state[2] == 0){
             n.parents.push_back(n);
-            return n.parents;
+
+            return &n;
         }
 
         for(int i = 0; i < sizeof(actions)/sizeof(actions[0]); i++){
             
             string action = actions[i];
+            node newNode;
+
             if(isTransitionValid(n, action)){
-                node newNode;
                 newNode.action = action;
+                cout<<"transition was valid"<<endl;
+                if(n.parent != NULL){
+                    newNode.parent = &n;
+                    cout<<"agregue un parent"<<endl;
+                }
 
                 for(int j = 0; j<n.parents.size(); j++){
                     newNode.parents.push_back(n.parents[j]);
                 }
                 newNode.parents.push_back(n);
-                
+                newNode.parent = &n;
+                ///////////////
+                vector<pair<vector<int>,string> > camino; 
+                int cuenta = 0;
+                node* aux = &newNode;
+                while(aux != NULL){
+                    camino.push_back({aux->state, aux->action});
+                    aux = aux->parent;
+                    
+                    cout<<&aux<<endl;
+                    cout<<cuenta<<endl;
+                    cuenta++;
+                    if(cuenta > 15){
+                        break;
+                    }
+                }
+                cout<<"he salido"<<endl;
+
+                reverse(camino.begin(), camino.end());
+                for(int i = 0; i < camino.size(); i++){
+
+                    cout<<"Paso " << i+1 << ": ("<<camino[i].first[0]<<","<<camino[i].first[1]<<","<<camino[i].first[2]<<")";
+                    if(i < camino.size() -1){
+                        cout<<"  Operacion: "<<camino[i+1].second<<endl;
+                    }else{
+                        cout<<" fin"<<endl;
+                        cout<<endl;
+                    }
+                }
+                //////////////////////          
 
                 newNode.pathCostUpToThisNode = newNode.parents.size();
                 newNode.state[2] = !n.state[2];
@@ -362,17 +401,15 @@ vector<node> bfs(node padre){
                     break;
                 }
                 if(!visitados[newNode.state]){
+                    if(newNode.parent != NULL)
+                        cout<<newNode.parent->action<<endl;
                     visitados[newNode.state] = true;
                     bfsQ.push(newNode);
                 }
-                
-
             }
-
         }
     }
 }
-
 
 int main(){
 sync;
@@ -382,7 +419,8 @@ start.state[0] = initialMissionaries;
 start.state[1] = initialCannibals;
 start.state[2] = 1;
 
-vector<node> BFSPath = bfs(start);
+node* respuesta = bfs(start);
+vector<node> BFSPath = respuesta->parents; 
 cout<<"Con BFS"<<endl;
 
 for(int i = 0; i < BFSPath.size(); i++){
@@ -396,8 +434,53 @@ for(int i = 0; i < BFSPath.size(); i++){
     }
 }
 
-vector<node> DFSPath = bfs(start);
 
+cout<<endl<<endl<<"con pointers"<<endl;
+node *aux = respuesta->parent;
+if(respuesta->parent == NULL){
+    cout<<"respuesta->parent es null"<<endl;
+}else{
+    cout<<"respuesta parent no es null"<<endl;
+    cout<<respuesta->parent->parent->action<<endl;
+}
+cout<<respuesta->action<<endl;
+cout<<"uno"<<endl; 
+if(aux == NULL){
+    cout<<"es null"<<endl;
+}
+cout<<"pase"<<endl;
+vector<pair<vector<int>,string> > camino; 
+int cuenta = 0;
+while(aux->parent != NULL){
+    camino.push_back({aux->state, aux->action});
+    aux = (aux->parent);
+    cout<<aux->action;
+    cout<<cuenta<<endl;
+    cuenta++;
+    if(cuenta > 25){
+        break;
+    }
+}
+cout<<"he salido"<<endl;
+camino.push_back({aux->state, aux->action});
+
+reverse(camino.begin(), camino.end());
+for(int i = 0; i < camino.size(); i++){
+
+    cout<<"Paso " << i+1 << ": ("<<camino[i].first[0]<<","<<camino[i].first[1]<<","<<camino[i].first[2]<<")";
+    if(i < camino.size() -1){
+        cout<<"  Operacion: "<<camino[i+1].second<<endl;
+    }else{
+        cout<<" fin"<<endl;
+        cout<<endl;
+    }
+}
+
+
+/*
+node respuestaDFS = dfs(start);
+
+vector<node> DFSPath = respuestaDFS.parents;
 cout<<"Con DFS"<<endl;
 
 for(int i = 0; i < DFSPath.size(); i++){
@@ -410,6 +493,7 @@ for(int i = 0; i < DFSPath.size(); i++){
         cout<<endl;
     }
 }
+*/
 
 
 return 0;

@@ -1,3 +1,4 @@
-n = int(input())
-m = int(input())
-print( n > m )
+
+def p_empty(p):
+    'empty :'
+    pass
