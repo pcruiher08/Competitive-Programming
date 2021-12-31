@@ -38,10 +38,15 @@ FOR(i,0,n,1){
     if(arr[i]<menorImp && arr[i]%2==1) menorImp = arr[i];
 }
 
-if(sum%2==1){cout<<sum;}
+if(sum%2==1){
+    cout<<sum;
+}
 if(sum%2==0){
     sum-=menorImp; 
-if(sum<=0){cout<<0;return 0;}
+if(sum<=0){
+    cout<<0;
+    return 0;
+}
 cout<<sum;
 }
 }
