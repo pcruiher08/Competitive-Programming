@@ -1,0 +1,228 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> exec
+Rule 1     exec -> R
+Rule 2     empty -> <empty>
+Rule 3     R -> LETTERA LETTERA R LETTERB
+Rule 4     R -> LETTERA R LETTERB R LETTERA
+Rule 5     R -> LETTERB R LETTERA LETTERA
+Rule 6     R -> empty
+
+Terminals, with rules where they appear
+
+LETTERA              : 3 3 4 4 5 5
+LETTERB              : 3 4 5
+error                : 
+
+Nonterminals, with rules where they appear
+
+R                    : 1 3 4 4 5
+empty                : 6
+exec                 : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . exec
+    (1) exec -> . R
+    (3) R -> . LETTERA LETTERA R LETTERB
+    (4) R -> . LETTERA R LETTERB R LETTERA
+    (5) R -> . LETTERB R LETTERA LETTERA
+    (6) R -> . empty
+    (2) empty -> .
+
+    LETTERA         shift and go to state 3
+    LETTERB         shift and go to state 4
+    $end            reduce using rule 2 (empty -> .)
+
+    exec                           shift and go to state 1
+    R                              shift and go to state 2
+    empty                          shift and go to state 5
+
+state 1
+
+    (0) S' -> exec .
+
+
+
+state 2
+
+    (1) exec -> R .
+
+    $end            reduce using rule 1 (exec -> R .)
+
+
+state 3
+
+    (3) R -> LETTERA . LETTERA R LETTERB
+    (4) R -> LETTERA . R LETTERB R LETTERA
+    (3) R -> . LETTERA LETTERA R LETTERB
+    (4) R -> . LETTERA R LETTERB R LETTERA
+    (5) R -> . LETTERB R LETTERA LETTERA
+    (6) R -> . empty
+    (2) empty -> .
+
+  ! shift/reduce conflict for LETTERB resolved as shift
+    LETTERA         shift and go to state 6
+    LETTERB         shift and go to state 4
+
+  ! LETTERB         [ reduce using rule 2 (empty -> .) ]
+
+    R                              shift and go to state 7
+    empty                          shift and go to state 5
+
+state 4
+
+    (5) R -> LETTERB . R LETTERA LETTERA
+    (3) R -> . LETTERA LETTERA R LETTERB
+    (4) R -> . LETTERA R LETTERB R LETTERA
+    (5) R -> . LETTERB R LETTERA LETTERA
+    (6) R -> . empty
+    (2) empty -> .
+
+  ! shift/reduce conflict for LETTERA resolved as shift
+    LETTERA         shift and go to state 3
+    LETTERB         shift and go to state 4
+
+  ! LETTERA         [ reduce using rule 2 (empty -> .) ]
+
+    R                              shift and go to state 8
+    empty                          shift and go to state 5
+
+state 5
+
+    (6) R -> empty .
+
+    $end            reduce using rule 6 (R -> empty .)
+    LETTERB         reduce using rule 6 (R -> empty .)
+    LETTERA         reduce using rule 6 (R -> empty .)
+
+
+state 6
+
+    (3) R -> LETTERA LETTERA . R LETTERB
+    (3) R -> LETTERA . LETTERA R LETTERB
+    (4) R -> LETTERA . R LETTERB R LETTERA
+    (3) R -> . LETTERA LETTERA R LETTERB
+    (4) R -> . LETTERA R LETTERB R LETTERA
+    (5) R -> . LETTERB R LETTERA LETTERA
+    (6) R -> . empty
+    (2) empty -> .
+
+  ! shift/reduce conflict for LETTERB resolved as shift
+    LETTERA         shift and go to state 6
+    LETTERB         shift and go to state 4
+
+  ! LETTERB         [ reduce using rule 2 (empty -> .) ]
+
+    R                              shift and go to state 9
+    empty                          shift and go to state 5
+
+state 7
+
+    (4) R -> LETTERA R . LETTERB R LETTERA
+
+    LETTERB         shift and go to state 10
+
+
+state 8
+
+    (5) R -> LETTERB R . LETTERA LETTERA
+
+    LETTERA         shift and go to state 11
+
+
+state 9
+
+    (3) R -> LETTERA LETTERA R . LETTERB
+    (4) R -> LETTERA R . LETTERB R LETTERA
+
+    LETTERB         shift and go to state 12
+
+
+state 10
+
+    (4) R -> LETTERA R LETTERB . R LETTERA
+    (3) R -> . LETTERA LETTERA R LETTERB
+    (4) R -> . LETTERA R LETTERB R LETTERA
+    (5) R -> . LETTERB R LETTERA LETTERA
+    (6) R -> . empty
+    (2) empty -> .
+
+  ! shift/reduce conflict for LETTERA resolved as shift
+    LETTERA         shift and go to state 3
+    LETTERB         shift and go to state 4
+
+  ! LETTERA         [ reduce using rule 2 (empty -> .) ]
+
+    R                              shift and go to state 13
+    empty                          shift and go to state 5
+
+state 11
+
+    (5) R -> LETTERB R LETTERA . LETTERA
+
+    LETTERA         shift and go to state 14
+
+
+state 12
+
+    (3) R -> LETTERA LETTERA R LETTERB .
+    (4) R -> LETTERA R LETTERB . R LETTERA
+    (3) R -> . LETTERA LETTERA R LETTERB
+    (4) R -> . LETTERA R LETTERB R LETTERA
+    (5) R -> . LETTERB R LETTERA LETTERA
+    (6) R -> . empty
+    (2) empty -> .
+
+  ! shift/reduce conflict for LETTERA resolved as shift
+  ! shift/reduce conflict for LETTERB resolved as shift
+  ! shift/reduce conflict for LETTERA resolved as shift
+    $end            reduce using rule 3 (R -> LETTERA LETTERA R LETTERB .)
+    LETTERA         shift and go to state 3
+    LETTERB         shift and go to state 4
+
+  ! LETTERB         [ reduce using rule 3 (R -> LETTERA LETTERA R LETTERB .) ]
+  ! LETTERA         [ reduce using rule 3 (R -> LETTERA LETTERA R LETTERB .) ]
+  ! LETTERA         [ reduce using rule 2 (empty -> .) ]
+
+    R                              shift and go to state 13
+    empty                          shift and go to state 5
+
+state 13
+
+    (4) R -> LETTERA R LETTERB R . LETTERA
+
+    LETTERA         shift and go to state 15
+
+
+state 14
+
+    (5) R -> LETTERB R LETTERA LETTERA .
+
+    $end            reduce using rule 5 (R -> LETTERB R LETTERA LETTERA .)
+    LETTERB         reduce using rule 5 (R -> LETTERB R LETTERA LETTERA .)
+    LETTERA         reduce using rule 5 (R -> LETTERB R LETTERA LETTERA .)
+
+
+state 15
+
+    (4) R -> LETTERA R LETTERB R LETTERA .
+
+    $end            reduce using rule 4 (R -> LETTERA R LETTERB R LETTERA .)
+    LETTERB         reduce using rule 4 (R -> LETTERA R LETTERB R LETTERA .)
+    LETTERA         reduce using rule 4 (R -> LETTERA R LETTERB R LETTERA .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for LETTERB in state 3 resolved as shift
+WARNING: shift/reduce conflict for LETTERA in state 4 resolved as shift
+WARNING: shift/reduce conflict for LETTERB in state 6 resolved as shift
+WARNING: shift/reduce conflict for LETTERA in state 10 resolved as shift
+WARNING: shift/reduce conflict for LETTERA in state 12 resolved as shift
+WARNING: shift/reduce conflict for LETTERB in state 12 resolved as shift
+WARNING: shift/reduce conflict for LETTERA in state 12 resolved as shift
