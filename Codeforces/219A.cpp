@@ -33,15 +33,37 @@ using namespace std;
 
 int main(){
 sync;
-int n; cin>>n;
+int k; cin>>k;
 string s; cin>>s;
-map<char, int> m;
-FOR(i,0,s.length(),1)m[s[i]]=0;
-FOR(i,0,s.length(),1)m[s[i]]++;
+int m[26];
+FOR(i,0,26,1)m[i]=0;
+FOR(i,0,s.length(),1)m[s[i] - 'a']++;
 
-for(auto it = m.begin(); it!=m.end(); it++){
-    if(it->second != m.begin()->second)
+
+//checa si todos son multiplos de k
+
+FOR(i,0,26,1){
+    if(!(m[i] % k == 0 || m[i] == 0)){
+        cout<<-1<<endl;
+        return 0;
+    }
 }
+
+
+
+string copia = "";
+FOR(i,0,26,1){
+    int repetidos = m[i] / k;
+    FOR(j,0,repetidos,1){
+        copia += (char(i + 'a'));
+    }
+    
+}
+
+FOR(i,0,k,1){
+    cout<<copia;
+}
+cout<<endl;
 //
 return 0;
 }
