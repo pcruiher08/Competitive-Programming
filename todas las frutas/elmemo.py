@@ -39,14 +39,14 @@ magn_uniform_field = [0.0, 0.0, -1.5]
 b = np.linalg.norm(magn_uniform_field)
 v_i = np.linalg.norm(proton.vel)
 expected_radius = v_i / ( b * (proton.charge/proton.mass ) )
-print 'expected initial radius is ', expected_radius, 'meters'
+print('expected initial radius is ', expected_radius, 'meters')
 spacing = 0.5 * expected_radius
 
 expected_period = 2.0*math.pi/( b * (proton.charge/proton.mass ) )
-print 'expected period is ', expected_period, 'seconds'
+print('expected period is ', expected_period, 'seconds')
 number_of_points = 400
 guess_for_delta_t = expected_period / number_of_points
-print 'good guess for delta_t would be', guess_for_delta_t, 'for', number_of_points,'points'
+print('good guess for delta_t would be', guess_for_delta_t, 'for', number_of_points,'points')
 
 # Count how many iterations are done inside the spacing ( Electric field only )
 count = 0
@@ -62,7 +62,7 @@ def em_acceleration( q_over_m, position, velocity ):
 	global count, jumps
 
 # Stop after limit in jumps ( E = B = 0 --> straight line
-        if jumps >= jumps_max :
+        if(jumps >= jumps_max):
           a = 0
         else:
 		if position[0] >= 0 or position[0] <= -spacing :
