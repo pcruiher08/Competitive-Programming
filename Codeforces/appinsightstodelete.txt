@@ -52,3 +52,5 @@ Run your Java application with the added Java Agent. Application Insights will n
 
 
 For more information refer to the official documentation: [Java Agent for Application Insights](https://docs.microsoft.com/en-us/azure/azure-monitor/app/java-standalone-agent).
+
+Note: I haven't been able to run tests connected to the office network.
