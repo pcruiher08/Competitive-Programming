@@ -1,0 +1,54 @@
+Application Insights is a monitoring and diagnostics service provided by Azure. 
+It's designed to gain deep insights into the behavior and performance of applications. 
+It collects telemetry data from applications, providing information on response times, dependencies, exceptions, or even custom events.
+Application Insights offers real-time monitoring, performance analytics, error tracking, and custom event tracking, allowing users to proactively identify and resolve issues, optimize application performance, and enhance the end-user experience. 
+It's a valuable tool for ensuring the reliability and performance of applications in the cloud or on-premises.
+
+## Setting up Application Insights for a Java Application Using the Java Agent
+
+### Prerequisites
+
+Before getting started, make sure you have the following prerequisites:
+
+- Java Development Kit (JDK)
+- Azure subscription (for Application Insights)
+- A Java application you want to monitor
+
+### Step 1: Create an Application Insights Resource
+
+1. Log in to the Azure Portal: [https://portal.azure.com/](https://portal.azure.com/)
+
+2. Click on "Create a resource."
+
+3. Search for "Application Insights" and click on it.
+
+4. Click "Create" and fill in the necessary details like resource group, name, and location. Click "Review + create" and then "Create" to create the Application Insights resource.
+
+### Step 2: Get the Instrumentation Key
+
+Once your Application Insights resource is created, you will need to get the Instrumentation Key. This is basically what connects your application with Azure services.
+
+1. In the Azure Portal, go to your Application Insights resource.
+
+2. In the left navigation pane, under the "Monitoring" section, click on "Overview."
+
+3. You will find the Instrumentation Key. Copy this key as you'll need it later.
+
+### Step 3: Download the Java Agent JAR
+
+The Application Insights Java Agent JAR file can be downloaded directly from the official [GitHub repository](https://github.com/microsoft/ApplicationInsights-Java).
+
+### Step 4: Configuration JSON file.
+
+Add screenshot and separate explanation of each part.
+
+### Step 5: Add the Java Agent to Your Java Application
+
+Add screenshot of run configuration adding the JAR and JSON locations.
+
+### Step 6: Run Your Application
+
+Run your Java application with the added Java Agent. Application Insights will now start collecting telemetry data and provide insights into your application's performance without any changes to your application code.
+
+
+For more information refer to the official documentation: [Java Agent for Application Insights](https://docs.microsoft.com/en-us/azure/azure-monitor/app/java-standalone-agent).
