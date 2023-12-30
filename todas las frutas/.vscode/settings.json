@@ -13,6 +13,7 @@
         "algorithm": "cpp",
         "utility": "cpp",
         "xstring": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "__node_handle": "cpp"
     }
 }
